@@ -1,4 +1,4 @@
-function register(){
+function login(){
   document.getElementById('error').innerHTML = "";
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
@@ -10,13 +10,20 @@ function register(){
   var vars = "email=" + email + "&password=" + password;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      if(http.responseText == "existing"){
-        document.getElementById('error').innerHTML = "Utente già esistente";
+      console.log(http.responseText);
+      if(http.responseText == "wrongEmail"){
+        document.getElementById('error').innerHTML = "L'utente non esiste";
+      }else if(http.responseText == "wrongPassword"){
+        document.getElementById('error').innerHTML = "Password errata";
       }else if(http.responseText == "queryError"){
         document.getElementById('error').innerHTML = "Errore interno";
-      }
-      else if(http.responseText == "ok"){
-        window.location.href = "index.html";
+      }else if(http.responseText == "okAnziano" || http.responseText == "okOfferente"){
+        if(http.responseText == "okAnziano"){
+          document.getElementById('error').innerHTML = "Anziano";
+        }else{
+          document.getElementById('error').innerHTML = "Offerente";
+        }
+        //window.location.href = "index.html";
       }
     }
   };

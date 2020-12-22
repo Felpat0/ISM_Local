@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!--Registrazione anziano-->
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <title>goGrandpa - Registrazione anziano</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      <script src="js/ip.js"></script>
+      <script src="cordova.js"></script>
+      <script src="js/registrazioneELogin/registrazioneOfferente.js"></script>
+  </head>
+  <body>
+    <h2>Registrazione utente offerente</h2>
+
+      <div id="dati">
+        <div class="mb-3">
+          <label id="label1" for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome">
+        </div>
+        <div class="mb-3">
+          <label id="label2" for="cognome" class="form-label">Cognome</label>
+          <input type="text" class="form-control" id="cognome">
+        </div>
+        <div class="mb-3">
+          <label id="label3" for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="mb-3">
+          <label id="label6" for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password">
+        </div>
+        <div class="mb-3">
+          <label id="label4" for="telefono" class="form-label">Telefono</label>
+          <input type="text" class="form-control" id="telefono">
+        </div>
+      <label id="error" style="color:red;"></label><br/>
+      <button id="submit" onclick="showZone()" type="submit" class="btn btn-primary">Avanti</button>
+    </div>
+
+
+    <div id="zone" style="display:none;">
+      <h3>Inserisci zone</h3>
+      <div id="listaZone">
+        <div class="mb-3">
+          <label id="label1" for="nome" class="form-label">Città 1</label>
+          <input type="text" class="form-control" id="nome1">
+        </div>
+      </div>
+      <button id="submit" onclick="addZona()" type="submit" class="btn btn-primary">+</button>
+      <button id="submit" onclick="showServizi()" type="submit" class="btn btn-primary">Avanti</button>
+    </div>
+
+
+    <div id="servizi" style="display:none;">
+
+      <button id="submit" onclick="showFasce()" type="submit" class="btn btn-primary">Avanti</button>
+    </div>
+
+
+
+    <div id="fasce" style="display:none;">
+
+      <button id="submit" onclick="register()" type="submit" class="btn btn-primary">Completa registrazione</button>
+    </div>
+  </body>
+</html>

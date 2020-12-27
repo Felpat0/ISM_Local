@@ -1,0 +1,23 @@
+.accetta {
+  position: absolute;
+  width: 40%;
+  height: 10%;
+  top: 72%;
+  left: 5%;
+}
+
+.rifiuta {
+  position: absolute;
+  width: 40%;
+  height: 10%;
+  top: 72%;
+  left: 55%;
+}
+
+#prenotazione {
+  position: absolute;
+  width: 96%;
+  height: 60%;
+  background-color: #f549a6;
+  top: 30%;
+}

@@ -1,0 +1,23 @@
+#listapren {
+  position: absolute;
+  width: 96%;
+  height: 68%;
+  top: 30%;
+  background-color: #31f659;
+}
+
+.p {
+  position: relative;
+  width: 98%;
+  height: 30%;
+  top: 1%;
+  left: 1%;
+  background-color: #4f98a2;
+}
+
+.prenotazione {
+  position: relative;
+  width: 85%;
+  height: 120px;
+  left: 7%;
+}

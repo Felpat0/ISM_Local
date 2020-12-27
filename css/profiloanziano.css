@@ -1,0 +1,26 @@
+#imgprofilo {
+  position: absolute;
+  width: 155px;
+  height: 155px;
+  top: 30%;
+  left: 7%;
+  background-color: #43d4a2;
+}
+
+#nomecognome {
+  position: absolute;
+  width: 45%;
+  height: 10%;
+  top: 40%;
+  left: 50%;
+  background-color: #43d4a2;
+}
+
+#info {
+  position: absolute;
+  width: 98%;
+  height: 40%;
+  left: 1%;
+  top: 55%;
+  background-color: #7d4a9b;
+}

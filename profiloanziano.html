@@ -2,6 +2,9 @@
   <head>
     <link href="css\homeutenti.css" rel="stylesheet" type="text/css">
     <link href="css\profiloanziano.css" rel="stylesheet" type="text/css">
+    <script src="js/ip.js"></script>
+    <script src="js/profiloUtente.js"></script>
+    <script src="cordova.js"></script>
   </head>
   <body>
     <div id="testa">
@@ -16,13 +19,18 @@
       <p>Immagine profilo</p>
     </div>
     <div id="nomecognome">
-      <p>Nome: Paola</p>
-      <p>Cognome: Paoletta</p>
+      <label id="label1" for="nome" class="">Nome: </label>
+      <p id="nome"></p>
+      <label id="label2" for="cognome" class="">Cognome: </label>
+      <p id="cognome"></p>
     </div>
     <div id="info">
-      <p>Data di nascita: 23/06/1945</p>
-      <p>Numero di telefono: 3352348755</p>
-      <p>E-mail: paolapaoletta@gmail.com</p>
+      <label id="label3" for="nascita" class="">Data di nascita: </label>
+      <p id="nascita"> 23/06/1945</p>
+      <label id="label4" for="telefono" class="">Numero di telefono: </label>
+      <p id="telefono"></p>
+      <label id="label5" for="email" class="">E-mail: </label>
+      <p id="email"></p>
       <a href="#">Invia messaggio</a>
       <a href="#">Lascia una recensione</a>
     </div>

@@ -10,25 +10,34 @@ function login(){
   var vars = "email=" + email + "&password=" + password;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(http.responseText);
       if(http.responseText == "wrongEmail"){
         document.getElementById('error').innerHTML = "L'utente non esiste";
       }else if(http.responseText == "wrongPassword"){
         document.getElementById('error').innerHTML = "Password errata";
       }else if(http.responseText == "queryError"){
         document.getElementById('error').innerHTML = "Errore interno";
-      }else if(http.responseText == "okAnziano" || http.responseText == "okOfferente"){
-        if(http.responseText == "okAnziano"){
+      }else if(http.responseText.includes("okAnziano") || http.responseText.includes("okOfferente")){
+        if(http.responseText.includes("okAnziano")){
           document.getElementById('error').innerHTML = "Anziano";
+          //Ricavare l'id anziano dalla risposta del server
+          var matches = http.responseText.match(/(\d+)/);
+      		var idAnziano = matches[0];
+          //Salvare id, email e tipoUtente
+          localStorage.setItem("id", idAnziano);
           localStorage.setItem("email", email);
           localStorage.setItem("tipoUtente", "anziano");
-          console.log(localStorage["email"]);
+          console.log(localStorage["id"]);
           console.log(localStorage["tipoUtente"]);
         }else{
           document.getElementById('error').innerHTML = "Offerente";
+          //Ricavare l'id offerente dalla risposta del server
+          var matches = http.responseText.match(/(\d+)/);
+      		var idOfferente = matches[0];
+          //Salvare id, email e tipoUtente
+          localStorage.setItem("id", idOfferente);
           localStorage.setItem("email", email);
           localStorage.setItem("tipoUtente", "offerente");
-          console.log(localStorage["email"]);
+          console.log(localStorage["id"]);
           console.log(localStorage["tipoUtente"]);
         }
         //window.location.href = "index.html";

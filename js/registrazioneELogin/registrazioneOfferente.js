@@ -1,6 +1,7 @@
 var zone = [];
 var nZone = 1;
 var fasce = [];
+var prezzi = [];
 
 function clearSelect(id){
 	var element = document.getElementById(id);
@@ -10,9 +11,13 @@ function clearSelect(id){
 }
 
 document.addEventListener('input', function (event) {
+	//----------------EVENTI PER LA SCHERMATA "ZONE"
+
+	//Se si seleziona una regione, riempire la select corrispondente con le province
 	if (event.target.classList.contains("regione")){
 		//Prendere il numero contenuto nell'id della select
-		var indexZona = event.target.id.slice(-1);
+		var matches = event.target.id.match(/(\d+)/);
+		indexZona = matches[0];
 		//Resettare la select
 		clearSelect("provincia" + indexZona);
     //Riempire la select delle province in base alla regione
@@ -23,7 +28,9 @@ document.addEventListener('input', function (event) {
       document.getElementById("provincia" + indexZona).add(temp)
     }
   }else if(event.target.classList.contains("provincia")){
-		var indexZona = event.target.id.slice(-1);
+		//Prendere il numero contenuto nell'id della select
+		var matches = event.target.id.match(/(\d+)/);
+		indexZona = matches[0];
 		//Resettare la select
 		clearSelect("città" + indexZona);
     //Riempire la select dei comuni in base alla provincia
@@ -36,6 +43,22 @@ document.addEventListener('input', function (event) {
       temp.value = i;
       document.getElementById("città" + indexZona).add(temp)
     }
+	}
+
+	//----------------EVENTI PER LA SCHERMATA "SERVIZI"
+	//Se è stato attivato uno dei servizi
+	if(event.target.id.includes("check")){
+		//Ottenere l'id del servizio
+		var matches = event.target.id.match(/(\d+)/);
+		indexInput = matches[0];
+		//Se è già attivato, disattivarlo ed azzerare il form
+		if(!document.getElementById("input" + indexInput).disabled){
+			document.getElementById("input" + indexInput).value = "";
+			document.getElementById("input" + indexInput).disabled = true;
+		}else{
+			//Se non è attivo, attivarlo
+			document.getElementById("input" + indexInput).disabled = false;
+		}
 	}
 }, false);
 
@@ -88,6 +111,16 @@ function addZona(){
 function showServizi(){
   document.getElementById("zone").style.display = "none";
   document.getElementById("servizi").style.display = "block";
+
+	for(i = 0; i != listaServizi.length; i++){
+		document.getElementById("listaServizi").innerHTML += `
+		<input id="check` + i + `" class="form-check-input" type="checkbox" value="">
+		<label id="label` + i + `" class="form-check-label" for="check` + i + `">
+			`+ listaServizi[i] + `
+		</label>
+		<input id="input` + i + `" class="form-control form-control-lg" type="number" placeholder="Costo orario" disabled>
+		<br/>`;
+	}
 }
 
 function showFasce(){
@@ -114,7 +147,6 @@ function register(){
 		Città: città.options[città.selectedIndex].text};
 		zone.push(temp)
 	}
-	console.log(zone);
 
   const url= ip + '/registrazioneLogin/registrazioneAnziano.php';
   var http = new XMLHttpRequest();

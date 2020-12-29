@@ -17,7 +17,6 @@ function loadJSON(callback) {
 function init() {
  loadJSON(function(response) {
     jsonComuni = JSON.parse(response);
-    console.log(jsonComuni);
  });
 }
 

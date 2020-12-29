@@ -20,8 +20,16 @@ function login(){
       }else if(http.responseText == "okAnziano" || http.responseText == "okOfferente"){
         if(http.responseText == "okAnziano"){
           document.getElementById('error').innerHTML = "Anziano";
+          localStorage.setItem("email", email);
+          localStorage.setItem("tipoUtente", "anziano");
+          console.log(localStorage["email"]);
+          console.log(localStorage["tipoUtente"]);
         }else{
           document.getElementById('error').innerHTML = "Offerente";
+          localStorage.setItem("email", email);
+          localStorage.setItem("tipoUtente", "offerente");
+          console.log(localStorage["email"]);
+          console.log(localStorage["tipoUtente"]);
         }
         //window.location.href = "index.html";
       }

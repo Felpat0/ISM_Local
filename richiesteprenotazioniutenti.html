@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <link href="css\homeutenti.css" rel="stylesheet" type="text/css">
+    <link href="css\richiesteprenotazioni.css" rel="stylesheet" type="text/css">
+    <link href="css\sospeso.css" rel="stylesheet" type="text/css">
+    <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="testa">
+      <div id="logo">
+        <p>Logo</p>
+      </div>
+      <div id="menu">
+        <p>Menu</p>
+      </div>
+      <button href="#" id="back"><</button>
+    </div>
+    <!-- Inizio richiesteprenotazioni -->
+    <button href="#" id="sospeso">In sospeso</button>
+    <button href="#" id="archiviate">Archiviate</button>
+    <!-- Inizio RichiesteSospeso -->
+    <div class="listapren">
+      <div class="p">
+        <button href="#" class="prenotazione">
+          <h2>Paola Paoletti</h2>
+          <h3>Comprare medicine</h3>
+        </button>
+        <a href="#" class="linkprofilo">Visualizza profilo</a>
+      </div>
+      <div class="p">
+        <button href="#" class="prenotazione">
+          <h2>Gino Ginetto</h2>
+          <h3>Idraulica</h3>
+        </button>
+        <a href="#" class="linkprofilo">Visualizza profilo</a>
+      </div>
+      <div class="p">
+        <button href="#" class="prenotazione">
+          <h2>Teresa Teresella</h2>
+          <h3>Fila</h3>
+        </button>
+        <a href="#" class="linkprofilo">Visualizza profilo</a>
+      </div>
+    </div>
+    <!-- Inizio RichiesteSospesoRiepilogo -->
+    <div id="prenotazione">
+      <h3>Richiesta prenotazione di Paola Paoletti</h3>
+      <p>Servizio: Comprare medicine</p>
+      <p>Data: 17/05/2021</p>
+      <p>Ora: --:--</p>
+      <p>Indirizzo: Via Giocarda, 76</p>
+      <p>Paga: 5€ l'ora</p>
+    </div>
+    <button href="#" class="accetta" onclick="window.location.href='sospeso.html';">Accetta</button>
+    <button href="#" class="rifiuta" onclick="window.location.href='sospeso.html';">Rifiuta</button>
+    <!-- Inizio RichiesteArchiviate -->
+    <div class="listapren">
+      <div class="p">
+        <button href="#" class="prenotazione">
+          <h2>Mario Mariello</h2>
+          <h3>Fila alle poste</h3>
+        </button>
+        <a href="#" class="linkprofilo">Visualizza profilo</a>
+      </div>
+      <div class="p">
+        <button href="#" class="prenotazione">
+          <h2>Teresa Teresella</h2>
+          <h3>Comprare medicine</h3>
+        </button>
+        <a href="#" class="linkprofilo">Visualizza profilo</a>
+      </div>
+      <div class="p">
+        <button href="#" class="prenotazione">
+          <h2>Gino Ginetto</h2>
+          <h3>Accompagnamento al teatro</h3>
+        </button>
+        <a href="#" class="linkprofilo">Visualizza profilo</a>
+      </div>
+    </div>
+    <!-- Inizio RichiesteArchiviateRiepilogo -->
+    <div id="prenotazione">
+      <h3>Mario Mariello</h3>
+      <p>Servizio effettuato: Fila alle poste il giorno 15/05/2021 alle ore 8:30</p>
+    </div>
+  </body>
+</html>

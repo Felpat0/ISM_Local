@@ -1,6 +1,7 @@
 var zone = [];
 var nZone = 1;
 var fasce = [];
+var nFasce = 1;
 var prezzi = [];
 
 function clearSelect(id){
@@ -52,12 +53,12 @@ document.addEventListener('input', function (event) {
 		var matches = event.target.id.match(/(\d+)/);
 		indexInput = matches[0];
 		//Se è già attivato, disattivarlo ed azzerare il form
-		if(!document.getElementById("input" + indexInput).disabled){
-			document.getElementById("input" + indexInput).value = "";
-			document.getElementById("input" + indexInput).disabled = true;
+		if(!document.getElementById("costoOrario" + indexInput).disabled){
+			document.getElementById("costoOrario" + indexInput).value = "";
+			document.getElementById("costoOrario" + indexInput).disabled = true;
 		}else{
 			//Se non è attivo, attivarlo
-			document.getElementById("input" + indexInput).disabled = false;
+			document.getElementById("costoOrario" + indexInput).disabled = false;
 		}
 	}
 }, false);
@@ -65,9 +66,6 @@ document.addEventListener('input', function (event) {
 
 
 function showZone(){
-  document.getElementById("dati").style.display = "none";
-  document.getElementById("zone").style.display = "block";
-
   //Riempire le select con regioni, province e comuni
   for(i = 0; i != jsonComuni["regioni"].length; i++){
     var temp = document.createElement("option");
@@ -75,6 +73,8 @@ function showZone(){
     temp.value = i + 1;
     document.getElementById("regione1").add(temp)
   }
+	document.getElementById("dati").style.display = "none";
+	document.getElementById("zone").style.display = "block";
 }
 
 function addZona(){
@@ -109,8 +109,6 @@ function addZona(){
 }
 
 function showServizi(){
-  document.getElementById("zone").style.display = "none";
-  document.getElementById("servizi").style.display = "block";
 
 	for(i = 0; i != listaServizi.length; i++){
 		document.getElementById("listaServizi").innerHTML += `
@@ -118,14 +116,32 @@ function showServizi(){
 		<label id="label` + i + `" class="form-check-label" for="check` + i + `">
 			`+ listaServizi[i] + `
 		</label>
-		<input id="input` + i + `" class="form-control form-control-lg" type="number" placeholder="Costo orario" disabled>
+		<input id="costoOrario` + i + `" class="form-control form-control-lg" type="number" placeholder="Costo orario" disabled>
 		<br/>`;
 	}
+	  document.getElementById("zone").style.display = "none";
+	  document.getElementById("servizi").style.display = "block";
 }
 
 function showFasce(){
+	//Rendere invisibile la schermata dei servizi
   document.getElementById("servizi").style.display = "none";
+	//Rendere visibile la schermata delle fasce
   document.getElementById("fasce").style.display = "block";
+}
+
+function addFascia(){
+	  nFasce ++;
+	  //Aggiungere degli input field per la nuova fascia
+	  var fileInput = document.getElementById('fascia1');
+	  var temp = document.createElement('div');
+	  temp.id = "fascia" + nFasce;
+	  temp.innerHTML = `
+			<input id="inizio` + nFasce + `" class="form-control form-control-lg" type="time" placeholder="Ora inizio">
+			<input id="fine` + nFasce + `" class="form-control form-control-lg" type="time" placeholder="Ora fine">
+			<br/>
+	  `;
+	  fileInput.parentNode.appendChild(temp);
 }
 
 function register(){
@@ -148,13 +164,59 @@ function register(){
 		zone.push(temp)
 	}
 
-  const url= ip + '/registrazioneLogin/registrazioneAnziano.php';
+	//Ottieni dati dei servizi
+	var servizi = [];
+	for(i = 0; i != listaServizi.length; i++){
+		if(document.getElementById("check" + i).checked){
+			var idServizio = i;
+			var costoOrario = document.getElementById("costoOrario" + i).value;
+			var temp = {idServizio: idServizio, costoOrario: costoOrario};
+			servizi.push(temp);
+		}
+	}
+
+	//Ottieni dati delle fasce
+	var fasce = [];
+	for(i = 1; i != nFasce + 1; i++){
+		var inizio = document.getElementById("inizio" + i).value;
+		var fine = document.getElementById("fine" + i).value;
+		var temp = {inizio: inizio, fine: fine};
+		fasce.push(temp);
+	}
+
+  const url= ip + '/registrazioneLogin/registrazioneOfferente.php';
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  var vars = "nome=" + nome + "&cognome=" + cognome + "&email=" + email + "&password=" + password + "&telefono=" + telefono + "&indirizzo=" + indirizzo + "&città=" + città;
+
+	//Inserire le variabili della prima schermata
+  var vars = "nome=" + nome + "&cognome=" + cognome + "&email=" + email + "&password=" + password + "&telefono=" + telefono;
+
+	//Inserire le zone
+	vars += "&nZone=" + nZone;
+	for(i = 0; i != nZone; i ++){
+		vars += "&regione" + i + "=" + zone[i]["Regione"];
+		vars += "&provincia" + i + "=" + zone[i]["Provincia"];
+		vars += "&città" + i + "=" + zone[i]["Città"];
+	}
+
+	//Inserire i servizi
+	vars += "&nServizi=" + servizi.length;
+	for(i = 0; i != servizi.length; i++){
+		vars += "&idServizio" + i + "=" + servizi[i]["idServizio"];
+		vars += "&costoOrario" + i + "=" + servizi[i]["costoOrario"];
+	}
+
+	//Inserire fasce orarie
+	vars += "&nFasce=" + nFasce;
+	for(i = 0; i != nFasce; i++){
+		vars += "&inizio" + i + "=" + fasce[i]["inizio"];
+		vars += "&fine" + i + "=" + fasce[i]["fine"];
+	}
+
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+			console.log(http.responseText);
       if(http.responseText == "existing"){
         document.getElementById('error').innerHTML = "Utente già esistente";
       }else if(http.responseText == "queryError"){

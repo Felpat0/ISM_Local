@@ -1,1 +1,1 @@
-var ip = "http://95.251.116.229/ISM_Server/";
+var ip = "http://95.245.89.147/ISM_Server/";

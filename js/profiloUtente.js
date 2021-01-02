@@ -11,11 +11,11 @@
             console.log(http.responseText);
             var result = JSON.parse(http.responseText);
 
-            document.getElementById('nome').innerHTML = result['0']['nome'];
-            document.getElementById('cognome').innerHTML = result['0']['cognome'];
+            document.getElementById('nome').innerHTML = result['0']['nomeAnziano'];
+            document.getElementById('cognome').innerHTML = result['0']['cognomeAnziano'];
             //document.getElementById('nascita').innerHTML = result['0']['nome'];
-            document.getElementById('telefono').innerHTML = result['0']['telefono'];
-            document.getElementById('email').innerHTML = result['0']['email'];
+            document.getElementById('telefono').innerHTML = result['0']['telefonoAnziano'];
+            document.getElementById('email').innerHTML = result['0']['emailAnziano'];
         }
       };
 
@@ -33,11 +33,11 @@
               console.log(http.responseText);
               var result = JSON.parse(http.responseText);
 
-              document.getElementById('nome').innerHTML = result['0']['nome'];
-              document.getElementById('cognome').innerHTML = result['0']['cognome'];
+              document.getElementById('nome').innerHTML = result['0']['nomeOfferente'];
+              document.getElementById('cognome').innerHTML = result['0']['cognomeOfferente'];
               //document.getElementById('nascita').innerHTML = result['0']['nome'];
-              document.getElementById('telefono').innerHTML = result['0']['telefono'];
-              document.getElementById('email').innerHTML = result['0']['email'];
+              document.getElementById('telefono').innerHTML = result['0']['telefonoOfferente'];
+              document.getElementById('email').innerHTML = result['0']['emailOfferente'];
           }
         };
 

@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <link href="css\homeutenti.css" rel="stylesheet" type="text/css">
+    <link href="css\richiesteprenotazioni.css" rel="stylesheet" type="text/css">
+    <link href="css\sospeso.css" rel="stylesheet" type="text/css">
+    <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
+    <script src="js/ip.js"></script>
+    <script src="js/scriptsAnziano/prenotazioni.js"></script>
+  </head>
+  <body>
+    <div id="testa" style="display: none;">
+      <div id="logo">
+        <p>Logo</p>
+      </div>
+      <div id="menu">
+        <p>Menu</p>
+      </div>
+      <button href="#" id="back"><</button>
+    </div>
+    <!-- Inizio richiesteprenotazioni -->
+    <div id="firstpage" style="display: block;">
+        <button onclick="hideDiv('firstpage', 'listaAttive'); displayLista('prenotazioniAttive.php', 'listaAttive', 'prenotazioneAttiva')" id="attive">Attive</button>
+        <button onclick="hideDiv('firstpage', 'listaNonAttive'); displayLista('prenotazioniNonAttive.php', 'listaNonAttive', 'prenotazioneNonAttiva')" id="nonAttive">Non attive</button>
+    </div>
+    <!-- Inizio RichiesteAttive -->
+    <div class="listapren" id="listaAttive" style="display: none">
+    </div>
+    <!-- Inizio RichiesteAttiveRiepilogo -->
+    <div id="prenotazioneAttiva" style="display: none">
+      <button href="#" class="accetta" onclick="window.location.href='sospeso.html';">Accetta</button>
+      <button href="#" class="rifiuta" onclick="window.location.href='sospeso.html';">Rifiuta</button>
+    </div>
+    
+    <!-- Inizio RichiesteNonAttive -->
+    <div class="listapren" style="display: none" id="listaNonAttive">
+    </div>
+    <!-- Inizio RichiesteArchiviateRiepilogo -->
+    <div id="prenotazioneNonAttiva" style="display: none">
+    </div>
+  </body>
+</html>

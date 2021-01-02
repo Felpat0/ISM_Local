@@ -1,5 +1,5 @@
 
-function hideDiv(div1, div2){
+function hideDiv(div1, div2){ //nasconde div1 e mostra div2
     var x = document.getElementById(div1);
     var y = document.getElementById(div2);
     x.style.display = "none";
@@ -18,13 +18,18 @@ function displayLista(phpFile, idLista, statoPrenotazione){
             console.log(http.responseText);
             var result = JSON.parse(http.responseText);
 
+            //Per ciascuna prenotazione attiva viene creato un pulsante che porta alla schermata contenente i dettagli della prenotazione
+
             for(var i=0; i<result.length; i++){
                 
+                //Creazione div che conterrà la prenotazione
                 var newDiv = document.createElement('DIV');
                 newDiv.className = 'p';
                 newDiv.id = 'div'+i;
+                //Inserimento del nuovo div in quello contenente la lista delle prenotazioni
                 document.getElementById(idLista).appendChild(newDiv);
 
+                //Creazione button contenente il nome dell'utente offerente e il servizio offerto
                 var newBtn = document.createElement('BUTTON');
                 if(statoPrenotazione == 'prenotazioneAttiva'){
                     newBtn.setAttribute("onclick", "hideDiv('"+idLista+"','"+statoPrenotazione+"'); displayRiepilogo('riepilogoPrenAtt.php','"+result[i]['idPrenotazione']+"','"+statoPrenotazione+"')");
@@ -33,8 +38,9 @@ function displayLista(phpFile, idLista, statoPrenotazione){
                 }
                 newBtn.className = 'prenotazione';
                 newBtn.id = 'btn'+i;
-                document.getElementById("div"+i).appendChild(newBtn);
+                document.getElementById("div"+i).appendChild(newBtn); 
 
+                //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
                 var name = document.createElement('H2');
                 var servizio = document.createElement('H3');
                 name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
@@ -60,6 +66,7 @@ function displayRiepilogo(phpFile, idPrenotazione, statoPrenotazione){
             console.log(http.responseText);
             var result = JSON.parse(http.responseText);
 
+            //Inserimento informazioni relative alla prenotazione all'interno dell'html
             if(statoPrenotazione == 'prenotazioneAttiva'){
                 var name = document.createElement('H3');
                 var servizio = document.createElement('P');

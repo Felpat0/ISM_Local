@@ -4,6 +4,10 @@
     <link href="css\richiesteprenotazioni.css" rel="stylesheet" type="text/css">
     <link href="css\sospeso.css" rel="stylesheet" type="text/css">
     <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
+
+    <script src="js/ip.js"></script>
+    <script src="js/hideDiv.js"></script>
+    <script src="js/scriptsOfferente/richiestePrenotazioniUtenti.js"></script>
   </head>
   <body>
     <div id="testa">
@@ -16,12 +20,12 @@
       <button href="#" id="back"><</button>
     </div>
     <!-- Inizio richiesteprenotazioni -->
-    <div class="prenotazioni">
-      <button href="#" class="sospeso">In sospeso</button>
-      <button href="#" class="archiviate">Archiviate</button>
+    <div id="schermata1" class="prenotazioni">
+      <button onclick="hideDiv('schermata1', 'richiesteSospeso')" class="sospeso">In sospeso</button>
+      <button onclick="hideDiv('schermata1', 'richiesteArchiviate')" class="archiviate">Archiviate</button>
     </div>
     <!-- Inizio RichiesteSospeso -->
-    <div class="listapren">
+    <div id="richiesteSospeso" class="listapren" style="display:none;">
       <div class="p">
         <button href="#" class="prenotazione">
           <h2>Paola Paoletti</h2>
@@ -45,18 +49,20 @@
       </div>
     </div>
     <!-- Inizio RichiesteSospesoRiepilogo -->
-    <div id="prenotazione">
-      <h3>Richiesta prenotazione di Paola Paoletti</h3>
-      <p>Servizio: Comprare medicine</p>
-      <p>Data: 17/05/2021</p>
-      <p>Ora: --:--</p>
-      <p>Indirizzo: Via Giocarda, 76</p>
-      <p>Paga: 5€ l'ora</p>
+    <div id="riepilogoSospeso" style="display:none;">
+      <div id="prenotazione">
+        <h3>Richiesta prenotazione di Paola Paoletti</h3>
+        <p>Servizio: Comprare medicine</p>
+        <p>Data: 17/05/2021</p>
+        <p>Ora: --:--</p>
+        <p>Indirizzo: Via Giocarda, 76</p>
+        <p>Paga: 5€ l'ora</p>
+      </div>
+      <button href="#" class="accetta" onclick="window.location.href='sospeso.html';">Accetta</button>
+      <button href="#" class="rifiuta" onclick="window.location.href='sospeso.html';">Rifiuta</button>
     </div>
-    <button href="#" class="accetta" onclick="window.location.href='sospeso.html';">Accetta</button>
-    <button href="#" class="rifiuta" onclick="window.location.href='sospeso.html';">Rifiuta</button>
     <!-- Inizio RichiesteArchiviate -->
-    <div class="listapren">
+    <div id="richiesteArchiviate" class="listapren" style="display:none;">
       <div class="p">
         <button href="#" class="prenotazione">
           <h2>Mario Mariello</h2>
@@ -80,9 +86,11 @@
       </div>
     </div>
     <!-- Inizio RichiesteArchiviateRiepilogo -->
-    <div id="prenotazione">
-      <h3>Mario Mariello</h3>
-      <p>Servizio effettuato: Fila alle poste il giorno 15/05/2021 alle ore 8:30</p>
+    <div id="riepilogoArchiviate" style="display:none;">
+      <div id="prenotazione">
+        <h3>Mario Mariello</h3>
+        <p>Servizio effettuato: Fila alle poste il giorno 15/05/2021 alle ore 8:30</p>
+      </div>
     </div>
   </body>
 </html>

@@ -37,9 +37,16 @@ function displayLista(phpFile, idLista, statoPrenotazione){
                 var name = document.createElement('H2');
                 var servizio = document.createElement('H3');
                 name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
-                servizio.innerHTML = result[i]['nomeServizio'];
+                servizio.innerHTML = listaServizi[result[i]['idServizio']];
                 document.getElementById('btn'+i).appendChild(name);
                 document.getElementById('btn'+i).appendChild(servizio);
+
+                var linkProfilo = document.createElement('A');
+                linkProfilo.className = 'linkprofilo';
+                linkProfilo.innerHTML = 'Visualizza profilo';
+                linkProfilo.setAttribute("href", "#");
+                linkProfilo.setAttribute("onclick", "window.location.href='profiloOfferente.html';");
+                document.getElementById('div'+i).appendChild(linkProfilo);
             }
         }
       };
@@ -68,7 +75,7 @@ function displayRiepilogo(phpFile, idPrenotazione, statoPrenotazione){
                 var paga = document.createElement('P');
 
                 name.innerHTML = result['0']['nomeOfferente'] + " " + result['0']['cognomeOfferente'];
-                servizio.innerHTML = result['0']['nomeServizio'];
+                servizio.innerHTML = listaServizi[result['0']['idServizio']];
                 data.innerHTML = "Data: " + result['0']['data'];
                 ora.innerHTML = "Ora: " + result['0']['ora'];
                 paga.innerHTML = "Paga: " + result['0']['pagaOraria'] + "€ l'ora";
@@ -83,7 +90,7 @@ function displayRiepilogo(phpFile, idPrenotazione, statoPrenotazione){
                 var descrizione = document.createElement('P');
 
                 name.innerHTML = result['0']['nomeOfferente'] + " " + result['0']['cognomeOfferente'];
-                descrizione.innerHTML = "Servizio effettuato: "+ result['0']['nomeServizio'] + " il giorno " + result['0']['data'] + " alle ore "+result['0']['ora'];
+                descrizione.innerHTML = "Servizio effettuato: "+ listaServizi[result['0']['idServizio']] + " il giorno " + result['0']['data'] + " alle ore "+result['0']['ora'];
             
                 document.getElementById(statoPrenotazione).appendChild(name);
                 document.getElementById(statoPrenotazione).appendChild(descrizione);

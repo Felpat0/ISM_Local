@@ -1,15 +1,23 @@
-#sospeso {
-  position: absolute;
-  width: 90%;
+.sospeso {
+  position: relative;
+  width: 96%;
   height: 180px;
-  top: 35%;
-  left: 5%;
+  top: 2%%;
+  left: 2%;
 }
 
-#archiviate {
-  position: absolute;
-  width: 90%;
+.archiviate {
+  position: relative;
+  width: 96%;
   height: 180px;
-  top: 65%;
-  left: 5%;
+  top: 15%;
+  left: 2%;
+}
+
+.prenotazioni {
+  position: absolute;
+  width: 96%;
+  height: 55%;
+  top: 35%;
+  background-color: #00f49d;
 }

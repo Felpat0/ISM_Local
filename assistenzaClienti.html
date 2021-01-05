@@ -2,6 +2,10 @@
   <head>
     <link href="css\home.css" rel="stylesheet" type="text/css">
     <link href="css\assistenzaClienti.css" rel="stylesheet" type="text/css">
+
+    <script src="js/ip.js"></script>
+    <script src="js/hideDiv.js"></script>
+    <script src="js/richiestaAssistenza.js"></script>
   </head>
   <body>
     <div id="testa">
@@ -12,12 +16,12 @@
         <p>Menu</p>
       </div>
     </div>
-    <select class="opzioni">
+    <select id="selectCategoria" class="opzioni">
       <option value="value1">Ho prenotato ma non risulta tra le prenotazioni</option>
       <option value="value2">Ho inviato un preventivo ma l'anziano non lo riceve</option>
       <option value="value3">Problemi con la chat</option>
     </select>
-    <textarea class="textbox">Il testo si formatta da solo. In più se si aggiungono righe, il testo scorre all'interno del box.</textarea>
-    <button class="assistenza">Invia richiesta</button>
+    <textarea id="messaggio" class="textbox">Il testo si formatta da solo. In più se si aggiungono righe, il testo scorre all'interno del box.</textarea>
+    <button onClick="richiestaAssistenza();" class="assistenza">Invia richiesta</button>
   </body>
 </html>

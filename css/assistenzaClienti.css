@@ -1,0 +1,23 @@
+.textbox {
+  position: absolute;
+  width: 92%;
+  height: 40%;
+  top: 45%;
+  left: 4%;
+}
+
+.assistenza {
+  position: absolute;
+  width: 50%;
+  height: 8%;
+  left: 25%;
+  top: 87%;
+}
+
+.opzioni {
+  position: absolute;
+  width: 92%;
+  height: 5%;
+  top: 35%;
+  left: 4%;
+}

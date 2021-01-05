@@ -8,19 +8,19 @@ function displayLista(idLista, statoPrenotazione){
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            //console.log(http.responseText);
             var result = JSON.parse(http.responseText);
 
             //Per ciascuna prenotazione viene creato un pulsante che porta alla schermata contenente i dettagli della prenotazione
 
             for(var i=0; i<result.length; i++){
-                
+
+                localStorage.setItem('idUtente'+i, result[i]['idOfferente']);
+                console.log(localStorage['idUtente'+i]);
+
                 var check = result[i]['stato'];
                 
                 if(result[i]['stato'] == 'completata') {check = 'rifiutata';}
-                //console.log(check);
                 
-
                 if(statoPrenotazione == check){
                     //Creazione div che conterrà la prenotazione
                     var newDiv = document.createElement('DIV');
@@ -53,7 +53,7 @@ function displayLista(idLista, statoPrenotazione){
                     linkProfilo.className = 'linkprofilo';
                     linkProfilo.innerHTML = 'Visualizza profilo';
                     linkProfilo.setAttribute("href", "#");
-                    linkProfilo.setAttribute("onclick", "window.location.href='profiloOfferente.html';");
+                    linkProfilo.setAttribute("onclick", "localStorage.setItem('index', '"+i+"'); window.location.href='profiloOfferente.html';");
                     document.getElementById('div'+i).appendChild(linkProfilo);
                 }
             }
@@ -72,7 +72,6 @@ function displayRiepilogo( idPrenotazione, statoPrenotazione){
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            //console.log(http.responseText);
             var result = JSON.parse(http.responseText);
             
             //Inserimento informazioni relative alla prenotazione all'interno dell'html
@@ -111,8 +110,6 @@ function displayRiepilogo( idPrenotazione, statoPrenotazione){
                 document.getElementById(statoPrenotazione).appendChild(ora);
                 document.getElementById(statoPrenotazione).appendChild(paga);
                 document.getElementById(statoPrenotazione).appendChild(stato);
-            
-            
         }
       };
 

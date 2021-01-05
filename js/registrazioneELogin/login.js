@@ -1,4 +1,15 @@
 function login(){
+
+var button = document.querySelector("#submit");
+
+  button.addEventListener("click", function () {
+  button.classList.add("loading");
+  document.getElementById("label").style.visibility = "hidden";
+});
+
+    
+//Funzione
+    
   document.getElementById('error').innerHTML = "";
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
@@ -46,3 +57,6 @@ function login(){
   };
   http.send(vars);
 }
+
+
+

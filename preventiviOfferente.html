@@ -5,6 +5,11 @@
     <link href="css\sospeso.css" rel="stylesheet" type="text/css">
     <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
     <link href="css\preventiviinviati.css" rel="stylesheet" type="text/css">
+
+    <script src="js/ip.js"></script>
+    <script src="js/listaServizi.js"></script>
+    <script src="js/hideDiv.js"></script>
+    <script src="js/scriptsOfferente/preventiviOfferente.js"></script>
   </head>
   <body>
     <div id="testa">
@@ -16,12 +21,12 @@
       </div>
       <button href="#" id="back"><</button>
     </div>
-    <div class="prenotazioni">
-      <button href="#" class="sospeso">Richieste ricevute</button>
-      <button href="#" class="archiviate">Inviate</button>
+    <div id="schermata1" class="prenotazioni">
+      <button onclick="hideDiv('schermata1', 'richiestePreventivo');" class="sospeso">Richieste ricevute</button>
+      <button onclick="hideDiv('schermata1', 'preventiviInviati');" class="archiviate">Inviate</button>
     </div>
     <!-- Inizio RichiesteRicevute -->
-    <div class="listapren">
+    <div class="listapren" id="richiestePreventivo" style="display:none;">
       <div class="p">
         <button href="#" class="prenotazione">
           <h2>Mario Mariello</h2>
@@ -29,6 +34,7 @@
         </button>
         <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
       </div>
+
       <div class="p">
         <button href="#" class="prenotazione">
           <h2>Teresa Teresella</h2>
@@ -36,6 +42,7 @@
         </button>
         <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
       </div>
+
       <div class="p">
         <button href="#" class="prenotazione">
           <h2>Paola Paoletta</h2>
@@ -45,74 +52,57 @@
       </div>
     </div>
     <!-- Inizio RichiesteRicevuteRiepilogo -->
-    <div id="prenotazione">
-      <h3>Richiesta preventivo da Mario Mariello</h3>
-      <p>Servizio: Accompagnamento</p>
-      <p>Data: 17/05/2021</p>
-      <p>Ora: 10:00</p>
-      <p>Indirizzo: Via 5 Maggio, 13</p>
-      <p>Descrizione:</p>
-      <p>Paga oraria:</p>
-      <input type="text" class="form-control">
+    <div id="riepilogoRichiestaPreventivo" style="display:none;">
+      <div id="prenotazione">
+        <h3>Richiesta preventivo da Mario Mariello</h3>
+        <p>Servizio: Accompagnamento</p>
+        <p>Data: 17/05/2021</p>
+        <p>Ora: 10:00</p>
+        <p>Indirizzo: Via 5 Maggio, 13</p>
+        <p>Descrizione:</p>
+        <p>Paga oraria:</p>
+        <input type="number" id="pagaOraria" class="form-control">
+      </div>
+      <button href="#" class="accetta">Invia</button>
+      <button href="#" class="rifiuta">Rifiuta</button>
     </div>
-    <button href="#" class="accetta">Invia</button>
-    <button href="#" class="rifiuta">Rifiuta</button>
     <!-- Inizio PreventiviInviati -->
-    <div class="listapren">
+    <div class="listapren" id="preventiviInviati" style="display:none;">
       <div class="p">
-        <button href="#" class="accettato">
+        <button href="#" class="finalizzato">
           <h2>Mario Mariello</h2>
           <h3>Accompagnare a teatro</h3>
         </button>
         <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
       </div>
+
       <div class="p">
-        <button href="#" class="inattesa">
+        <button href="#" class="preventivoInviato">
           <h2>Teresa Teresella</h2>
           <h3>Sostituzione tubo lavandino</h3>
         </button>
         <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
       </div>
       <div class="p">
-        <button href="#" class="rifiutato">
+        <button href="#" class="preventivoRifiutato">
           <h2>Paola Paoletta</h2>
           <h3>Tinteggiatura stanza</h3>
         </button>
         <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
       </div>
     </div>
-    <!-- Inizio PreventivoAccettato -->
-    <div id="prenotazione">
-      <h3>Richiesta preventivo da Mario Mariello</h3>
-      <p>Servizio: Accompagnamento</p>
-      <p>Data: 17/05/2021</p>
-      <p>Ora: 10:00</p>
-      <p>Indirizzo: Via 5 Maggio, 13</p>
-      <p>Descrizione:</p>
-      <p>Paga oraria: 10€</p>
-      <p>Stato preventivo: Accettato</p>
-    </div>
-    <!-- Inizio PreventivoInAttesa -->
-    <div id="prenotazione">
-      <h3>Richiesta preventivo da Teresa Teresella</h3>
-      <p>Servizio: Sostituzione tubo lavandino</p>
-      <p>Data: 17/05/2021</p>
-      <p>Ora: 10:00</p>
-      <p>Indirizzo: Via 5 Maggio, 13</p>
-      <p>Descrizione:</p>
-      <p>Paga oraria: 10€</p>
-      <p>Stato preventivo: In attesa di risposta</p>
-    </div>
-    <!-- Inizio PreventivoRifiutato -->
-    <div id="prenotazione">
-      <h3>Richiesta preventivo da Paola Paoletta</h3>
-      <p>Servizio: Tinteggiatura stanza</p>
-      <p>Data: 17/05/2021</p>
-      <p>Ora: 10:00</p>
-      <p>Indirizzo: Via 5 Maggio, 13</p>
-      <p>Descrizione:</p>
-      <p>Paga oraria: 10€</p>
-      <p>Stato preventivo: Rifiutato</p>
+    <!-- Inizio riepilogoPreventivoInviato -->
+    <div id="riepilogoPreventivoInviato" style="display:none;">
+      <div id="prenotazione">
+        <h3>Richiesta preventivo da Mario Mariello</h3>
+        <p>Servizio: Accompagnamento</p>
+        <p>Data: 17/05/2021</p>
+        <p>Ora: 10:00</p>
+        <p>Indirizzo: Via 5 Maggio, 13</p>
+        <p>Descrizione:</p>
+        <p>Paga oraria: 10€</p>
+        <p>Stato preventivo: Accettato</p>
+      </div>
     </div>
   </body>
 </html>

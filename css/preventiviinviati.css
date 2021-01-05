@@ -15,7 +15,7 @@
   background-color: #4f98a2;
 }
 
-.accettato {
+.finalizzato {
   position: relative;
   width: 85%;
   height: 120px;
@@ -23,7 +23,7 @@
   background-color: #00ff00;
 }
 
-.inattesa {
+.preventivoInviato {
   position: relative;
   width: 85%;
   height: 120px;
@@ -31,7 +31,15 @@
   background-color: #ff9900;
 }
 
-.rifiutato {
+.preventivoRifiutato {
+  position: relative;
+  width: 85%;
+  height: 120px;
+  left: 7%;
+  background-color: #ff0000;
+}
+
+.richiestaRifiutata {
   position: relative;
   width: 85%;
   height: 120px;

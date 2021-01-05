@@ -13,8 +13,6 @@
 
             for(var i=0; i<result.length; i++){
                 
-                localStorage.setItem('idUtente'+i, result[i]['idOfferente']);
-
                 //Creazione div che conterrà il preventivo
                 var newDiv = document.createElement('DIV');
                 newDiv.className = 'p';
@@ -52,7 +50,7 @@
                 linkProfilo.className = 'linkprofilo';
                 linkProfilo.innerHTML = 'Visualizza profilo';
                 linkProfilo.setAttribute("href", "#");
-                linkProfilo.setAttribute("onclick", "localStorage.setItem('index', '"+i+"'); window.location.href='profiloOfferente.html';");
+                linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
                 document.getElementById('div'+i).appendChild(linkProfilo);
             }
         }

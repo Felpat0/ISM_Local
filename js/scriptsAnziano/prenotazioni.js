@@ -14,9 +14,6 @@ function displayLista(idLista, statoPrenotazione){
 
             for(var i=0; i<result.length; i++){
 
-                localStorage.setItem('idUtente'+i, result[i]['idOfferente']);
-                console.log(localStorage['idUtente'+i]);
-
                 var check = result[i]['stato'];
                 
                 if(result[i]['stato'] == 'completata') {check = 'rifiutata';}
@@ -53,7 +50,7 @@ function displayLista(idLista, statoPrenotazione){
                     linkProfilo.className = 'linkprofilo';
                     linkProfilo.innerHTML = 'Visualizza profilo';
                     linkProfilo.setAttribute("href", "#");
-                    linkProfilo.setAttribute("onclick", "localStorage.setItem('index', '"+i+"'); window.location.href='profiloOfferente.html';");
+                    linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
                     document.getElementById('div'+i).appendChild(linkProfilo);
                 }
             }

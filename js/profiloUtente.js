@@ -7,7 +7,7 @@
       var http = new XMLHttpRequest();
       http.open("POST", url, true);
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      var vars = "id="+localStorage['idUtente'+localStorage['index']]; 
+      var vars = "id="+localStorage['idUtente']; 
 
       http.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -29,8 +29,7 @@
         var http = new XMLHttpRequest();
         http.open("POST", url, true);
         http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var vars = "id="+localStorage['idUtente'+localStorage['index']]; 
-        console.log(localStorage['index']);
+        var vars = "id="+localStorage['idUtente']; 
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 console.log(http.responseText);

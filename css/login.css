@@ -1,0 +1,88 @@
+/*------LOGO-----*/
+
+img#logo{
+    margin-top:10px;
+    width: 100px;
+    height: 100px;
+}
+
+div#logo{
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*------Form-----*/
+
+div#form-login{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.txt-login{
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    /*color: #004dff;*/
+}
+
+div#login{
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+div#login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -25px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+button {
+  margin-top: 140px;
+  width: 200px;
+  height: 50px;
+  background-color: #004dff;
+  border-radius: 40px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+button:active, button:focus {
+  outline: none;
+}
+
+.loading {
+  width: 50px;
+  border: 3px solid #cccccc;
+  border-left: 3px solid #004dff;
+  animation: rotate-loader 1s 0.25s linear infinite;
+}
+.loading:hover {
+  background-color: #fff;
+}
+.loading:after {
+  content: "";
+}
+
+@keyframes rotate-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

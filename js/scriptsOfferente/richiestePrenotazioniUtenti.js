@@ -18,6 +18,8 @@ function loadJSONPrenotazioni(){
   http.send(vars);
 }
 
+loadJSONPrenotazioni();
+
 function loadPrenotazioniInSospeso(){
   document.getElementById("richiesteSospeso").innerHTML = "";
   //Scrivere la lista delle richieste in sospeso
@@ -36,7 +38,6 @@ function loadPrenotazioniInSospeso(){
   }
 }
 
-loadJSONPrenotazioni();
 
 function showRiepilogoSospeso(index){
   element = `

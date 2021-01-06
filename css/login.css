@@ -21,19 +21,12 @@ div#form-login{
     margin-top: 100px;
 }
 
-.txt-login{
+.txt-titolo{
     width: 60px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     /*color: #004dff;*/
-}
-
-div#login{
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
 }
 
 div#login {
@@ -42,6 +35,17 @@ div#login {
   left: 50%;
   margin-left: -100px;
   margin-top: -25px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+div#registrati {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: 35px;
   width: 200px;
   height: 50px;
   text-align: center;
@@ -63,26 +67,55 @@ button {
 
 button:active, button:focus {
   outline: none;
+  background-color: rgb(0, 167, 255);
 }
 
-.loading {
-  width: 50px;
-  border: 3px solid #cccccc;
-  border-left: 3px solid #004dff;
-  animation: rotate-loader 1s 0.25s linear infinite;
-}
-.loading:hover {
-  background-color: #fff;
-}
-.loading:after {
-  content: "";
+button#btn-registrati{
+   background-color: #08b443; 
 }
 
-@keyframes rotate-loader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+button#btn-registrati:active, button#btn-registrati:focus {
+  outline: none;
+  background-color: rgb(0, 226, 26);
 }
+
+div#pw-dimenticata{
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+}
+
+/* CSS - Password dimenticata */
+
+
+img#back{
+    width: 50px;
+    height: 50px;
+    margin-left: -5px;
+}
+
+button#back{
+  width: 60px;
+  height: 60px; 
+  justify-content: center;
+}
+
+
+div#back{
+    width: 70px;
+    margin-left: 20px;
+    margin-top: -180px;
+    justify-content: center;
+}
+
+.txt-titolo#txt-recupera {
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    /*color: #004dff;*/
+}
+
+
+

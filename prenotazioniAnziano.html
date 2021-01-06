@@ -6,16 +6,17 @@
     <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
     <script src="js/ip.js"></script>
     <script src="js/scriptsAnziano/prenotazioni.js"></script>
+    <script src="js/scriptsAnziano/preventivi.js"></script>
     <script src="js/hideDiv.js"></script>
     <script src="js/listaServizi.js"></script>
   </head>
   <body>
-    <div id="testa" ></div>
+    <div id="testa" style="display: none;"></div>
     <script src="js/header.js"></script>
     <!-- Inizio richiesteprenotazioni -->
     <div id="firstpage" style="display: block;">
         <button onclick="hideDiv('firstpage', 'listaInviate'); displayLista('listaInviate', 'inviata')" id="inviate">Inviate</button>
-        <button onclick="hideDiv('firstpage', 'listaAttive'); displayLista('listaAttive', 'accettata')" id="attive">Attive</button>
+        <button onclick="hideDiv('firstpage', 'listaAttive'); displayLista('listaAttive', 'accettata'); displayListaPreventivi();" id="attive">Attive</button>
         <button onclick="hideDiv('firstpage', 'listaNonAttive'); displayLista('listaNonAttive', 'rifiutata')" id="nonAttive">Non attive</button>
     </div>
     <!-- Inizio RichiesteAttive -->
@@ -25,6 +26,7 @@
     <div id="accettata" style="display: none">
     </div>
 
+    <!-- RichiesteInAttesa -->
     <div class="listapren" style="display: none" id="listaInviate">
     </div>
     <div id="inviata" style="display: none">
@@ -35,6 +37,10 @@
     </div>
     <!-- Inizio RichiesteArchiviateRiepilogo -->
     <div id="rifiutata" style="display: none">
+    </div>
+
+    <!-- RiepilogoPreventivoFinalizzato -->
+    <div id="preventivo" style="display: none">
     </div>
   </body>
 </html>

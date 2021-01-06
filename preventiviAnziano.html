@@ -9,6 +9,7 @@
     <script src="js/scriptsAnziano/preventivi.js"></script>
     <script src="js/hideDiv.js"></script>
     <script src="js/listaServizi.js"></script>
+    <script> window.onload = displayListaPreventivi();</script>
   </head>
   <body>
     <div id="testa" ></div>
@@ -20,14 +21,14 @@
     </div>
 
     <!-- Inizio PreventiviRicevutiRiepilogo -->
-    <div id="preventivoRicevuto" class="prenotazione" style="display: none;">
+    <div id="preventivoRicevuto" class="riepilogoRichiestaPreventivo" style="display: none;">
       <button href="#" class="accetta" id="accetta">Accetta</button>
       <button href="#" class="rifiuta" id="rifiuta">Rifiuta</button>
     </div>
     
    
        <!-- Inizio RiepilogoAltroPreventivo -->
-    <div id="preventivo" class="prenotazione" style="display: none;">
+    <div id="preventivo" class="riepilogoRichiestaPreventivo" style="display: none;">
       <h3>Richiesta preventivo</h3>
       
     </div>

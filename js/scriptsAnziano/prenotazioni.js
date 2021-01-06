@@ -1,3 +1,4 @@
+var listPosition = 0;
 
 function displayLista(idLista, statoPrenotazione){
     const url= ip + '/queryAnziano/getPrenotazioni.php';
@@ -9,7 +10,7 @@ function displayLista(idLista, statoPrenotazione){
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(http.responseText);
-
+            
             //Per ciascuna prenotazione viene creato un pulsante che porta alla schermata contenente i dettagli della prenotazione
 
             for(var i=0; i<result.length; i++){
@@ -29,9 +30,9 @@ function displayLista(idLista, statoPrenotazione){
                     //Creazione button contenente il nome dell'utente offerente e il servizio offerto
                     var newBtn = document.createElement('BUTTON');
                     if(result[i]['stato'] == 'completata'){
-                        newBtn.setAttribute("onclick", "hideDiv('"+idLista+"','"+statoPrenotazione+"'); displayRiepilogo('"+result[i]['idPrenotazione']+"','completata')");
+                        newBtn.setAttribute("onclick", "hideDiv('"+idLista+"','"+statoPrenotazione+"'); displayRiepilogoPrenotazione('"+result[i]['idPrenotazione']+"','completata')");
                     } else {
-                        newBtn.setAttribute("onclick", "hideDiv('"+idLista+"','"+statoPrenotazione+"'); displayRiepilogo('"+result[i]['idPrenotazione']+"','"+statoPrenotazione+"')");
+                        newBtn.setAttribute("onclick", "hideDiv('"+idLista+"','"+statoPrenotazione+"'); displayRiepilogoPrenotazione('"+result[i]['idPrenotazione']+"','"+statoPrenotazione+"')");
                     }
                    
                     newBtn.className = 'prenotazione';
@@ -52,6 +53,8 @@ function displayLista(idLista, statoPrenotazione){
                     linkProfilo.setAttribute("href", "#");
                     linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
                     document.getElementById('div'+i).appendChild(linkProfilo);
+
+                    listPosition = i;
                 }
             }
         }
@@ -60,13 +63,13 @@ function displayLista(idLista, statoPrenotazione){
       http.send(vars);
 }
 
-function displayRiepilogo( idPrenotazione, statoPrenotazione){
+function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione){
     const url= ip + '/queryAnziano/riepilogoPren.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     var vars = "id="+idPrenotazione;
-
+    
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(http.responseText);

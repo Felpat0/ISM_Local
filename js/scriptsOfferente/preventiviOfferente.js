@@ -50,8 +50,8 @@ function showRiepilogoRichiesta(i){
     <p>Paga oraria:</p>
     <input type="number" id="pagaOraria" class="form-control">
   </div>
-  <button onclick="inviaPreventivo(` + preventivi[i]["idPreventivo"] + `);" class="accetta">Invia</button>
-  <button onclick="rifiutaPreventivo(` + preventivi[i]["idPreventivo"] + `);" class="rifiuta">Rifiuta</button>
+  <button onclick="inviaPreventivo(` + preventivi[i]["idPreventivo"] + `, ` + preventivi[i]["idAnziano"] + `, ` + preventivi[i]["idOfferente"] + `, '` + preventivi[i]["nomeOfferente"] + ` ` + preventivi[i]["cognomeOfferente"] + `');" class="accetta">Invia</button>
+  <button onclick="rifiutaPreventivo(` + preventivi[i]["idPreventivo"] + `, ` + preventivi[i]["idAnziano"] + `, ` + preventivi[i]["idOfferente"] + `, '` + preventivi[i]["nomeOfferente"] + ` ` + preventivi[i]["cognomeOfferente"] + `');" class="rifiuta">Rifiuta</button>
   `;
   hideDiv("richiestePreventivo", "riepilogoRichiestaPreventivo");
 }
@@ -105,12 +105,12 @@ function showRiepilogoPreventivoInviato(i){
   hideDiv("preventiviInviati", "riepilogoPreventivoInviato");
 }
 
-function inviaPreventivo(idPreventivo){
+function inviaPreventivo(idPreventivo, idAnziano, idOfferente, nomeOfferente){
   const url= ip + '/queryOfferente/modificaPreventivo.php';
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  var vars = "idPreventivo=" + idPreventivo + "&prezzo=" + document.getElementById("pagaOraria").value;
+  var vars = "idPreventivo=" + idPreventivo + "&prezzo=" + document.getElementById("pagaOraria").value + "&idAnziano=" + idAnziano  + "&idOfferente=" + idOfferente + "&nomeOfferente=" + nomeOfferente;;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       console.log(http.responseText);
@@ -119,12 +119,12 @@ function inviaPreventivo(idPreventivo){
   http.send(vars);
 }
 
-function rifiutaPreventivo(idPreventivo){
+function rifiutaPreventivo(idPreventivo, idAnziano, idOfferente, nomeOfferente){
   const url= ip + '/queryOfferente/modificaPreventivo.php';
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  var vars = "idPreventivo=" + idPreventivo;
+  var vars = "idPreventivo=" + idPreventivo + "&idAnziano=" + idAnziano  + "&idOfferente=" + idOfferente + "&nomeOfferente=" + nomeOfferente;;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       console.log(http.responseText);

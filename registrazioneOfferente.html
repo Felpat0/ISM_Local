@@ -14,11 +14,13 @@
       <script src="cordova.js"></script>
       <script src="js/registrazioneELogin/caricaComuni.js"></script>
       <script src="js/registrazioneELogin/registrazioneOfferente.js"></script>
+      <link href="css\login.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h2>Registrazione utente offerente</h2>
+    <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
+    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
 
-      <div id="dati">
+      <div class="form" id="reg-off">
         <div class="mb-3">
           <label id="label1" for="nome" class="form-label">Nome</label>
           <input type="text" class="form-control" id="nome">
@@ -40,7 +42,9 @@
           <input type="text" class="form-control" id="telefono">
         </div>
       <label id="error" style="color:red;"></label><br/>
-      <button id="addZona" onclick="showZone()" type="submit" class="btn btn-primary">Avanti</button>
+      <div id="avanti"><button id="addZona" onclick="showZone()" type="submit" class="button">Avanti</button></div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
     </div>
 
 

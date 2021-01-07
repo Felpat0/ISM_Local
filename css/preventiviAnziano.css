@@ -1,0 +1,113 @@
+.button {
+  margin-top: 140px;
+  width: 200px;
+  height: 50px;
+  background-color: #004dff;
+  border-radius: 40px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+.button:active, .button:focus {
+  outline: none;
+  background-color: rgb(0, 167, 255);
+}
+
+img#back{
+    width: 50px;
+    height: 50px;
+    margin-left: -4px;
+    margin-top: -4px;
+}
+
+button#back{
+  width: 60px;
+  height: 60px; 
+  justify-content: center;
+}
+
+div#back{
+    width: 70px;
+    margin-left: 10px;
+    margin-top: -155px;
+}
+
+.titolo{
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 130px;
+    /*color: #004dff;*/
+}
+
+h2#titolo{
+  color: black;
+}
+
+.listaprev{
+    background-color: white;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.preventivoInviato{
+  margin-top: 40px;
+  width: 300px;
+  height: 140px;
+  background-color: #ffa700;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white; 
+}
+
+.preventivoAccettato{
+  margin-top: 40px;
+  margin-left: 25px;
+  width: 300px;
+  height: 140px;
+  background-color: #08b443;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white; 
+}
+
+
+.preventivoRifiutato{
+  margin-top: 40px;
+  width: 300px;
+  height: 140px;
+  background-color: #de0000;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.contenuto-Inviato{
+    justify-content: center;
+    color: black;
+}
+
+.contenuto-Accettato{
+    justify-content: center;
+    color: white;
+}
+
+.contenuto-Rifiutato{
+    justify-content: center;
+    color: white;
+}

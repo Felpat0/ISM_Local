@@ -14,11 +14,17 @@
       <script src="cordova.js"></script>
       <script src="js/registrazioneELogin/caricaComuni.js"></script>
       <script src="js/registrazioneELogin/registrazioneOfferente.js"></script>
+      <link href="css\login.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h2>Registrazione utente offerente</h2>
+   <!-- <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
+    <div id="back"><button id="back" onclick="" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
+    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>-->
 
-      <div id="dati">
+      <div id="dati" class="form">
+      <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
+    <div id="back"><button id="back" onclick="" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
+    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
         <div class="mb-3">
           <label id="label1" for="nome" class="form-label">Nome</label>
           <input type="text" class="form-control" id="nome">
@@ -40,11 +46,14 @@
           <input type="text" class="form-control" id="telefono">
         </div>
       <label id="error" style="color:red;"></label><br/>
-      <button id="addZona" onclick="showZone()" type="submit" class="btn btn-primary">Avanti</button>
+      <div id="avanti1"><button id="addZona" onclick="showZone()" type="submit" class="button">Avanti</button></div>
     </div>
 
-
-    <div id="zone" style="display:none;">
+      
+    <div id="zone" style="display:none;" class="form">
+    <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
+    <div id="back"><button id="back" onclick="" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
+    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
       <h3>Inserisci zone</h3>
       <div id="listaZone">
         <div id="zona1">
@@ -61,30 +70,45 @@
           </div>
         </div>
       </div>
-      <button id="submit" onclick="addZona()" type="submit" class="btn btn-primary">+</button>
-      <button id="submit" onclick="showServizi()" type="submit" class="btn btn-primary">Avanti</button>
+      <div id="btn-aggzona"><button id="submit" onclick="addZona()" type="submit" class="button-plus">+</button></div>
+      <div id="avanti2"><button id="submit" onclick="showServizi()" type="submit" class="button">Avanti</button></div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
     </div>
 
 
     <div id="servizi" style="display:none;">
+    <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
+    <div id="back"><button id="back" onclick="" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
+    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
       <div id="listaServizi">
       </div>
-      <button id="submit" onclick="showFasce()" type="submit" class="btn btn-primary">Avanti</button>
+        <div id="avanti3"><button id="submit" onclick="showFasce()" type="submit" class="button">Avanti</button></div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
     </div>
 
 
 
-    <div id="fasce" style="display:none;">
+    <div id="fasce" style="display:none;" class="form">
+    <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
+    <div id="back"><button id="back" onclick="" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
+    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
       <div id="listaFasce">
         <div id="fascia1">
+          <label for="inizio1">Ora Inizio</label>
           <input id="inizio1" class="form-control form-control-lg" type="time" placeholder="Ora inizio">
+          <label for="fine1">Ora Fine</label>
           <input id="fine1" class="form-control form-control-lg" type="time" placeholder="Ora fine">
           <br/>
         </div>
       </div>
-      <button id="addFascia" onclick="addFascia()" type="submit" class="btn btn-primary">+</button>
+      <div id="agg-or"><button id="addFascia" onclick="addFascia()" type="submit" class="button-plus">+</button></div>
       <label id="error" style="color:red;"></label><br/>
-      <button id="submit" onclick="register()" type="submit" class="btn btn-primary">Completa registrazione</button>
+        <div id="completa"><button id="submit" onclick="register()" type="submit" class="button">Completa registrazione</button></div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
     </div>
 
   </body>

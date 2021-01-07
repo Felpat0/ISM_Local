@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <link href="css\richiediservizioanziano.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+      <div id="testa">
+      <div id="logo">
+        <p>Logo</p>
+      </div>
+      <div id="menu">
+        <p>Menu</p>
+      </div>
+      </div>
+      <!-- Inizio RICHIEDI SERVIZIO -->
+      <div id="bottoni"  style="display: none;"> 
+        <div class="group">
+          <input type="radio" name="rb" id="rb1" />
+            <label for="rb1">Fare la spesa</label>
+          <input type="radio" name="rb" id="rb2" />
+            <label for="rb2">Aiuto con gli acquisti online</label>
+          <input type="radio" name="rb" id="rb3" />
+            <label for="rb3">Fare la fila(es. poste, ASL)</label>
+          <input type="radio" name="rb" id="rb4" />
+            <label for="rb4">Accompagnamento</label>
+          <input type="radio" name="rb" id="rb5" />
+            <label for="rb5">Comprare medicine</label>
+          <input type="radio" name="rb" id="rb6" />
+            <label for="rb6">Buttare la spazzatura</label>
+          <input type="radio" name="rb" id="rb7" />
+            <label for="rb7">Manutenzione del verde</label>
+        </div>  
+      </div>
+      <div id="conferma"  style="display: none;">
+        <button id="submit" type="submit" class="button">
+          <span id="label">Conferma</span>
+        </button>
+      </div>
+      <!-- Inizio SELEZIONA DATA e ORA-->    
+      <div id="data"  style="display: none;">
+        <h4 >Seleziona data</h4>
+          <input type="date" name="date" id="date" >
+      </div>
+      <div id="ora"  style="display: none;">
+        <h4 >Seleziona ora</h4>
+          <mdp-time-picker mdp-auto-switch="true" ng-model="currentTime"></mdp-time-picker>
+           <input type="time" ng-model="test" mdp-time-picker />
+      </div>
+      <div id="conferma"  style="display: none;">
+        <button id="submit" type="submit" class="button">
+          <span id="label">Conferma</span>
+        </button>
+      </div>
+      <!-- Inizio SELEZIONA UTENTE-->
+      <div id="bottoni" style="display: none;"> 
+        <h2>Seleziona gli utenti</h2>
+          <div class="group">
+            <input type="checkbox" name="cb" id="cb1" />
+              <label for="cb1">Mario Rossi</label>
+                <a href="profiloOfferente.html">Visualizza profilo</a>
+            <input type="checkbox" name="cb" id="cb2" />
+              <label for="cb2"> Sara Bianchi </label>
+                <a href="profiloOfferente.html">Visualizza profilo</a>
+            <input type="checkbox" name="cb" id="cb3" />
+              <label for="cb3"> Maria Palazzo</label>
+                <a href="profiloOfferente.html">Visualizza profilo</a>
+          </div>
+      </div>
+      <div id="conferma" style="display: none;">
+        <button id="submit" type="submit" class="button">
+          <span id="label">Conferma</span>
+        </button>
+      </div>
+      <!-- Inizio RIEPILOGO SERVIZIO-->
+      <div id ="riepilogo">
+        <div class="box" id="riepilogo"> 
+          <p> Servizio:  </p> 
+          <p> Data:  </p> 
+          <p> Ora:  </p> 
+          <p> Utenti Selezionati:  </p> 
+        </div>
+      </div>
+      <div id="note" >
+         <textarea class="textarea" name="messaggio" id="messaggio" maxlength="2000"> Note aggiuntive</textarea>
+    </div> 
+      
+      
+        
+      
+      <div id="richiedipreventivo" >
+        <button id="submit" type="submit" class="button">
+          <span id="label">Richiedi Preventivo</span>
+        </button>
+      </div>
+       <div id="richiediprenotazione" >
+        <button id="submit" type="submit" class="button">
+          <span id="label">Richiedi Prenotazione</span>
+        </button>
+      </div>
+      
+      
+
+  
+
+

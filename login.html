@@ -6,16 +6,16 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content="" />
       <meta name="author" content="" />
-      <title>goGrandpa - Registrazione anziano</title>
+      <title>goGrandpa - Login</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
       <script src="js/ip.js"></script>
-      <link href="css/login.css" rel="stylesheet" type="text/css">
+      <link href="css\login.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div id="logo"><img id="logo" src="/img/logoGG.png"></div>
-    <h2 class="txt-login">Login</h2>
-      <div id="form-login">
+    <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
+    <h2 id="login" class="txt-titolo">Login</h2>
+      <div class="form">
       <div class="mb-3">
         <label id="label3" for="email" class="form-label">E-mail</label>
         <input type="email" class="form-control" id="email">
@@ -27,7 +27,8 @@
      </div> 
     <label id="error" style="color:red;"></label><br/>
 <div id="login"><button id="submit" onclick="login()" type="submit" class="button"><span id="label">Login</span></button></div>
-      
+<div id="registrati"><button id="btn-registrati" onclick="login()" type="submit" class="button"><span id="label">Registrati</span></button></div> 
+<div id="pw-dimenticata"><a href="recupera_pw.html">Password dimenticata?</a></div>
       <script src="cordova.js"></script>
     <script src="js/registrazioneELogin/login.js"></script>
   </body>

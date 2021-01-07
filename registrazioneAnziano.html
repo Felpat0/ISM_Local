@@ -12,9 +12,13 @@
       <script src="js/ip.js"></script>
       <script src="cordova.js"></script>
       <script src="js/registrazioneELogin/registrazioneAnziano.js"></script>
+      <link href="css\login.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h2>Registrazione anziano</h2>
+    <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
+    <div id="back1"><button id="back" onclick="" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
+    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
+    <div class="form" id="form-registrazione">
       <div class="mb-3">
         <label id="label1" for="nome" class="form-label">Nome</label>
         <input type="text" class="form-control" id="nome">
@@ -43,7 +47,10 @@
         <label id="label6" for="città" class="form-label">Città</label>
         <input type="text" class="form-control" id="città">
       </div>
+      </div>
     <label id="error" style="color:red;"></label><br/>
-    <button id="submit" onclick="register()" type="submit" class="btn btn-primary">Submit</button>
+      <div id="reg-anz"><button id="submit" onclick="register()" type="submit" class="button">Registrati</button></div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
   </body>
 </html>

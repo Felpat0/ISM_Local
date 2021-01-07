@@ -56,8 +56,12 @@ function displayListaPreventivi() {
                     document.getElementById('div'+i).appendChild(linkProfilo);
 
                 } else {
-                    var position = listPosition+1
-                    displayPreventiviFinalizzati(result, i, position);
+                    var fileName = location.href.split("/").slice(-1); 
+                    if(fileName == 'prenotazioniAnziano.html'){
+                        var position = listPosition+1
+                        displayPreventiviFinalizzati(result, i, position);
+                    }
+                    
                 }
                 
             }

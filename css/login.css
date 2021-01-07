@@ -51,7 +51,7 @@ div#registrati {
   text-align: center;
 }
 
-button {
+.button {
   margin-top: 140px;
   width: 200px;
   height: 50px;
@@ -65,16 +65,16 @@ button {
   transition: all 0.25s ease;
 }
 
-button:active, button:focus {
+.button:active, .button:focus {
   outline: none;
   background-color: rgb(0, 167, 255);
 }
 
-button#btn-registrati{
+.button#btn-registrati{
    background-color: #08b443; 
 }
 
-button#btn-registrati:active, button#btn-registrati:focus {
+.button#btn-registrati:active, .button#btn-registrati:focus {
   outline: none;
   background-color: rgb(0, 226, 26);
 }
@@ -101,12 +101,10 @@ button#back{
   justify-content: center;
 }
 
-
-div#back{
-    width: 70px;
-    margin-left: 20px;
+div#back1{
+    width: 0px;
+    margin-left: 40px;
     margin-top: -180px;
-    justify-content: center;
 }
 
 .txt-titolo#txt-recupera {
@@ -159,19 +157,17 @@ button#btn-offrire:active, button#btn-offrire:focus {
     
 }
 
-div#registratiA {
-  position: absolute;
-  left: 50%;
-  margin-left: -102px;
-  margin-top: -150px;
-  width: 200px;
-  height: 50px;
-  text-align: center;
+div#reg-anz{
+    width: 200px;
+    margin-top: -130px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 /* CSS -Registrazione offerente */
 
-div#avanti{
+div#avanti1{
   position: absolute;
   left: 50%;
   margin-left: -102px;
@@ -181,6 +177,227 @@ div#avanti{
   text-align: center;
 }
 
-div#reg-off{
-    margin-top: 40px;
+.button-plus {
+  margin-top: 140px;
+  width: 50px;
+  height: 50px;
+  background-color: #08b443;
+  border-radius: 40px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+.button-plus:active, .button-plus:focus {
+  outline: none;
+  background-color: rgb(63, 227, 82);
+}
+
+.button-plus::after{
+  outline: none;
+  background-color: #08b443;
+}
+
+
+
+div#avanti2{
+  position: absolute;
+  left: 50%;
+  margin-left: -102px;
+  margin-top: -120px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+
+/*
+---- Versione con btn + sotto---
+div#avanti2{
+  position: absolute;
+  left: 50%;
+  margin-left: -102px;
+  margin-top: -10px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}*/
+
+/*div#btn-aggzona{
+  position: absolute;
+  left: 50%;
+  margin-left: -102px;
+  margin-top: -100px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+-------------------------------------
+*/
+
+div#btn-aggzona{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: 30px;
+  margin-top: -300px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+
+div#avanti3{
+  position: absolute;
+  left: 50%;
+  margin-left: -102px;
+  margin-top: -120px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+
+/*---------- checkbutton-------- */
+.group {
+  display:grid;
+  align-items: center;
+  margin-bottom: 2em;
+  width: 360px;
+  
+}
+
+input[type=checkbox],
+input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.form-check-label {
+  position: relative;
+  margin-right: 1em;
+  padding-left: 2em;
+  padding-right: 1em;
+  line-height: 2;
+  cursor: pointer;
+}
+.form-check-label:before {
+  box-sizing: border-box;
+  content: " ";
+  position: absolute;
+  top: 0.3em;
+  left: 0;
+  display: block;
+  width: 1.4em;
+  height: 1.4em;
+  border: 2px solid #004dff;
+  border-radius: 0.25em;
+  z-index: -1;
+}
+
+input[type=checkbox]:checked + .form-check-label,
+input[type=radio] + .form-check-label::before {
+  border-radius: 1em;
+}
+
+/* Checked */
+input[type=checkbox]:checked + .form-check-label,
+input[type=radio]:checked + .form-check-label {
+  padding-left: 1em;
+  color:white;
+}
+
+input[type=checkbox]:checked + .form-check-label:before,
+input[type=radio]:checked + .form-check-label:before {
+  top: 0;
+  width: 100%;
+  height: 2em;
+  background: #004dff;
+}
+
+/* Transition */
+.form-check-label,
+.form-check-label::before {
+  transition: 0.25s all ease;
+}
+
+div#listaServizi{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+
+div#agg-or{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: 30px;
+  margin-top: -300px;
+  width: 200px;
+  height: 50px;
+  text-align: center; 
+}
+
+div#completa{
+  position: absolute;
+  left: 50%;
+  margin-left: -110px;
+  margin-top: -120px;
+  width: 200px;
+  height: 50px;
+  text-align: center;   
+}
+
+div#completa button#submit{
+  height: 60px;
+  width: 230px;
+}
+
+div#back{
+    width: 70px;
+    margin-left: -60px;
+    margin-top: -180px;
+}
+
+div#dati{
+    margin-top: 10px;
+}
+
+div#zone{
+    margin-top: 10px;
+}
+
+div#servizi{
+    margin-top: 10px;
+}
+
+div#fasce{
+    margin-top: 10px;
+}
+
+div#servizi button#back{
+    margin-left: 97px;
+}
+
+div#dati h2#registrazioneA{
+    margin-bottom: 30px;
+}
+
+div#servizi h2#registrazioneA{
+    margin-bottom: -60px;
+}
+
+
+div#zone h2#registrazioneA{
+    margin-bottom: 80px;
+}
+
+div#fasce h2#registrazioneA{
+    margin-bottom: 80px;
 }

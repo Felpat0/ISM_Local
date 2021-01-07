@@ -1,0 +1,250 @@
+#testa {
+  position: fixed;
+  width: 96%;
+  height: 28%;
+  top: 0%;
+  background-color: white;
+  z-index: 99;
+}
+
+#menu {
+  position: relative;
+  width: 98%;
+  height: 33%;
+  left: 1%;
+  background-color: #f5c312;
+  top: 10%;
+  z-index: 99;
+}
+
+#logo {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  top: 1%;
+  left: 35%;
+  background-color: #43d4a2;
+  z-index: 99;
+}
+
+#back {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 16%;
+  left: 7%;
+  z-index: 100;
+}
+
+p {
+  color: #18191b;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;  
+  font-weight: 100;
+  text-align: center;
+}
+
+p#scegli{
+    margin-top: 50px;
+    font-size: 26px;
+}
+
+section {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top:50px;
+}
+
+section > div {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+
+/* Radio button e check button */
+#bottoni {
+  position:relative;
+  top:215px;
+  color: black;
+  font-size: 20;
+}
+
+.group {
+  display:grid;
+  align-items: center;
+  margin-bottom: 2em;
+  width: 360px;
+  
+}
+
+input[type=checkbox],
+input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+label {
+  position: relative;
+  margin-right: 1em;
+  padding-left: 2em;
+  padding-right: 1em;
+  line-height: 2;
+  cursor: pointer;
+}
+label:before {
+  box-sizing: border-box;
+  content: " ";
+  position: absolute;
+  top: 0.3em;
+  left: 0;
+  display: block;
+  width: 1.4em;
+  height: 1.4em;
+  border: 2px solid #004dff;
+  border-radius: 0.25em;
+  z-index: -1;
+}
+
+input[type=checkbox]:checked + label,
+input[type=radio] + label::before {
+  border-radius: 1em;
+}
+
+/* Checked */
+input[type=checkbox]:checked + label,
+input[type=radio]:checked + label {
+  padding-left: 1em;
+  color:white;
+}
+
+input[type=checkbox]:checked + label:before,
+input[type=radio]:checked + label:before {
+  top: 0;
+  width: 100%;
+  height: 2em;
+  background: #004dff;
+}
+
+/* Transition */
+label,
+label::before {
+  transition: 0.25s all ease;
+}
+
+
+/*  Bottone conferma, richiedi preventivo, richiedi prenotazione */
+
+div#conferma{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -25px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+div#richiedipreventivo{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -25px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+div#richiediprenotazione{
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -25px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+}
+
+button {
+  margin-top: 210px;
+  width: 200px;
+  height: 50px;
+  background-color: #004dff;
+  border-radius: 40px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+button:active, button:focus {
+  outline: none;
+  background-color: rgb(0, 167, 255);
+}
+
+/* Data e ora */
+#data { 
+ position: relative;
+ top: 30%;
+ left: 30%;
+}
+
+#ora { 
+ position: relative;
+ top: 40%;
+ left: 30%;
+}
+
+/* Riepilogo prenotazione */
+
+
+.box{
+    position: relative;
+    text-align: left;
+    vertical-align: text-top;
+    height: 250px;
+    width: 250px;
+    resize: none;
+    overflow: auto;
+    outline: none;
+    overflow: auto;
+    border-radius: 15px;
+    border: 2px solid forestgreen;
+}
+
+div#riepilogo{
+    position: relative;
+    background: white;
+    top: 30%; 
+}
+
+.textarea{
+    position: relative;
+    top:70%;
+    word-break: normal;
+    height: 200px;
+    width: 400px;
+    text-align: left;
+    vertical-align: text-top;
+    overflow: visible;
+    outline: none;
+    border: 2px solid forestgreen;
+}
+
+div#note{
+    position: relative;
+    top:35%;
+}
+
+p#riepilogo{
+    top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 500;
+}

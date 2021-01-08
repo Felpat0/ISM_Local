@@ -1,5 +1,31 @@
 var preventivi;
 
+function updateBackButton(newDiv){
+  var newOnclick;
+  switch (newDiv){
+    case "schermata1":
+      newOnclick = "window.location.href='homeutente.html'";
+      break;
+    case "richiestePreventivo":
+      newOnclick = "hideDiv('richiestePreventivo', 'schermata1'); ";
+      newOnclick += "updateBackButton('schermata1');";
+      break;
+    case "riepilogoRichiestaPreventivo":
+      newOnclick = "hideDiv('riepilogoRichiestaPreventivo', 'richiestePreventivo'); ";
+      newOnclick += "updateBackButton('richiestePreventivo');";
+      break;
+    case "preventiviInviati":
+      newOnclick = "hideDiv('preventiviInviati', 'schermata1'); ";
+      newOnclick += "updateBackButton('schermata1');";
+      break;
+    case "riepilogoPreventivoInviato":
+      newOnclick = "hideDiv('riepilogoPreventivoInviato', 'preventiviInviati'); ";
+      newOnclick += "updateBackButton('preventiviInviati');";
+      break;
+  }
+  document.getElementById("back").setAttribute("onclick", newOnclick);
+}
+
 function loadJSONPreventivi(){
   const url= ip + '/queryOfferente/getPreventivi.php';
   var http = new XMLHttpRequest();
@@ -38,6 +64,16 @@ function loadRichiestePreventivo(){
   }
 }
 
+function showRichiestePreventivo(){
+  updateBackButton("richiestePreventivo");
+  hideDiv("schermata1", "richiestePreventivo");
+}
+
+function showPreventiviInviati(){
+  updateBackButton("preventiviInviati");
+  hideDiv("schermata1", "preventiviInviati");
+}
+
 function showRiepilogoRichiesta(i){
   document.getElementById("riepilogoRichiestaPreventivo").innerHTML = `
   <div id="prenotazione">
@@ -53,6 +89,8 @@ function showRiepilogoRichiesta(i){
   <button onclick="inviaPreventivo(` + preventivi[i]["idPreventivo"] + `, ` + preventivi[i]["idAnziano"] + `, ` + preventivi[i]["idOfferente"] + `, '` + preventivi[i]["nomeOfferente"] + ` ` + preventivi[i]["cognomeOfferente"] + `');" class="accetta">Invia</button>
   <button onclick="rifiutaPreventivo(` + preventivi[i]["idPreventivo"] + `, ` + preventivi[i]["idAnziano"] + `, ` + preventivi[i]["idOfferente"] + `, '` + preventivi[i]["nomeOfferente"] + ` ` + preventivi[i]["cognomeOfferente"] + `');" class="rifiuta">Rifiuta</button>
   `;
+
+  updateBackButton("riepilogoRichiestaPreventivo");
   hideDiv("richiestePreventivo", "riepilogoRichiestaPreventivo");
 }
 
@@ -102,6 +140,7 @@ function showRiepilogoPreventivoInviato(i){
     <p>Stato preventivo: ` + statoPreventivo + `</p>
   </div>
   `;
+  updateBackButton("riepilogoPreventivoInviato");
   hideDiv("preventiviInviati", "riepilogoPreventivoInviato");
 }
 

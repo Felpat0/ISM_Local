@@ -9,7 +9,10 @@
   </head>
   <body>
     <div id="testa" ></div>
-    <button href="#" id="back"><</button>
+    <script src="js/header.js"></script>
+    <script>
+      document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
+    </script>
     <select id="selectCategoria" class="opzioni">
       <option value="value1">Ho prenotato ma non risulta tra le prenotazioni</option>
       <option value="value2">Ho inviato un preventivo ma l'anziano non lo riceve</option>

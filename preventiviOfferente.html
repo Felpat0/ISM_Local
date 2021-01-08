@@ -14,88 +14,28 @@
   <body>
     <div id="testa" ></div>
     <script src="js/header.js"></script>
+    <script>
+      document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
+    </script>
     <div id="schermata1" class="prenotazioni">
-      <button onclick="hideDiv('schermata1', 'richiestePreventivo');" class="sospeso">Richieste ricevute</button>
-      <button onclick="hideDiv('schermata1', 'preventiviInviati');" class="archiviate">Inviate</button>
+      <button onclick="showRichiestePreventivo();" class="sospeso">Richieste ricevute</button>
+      <button onclick="showPreventiviInviati();" class="archiviate">Inviate</button>
     </div>
+
     <!-- Inizio RichiesteRicevute -->
     <div class="listapren" id="richiestePreventivo" style="display:none;">
-      <div class="p">
-        <button href="#" class="prenotazione">
-          <h2>Mario Mariello</h2>
-          <h3>Accompagnare a teatro</h3>
-        </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
-      </div>
-
-      <div class="p">
-        <button href="#" class="prenotazione">
-          <h2>Teresa Teresella</h2>
-          <h3>Comprare medicine</h3>
-        </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
-      </div>
-
-      <div class="p">
-        <button href="#" class="prenotazione">
-          <h2>Paola Paoletta</h2>
-          <h3>Fila</h3>
-        </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
-      </div>
     </div>
+
     <!-- Inizio RichiesteRicevuteRiepilogo -->
     <div id="riepilogoRichiestaPreventivo" style="display:none;">
-      <div id="prenotazione">
-        <h3>Richiesta preventivo da Mario Mariello</h3>
-        <p>Servizio: Accompagnamento</p>
-        <p>Data: 17/05/2021</p>
-        <p>Ora: 10:00</p>
-        <p>Indirizzo: Via 5 Maggio, 13</p>
-        <p>Descrizione:</p>
-        <p>Paga oraria:</p>
-        <input type="number" id="pagaOraria" class="form-control">
-      </div>
-      <button href="#" class="accetta">Invia</button>
-      <button href="#" class="rifiuta">Rifiuta</button>
     </div>
+
     <!-- Inizio PreventiviInviati -->
     <div class="listapren" id="preventiviInviati" style="display:none;">
-      <div class="p">
-        <button href="#" class="finalizzato">
-          <h2>Mario Mariello</h2>
-          <h3>Accompagnare a teatro</h3>
-        </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
-      </div>
-
-      <div class="p">
-        <button href="#" class="preventivoInviato">
-          <h2>Teresa Teresella</h2>
-          <h3>Sostituzione tubo lavandino</h3>
-        </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
-      </div>
-      <div class="p">
-        <button href="#" class="preventivoRifiutato">
-          <h2>Paola Paoletta</h2>
-          <h3>Tinteggiatura stanza</h3>
-        </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
-      </div>
     </div>
+
     <!-- Inizio riepilogoPreventivoInviato -->
     <div id="riepilogoPreventivoInviato" style="display:none;">
-      <div id="prenotazione">
-        <h3>Richiesta preventivo da Mario Mariello</h3>
-        <p>Servizio: Accompagnamento</p>
-        <p>Data: 17/05/2021</p>
-        <p>Ora: 10:00</p>
-        <p>Indirizzo: Via 5 Maggio, 13</p>
-        <p>Descrizione:</p>
-        <p>Paga oraria: 10€</p>
-        <p>Stato preventivo: Accettato</p>
-      </div>
     </div>
   </body>
 </html>

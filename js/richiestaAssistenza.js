@@ -14,7 +14,10 @@ function richiestaAssistenza(){
    "&categoria=" + categoria + "&messaggio=" + messaggio;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(http.responseText);
+      if(http.responseText == "sent"){
+        //Far vedere un modal e poi tornare alla home
+      }else
+        console.log("Error");
     }
   };
   http.send(vars);

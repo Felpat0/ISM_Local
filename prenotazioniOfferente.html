@@ -4,6 +4,7 @@
     <link href="css\richiesteprenotazioni.css" rel="stylesheet" type="text/css">
     <link href="css\sospeso.css" rel="stylesheet" type="text/css">
     <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
+
     <script src="js/ip.js"></script>
     <script src="js/listaServizi.js"></script>
     <script src="js/hideDiv.js"></script>
@@ -12,11 +13,13 @@
   <body>
     <div id="testa" ></div>
     <script src="js/header.js"></script>
-    
+    <script>
+      document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
+    </script>
     <!-- Inizio richiesteprenotazioni -->
     <div id="schermata1" class="prenotazioni">
-      <button onclick="hideDiv('schermata1', 'richiesteSospeso')" class="sospeso">In sospeso</button>
-      <button onclick="hideDiv('schermata1', 'richiesteArchiviate')" class="archiviate">Archiviate</button>
+      <button onclick="showRichiesteSospeso()" class="sospeso">In sospeso</button>
+      <button onclick="showRichiesteArchiviate()" class="archiviate">Archiviate</button>
     </div>
     <!-- Inizio RichiesteSospeso -->
     <div id="richiesteSospeso" class="listapren" style="display:none;">

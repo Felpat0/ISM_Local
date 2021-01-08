@@ -12,5 +12,5 @@ var html = `
     <li> <a href="#"><img id="icona" src="img/logout.png"></a></li>
   </ul>
 </div>
-<button href="#" id="back"><</button> `;
+<button onclick="" id="back"><</button> `;
 document.getElementById('testa').innerHTML = html;

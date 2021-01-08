@@ -1,5 +1,31 @@
 var prenotazioni;
 
+function updateBackButton(newDiv){
+  var newOnclick;
+  switch (newDiv){
+    case "schermata1":
+      newOnclick = "window.location.href='homeutente.html'";
+      break;
+    case "richiesteSospeso":
+      newOnclick = "hideDiv('richiesteSospeso', 'schermata1'); ";
+      newOnclick += "updateBackButton('schermata1');";
+      break;
+    case "riepilogoSospeso":
+      newOnclick = "hideDiv('riepilogoSospeso', 'richiesteSospeso'); ";
+      newOnclick += "updateBackButton('richiesteSospeso');";
+      break;
+    case "richiesteArchiviate":
+      newOnclick = "hideDiv('richiesteArchiviate', 'schermata1'); ";
+      newOnclick += "updateBackButton('schermata1');";
+      break;
+    case "riepilogoArchiviate":
+      newOnclick = "hideDiv('riepilogoArchiviate', 'richiesteArchiviate'); ";
+      newOnclick += "updateBackButton('richiesteArchiviate');";
+      break;
+  }
+  document.getElementById("back").setAttribute("onclick", newOnclick);
+}
+
 function loadJSONPrenotazioni(){
   const url= ip + '/queryOfferente/getPrenotazioni.php';
   var http = new XMLHttpRequest();
@@ -38,6 +64,15 @@ function loadPrenotazioniInSospeso(){
   }
 }
 
+function showRichiesteSospeso(){
+  updateBackButton("richiesteSospeso");
+  hideDiv("schermata1", "richiesteSospeso");
+}
+
+function showRichiesteArchiviate(){
+  updateBackButton("richiesteArchiviate");
+  hideDiv("schermata1", "richiesteArchiviate");
+}
 
 function showRiepilogoSospeso(index){
   element = `
@@ -53,6 +88,8 @@ function showRiepilogoSospeso(index){
   <button class="rifiuta" onclick="modificaPrenotazione(` + prenotazioni[index]["idPrenotazione"] + `, 'rifiutata', ` + prenotazioni[index]["idAnziano"] + `, ` + prenotazioni[index]["idOfferente"] + `, '` + prenotazioni[index]["nomeOfferente"] + ` ` + prenotazioni[index]["cognomeOfferente"] + `');">Rifiuta</button>
   `;
   document.getElementById("riepilogoSospeso").innerHTML = element;
+
+  updateBackButton("riepilogoSospeso");
   hideDiv("richiesteSospeso", "riepilogoSospeso");
 }
 
@@ -88,6 +125,8 @@ function showRiepilogoArchiviate(index){
   `;
   document.getElementById("riepilogoSospeso").innerHTML = element;
   document.getElementById("riepilogoArchiviate").innerHTML = element;
+
+  updateBackButton("riepilogoArchiviate");
   hideDiv("richiesteSospeso", "riepilogoArchiviate");
 }
 

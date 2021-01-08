@@ -109,7 +109,6 @@ function addZona(){
 }
 
 function showServizi(){
-
 	for(i = 0; i != listaServizi.length; i++){
 		document.getElementById("listaServizi").innerHTML += `
 		<input id="check` + i + `" class="form-check-input" type="checkbox" value="">

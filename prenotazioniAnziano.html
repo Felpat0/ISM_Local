@@ -1,9 +1,7 @@
 <html>
   <head>
     <link href="css\home.css" rel="stylesheet" type="text/css">
-    <link href="css\richiesteprenotazioni.css" rel="stylesheet" type="text/css">
-    <link href="css\sospeso.css" rel="stylesheet" type="text/css">
-    <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
+    <link href="css/prenotazioniAnziano.css" rel="stylesheet" type="text/css">
     <script src="js/ip.js"></script>
     <script src="js/scriptsAnziano/prenotazioni.js"></script>
     <script src="js/scriptsAnziano/preventivi.js"></script>
@@ -11,36 +9,95 @@
     <script src="js/listaServizi.js"></script>
   </head>
   <body>
-    <div id="testa" style="display: none;"></div>
+    <div id="testa" ></div>
     <script src="js/header.js"></script>
     <!-- Inizio richiesteprenotazioni -->
-    <div id="firstpage" style="display: block;">
-        <button onclick="hideDiv('firstpage', 'listaInviate'); displayLista('listaInviate', 'inviata')" id="inviate">Inviate</button>
-        <button onclick="hideDiv('firstpage', 'listaAttive'); displayLista('listaAttive', 'accettata'); displayListaPreventivi();" id="attive">Attive</button>
-        <button onclick="hideDiv('firstpage', 'listaNonAttive'); displayLista('listaNonAttive', 'rifiutata')" id="nonAttive">Non attive</button>
+    <div class ="paginainiziale "id="firstpage" style="display: none">
+        <button class="prenotazioneInviata" onclick="hideDiv('firstpage', 'listaInviate'); displayLista('listaInviate', 'inviata')" id="inviate">In attesa</button>
+        <button class="prenotazioneAccettata"onclick="hideDiv('firstpage', 'listaAttive'); displayLista('listaAttive', 'accettata'); displayListaPreventivi();" id="attive">Attive</button>
+        <button class="prenotazioneNonAttiva"onclick="hideDiv('firstpage', 'listaNonAttive'); displayLista('listaNonAttive', 'rifiutata')" id="nonAttive">Non attive/Rifiutate</button>
     </div>
     <!-- Inizio RichiesteAttive -->
-    <div class="listapren" id="listaAttive" style="display: none">
+    <div class="paginainiziale" id="listaAttive" style="display: none">
+         <button class="prenotazioni" id="attive">
+         <div class="contenuto-prenotazioni">
+             <h2>Mario Rossi</h2>
+             <h3>Comprare Medicine</h3>
+             <h4>09/01/2021</h4>
+         </div>
+         </button>
+         <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a> 
     </div>
     <!-- Inizio RichiesteAttiveRiepilogo -->
-    <div id="accettata" style="display: none">
+    <div class="riepilogoPrenotazione" id="accettata">
+        <h1>Mario Rossi</h1>
+        <h2>Servizio: Comprare Medicine</h2>
+        <h2>Data: 17/05/2021</h2>
+        <h2>Ora: 10:00</h2>
+        <h2>Paga oraria: 10€</h2>
+        <h2>Stato prenotazione: Accettata</h2>
     </div>
 
-    <!-- RichiesteInAttesa -->
-    <div class="listapren" style="display: none" id="listaInviate">
+    <!-- RichiesteInAttesa --> 
+    <div class="paginainiziale" id="listaInviate"  style="display: none">
+        <button class="prenotazioni" id="inviate">
+         <div class="contenuto-prenotazioni">
+             <h2>Mario Rossi</h2>
+             <h3>Comprare Medicine</h3>
+             <h4>09/01/2021</h4>
+         </div>
+         </button>
+        <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a> 
     </div>
-    <div id="inviata" style="display: none">
+    <!-- Inizio RichiesteInAttesaRiepilogo -->    
+    <div class="riepilogoPrenotazione" id="inviata" style="display: none">
+        <h1>Mario Rossi</h1>
+        <h2>Servizio: Comprare Medicine</h2>
+        <h2>Data: 17/05/2021</h2>
+        <h2>Ora: 10:00</h2>
+        <h2>Paga oraria: 10€</h2>
+        <h2>Stato prenotazione: In attesa</h2>
     </div>
     
     <!-- Inizio RichiesteNonAttive -->
-    <div class="listapren" style="display: none" id="listaNonAttive">
+    <div class="paginainiziale" id="listaNonAttive"  style="display: none">
+        <button class="prenotazioni" id="nonAttive">
+         <div class="contenuto-prenotazioni">
+             <h2>Mario Rossi</h2>
+             <h3>Comprare Medicine</h3>
+             <h4>09/01/2021</h4>
+         </div>
+         </button>
+         <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a> 
     </div>
-    <!-- Inizio RichiesteArchiviateRiepilogo -->
-    <div id="rifiutata" style="display: none">
+    <!-- Inizio RichiesteArchiviateRifiutateRiepilogo -->
+    <div class="riepilogoPrenotazione" id="rifiutata" style="display: none">
+        <h1>Mario Rossi</h1>
+        <h2>Servizio: Comprare Medicine</h2>
+        <h2>Data: 17/05/2021</h2>
+        <h2>Ora: 10:00</h2>
+        <h2>Paga oraria: 10€</h2>
+        <h2>Stato prenotazione: Rifiutata</h2>
+    </div>
+      
+    <div class="riepilogoPrenotazione" id="archiviata"  style="display: none">
+        <h1>Mario Rossi</h1>
+        <h2>Servizio: Comprare Medicine</h2>
+        <h2>Data: 17/05/2021</h2>
+        <h2>Ora: 10:00</h2>
+        <h2>Paga oraria: 10€</h2>
+        <h2>Stato prenotazione: Archiviata</h2>
     </div>
 
-    <!-- RiepilogoPreventivoFinalizzato -->
-    <div id="preventivo" style="display: none">
+    <!-- RiepilogoPreventivoFinalizzato -->           
+    <div class="riepilogoPreventivo" id="preventivo" style="display: none">
+        <h3>Mario Rossi</h3>
+        <h2>Servizio: Accompagnamento</h2>
+        <h2>Data: 17/05/2021</h2>
+        <h2>Ora: 10:00</h2>
+        <h2>Descrizione:</h2>
+        <h2>Paga oraria: 10€</h2>
+        <h2>Stato prenotazione: Accettata</h2>
     </div>
   </body>
 </html>

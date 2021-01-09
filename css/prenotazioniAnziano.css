@@ -1,0 +1,81 @@
+.paginainiziale{
+    position: absolute;
+    top:180px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    
+}
+
+.prenotazioni{
+  margin-top: 40px;
+  width: 300px;
+  height: 140px;
+  background-color: white;
+  border-radius: 20px;
+  border-color: black;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: black;  
+}
+
+.riepilogoPrenotazione{
+    position: absolute;
+    top:200px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align:left;
+    font-family: "Arial", sans-serif;
+    font-size: 20px;
+    color: black;
+    
+}
+
+.prenotazioneInviata{
+  margin-top: 40px;
+  width: 300px;
+  height: 140px;
+  background-color: #ffa700;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white; 
+}
+
+.prenotazioneAccettata{
+  margin-top: 40px;
+  margin-left: 25px;
+  width: 300px;
+  height: 140px;
+  background-color: #08b443;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white; 
+}
+
+.prenotazioneNonAttiva{
+  margin-top: 40px;
+  width: 300px;
+  height: 140px;
+  background-color: #de0000;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.contenuto-prenotazioni{
+    justify-content: center;
+    color: black;
+}

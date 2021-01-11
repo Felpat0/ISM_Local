@@ -1,15 +1,10 @@
-function login(){
-
 var button = document.querySelector("#submit");
-
-  button.addEventListener("click", function () {
+button.addEventListener("click", function () {
   button.classList.add("loading");
   document.getElementById("label").style.visibility = "hidden";
 });
 
-    
-//Funzione
-    
+function login(){
   document.getElementById('error').innerHTML = "";
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
@@ -37,8 +32,7 @@ var button = document.querySelector("#submit");
           localStorage.setItem("id", idAnziano);
           localStorage.setItem("email", email);
           localStorage.setItem("tipoUtente", "anziano");
-          console.log(localStorage["id"]);
-          console.log(localStorage["tipoUtente"]);
+          window.location.href = "homeanziano.html";
         }else{
           document.getElementById('error').innerHTML = "Offerente";
           //Ricavare l'id offerente dalla risposta del server
@@ -48,15 +42,11 @@ var button = document.querySelector("#submit");
           localStorage.setItem("id", idOfferente);
           localStorage.setItem("email", email);
           localStorage.setItem("tipoUtente", "offerente");
-          console.log(localStorage["id"]);
-          console.log(localStorage["tipoUtente"]);
+          window.location.href = "homeofferente.html";
         }
-        //window.location.href = "index.html";
+
       }
     }
   };
   http.send(vars);
 }
-
-
-

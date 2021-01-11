@@ -6,10 +6,13 @@
     <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
     <link href="css\preventiviinviati.css" rel="stylesheet" type="text/css">
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="js/ip.js"></script>
     <script src="js/listaServizi.js"></script>
     <script src="js/hideDiv.js"></script>
-    <script src="js/scriptsOfferente/preventiviOfferente.js"></script>
   </head>
   <body>
     <div id="testa" ></div>
@@ -17,6 +20,7 @@
     <script>
       document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
     </script>
+
     <div id="schermata1" class="prenotazioni">
       <button onclick="showRichiestePreventivo();" class="sospeso">Richieste ricevute</button>
       <button onclick="showPreventiviInviati();" class="archiviate">Inviate</button>
@@ -38,4 +42,5 @@
     <div id="riepilogoPreventivoInviato" style="display:none;">
     </div>
   </body>
+  <script src="js/scriptsOfferente/preventiviOfferente.js"></script>
 </html>

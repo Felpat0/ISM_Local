@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!--Registrazione anziano-->
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content="" />
       <meta name="author" content="" />
       <title>goGrandpa - Recupera password</title>
+      <link href="css\login.css" rel="stylesheet" type="text/css">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
       <script src="js/ip.js"></script>
-      <link href="css\login.css" rel="stylesheet" type="text/css">
+      <script src="js/hideDiv.js"></script>
   </head>
   <body>
   <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
@@ -26,10 +26,61 @@
         <label id="label6" for="conferma-email" class="form-label">Conferma E-mail</label>
         <input type="email" class="form-control" id="conferma-email">
       </div>
-     </div> 
-    <label id="error" style="color:red;"></label><br/>
-<div id="login"><button id="submit" onclick="login()" type="submit" class="button"><span id="label">Recupera</span></button></div>
-      <script src="cordova.js"></script>
-    <script src="js/registrazioneELogin/login.js"></script>
+      <div class="mb-3">
+        <select id ="selectTipo" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option selected>Quale tipo di utente sei?</option>
+          <option value="offerente">Offerente (offro servizi)</option>
+          <option value="anziano">Anziano (ricevo servizi)</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label id="error1" style="color:red;"></label><br/>
+      </div>
+      <div class="mb-3">
+        <button id="submit" onclick="inviaCodiceRecupero()" type="submit" class="button">Richiedi recupero</button>
+      </div>
+     </div>
+
+
+     <div id="inviaCodice" class="form" style="display:none;">
+       <div class="mb-3">
+         <label id="label3" for="codice" class="form-label">Inserire il codice ricevuto via mail:</label>
+         <input type="text" class="form-control" id="codice">
+       </div>
+       <div class="mb-3">
+         <label id="error2" style="color:red;"></label><br/>
+       </div>
+       <div class="mb-3">
+         <button id="submit" onclick="controllaCodice()" type="submit" class="button">Verifica</button>
+       </div>
+     </div>
+
+     <div id="inserisciPassword" class="form" style="display:none;">
+       <div class="mb-3">
+         <label id="label3" for="password" class="form-label">Nuova password</label>
+         <input type="password" class="form-control" id="password">
+       </div>
+       <div class="mb-3">
+         <label id="label6" for="conferma-password" class="form-label">Conferma nuova password</label>
+         <input type="password" class="form-control" id="conferma-password">
+       </div>
+       <div class="mb-3">
+         <label id="error3" style="color:red;"></label><br/>
+         <div class="mb-3">
+           <button id="submit" onclick="inviaNuovaPassword()" type="submit" class="button">Modifica password</button>
+         </div>
+       </div>
+     </div>
+
+     <div id="finale" class="form" style="display:none;">
+       <div class="mb-3">
+         <h3>La password è stata modificata con successo</h3>
+       </div>
+       <div class="mb-3">
+         <button id="submit" onclick="window.location.href='login.html';" type="submit" class="button">Vai al login</button>
+       </div>
+     </div>
+     <script src="cordova.js"></script>
+     <script src="js/registrazioneELogin/passwordDimenticata.js"></script>
   </body>
 </html>

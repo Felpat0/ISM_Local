@@ -42,7 +42,7 @@ function login(){
           localStorage.setItem("id", idOfferente);
           localStorage.setItem("email", email);
           localStorage.setItem("tipoUtente", "offerente");
-          window.location.href = "homeofferente.html";
+          window.location.href = "homeutente.html";
         }
 
       }

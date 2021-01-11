@@ -70,6 +70,11 @@ function loadJSONPreventivi(){
 
 loadJSONPreventivi();
 
+function apriProfiloAnziano(idAnziano){
+  localStorage.setItem('idUtente', idAnziano);
+  window.location.href = 'profiloAnziano.html';
+}
+
 function loadRichiestePreventivo(){
   document.getElementById("richiestePreventivo").innerHTML = "";
   for(i = 0; i != preventivi.length; i++){
@@ -80,7 +85,7 @@ function loadRichiestePreventivo(){
           <h2>` + preventivi[i]["nomeAnziano"] + ` ` + preventivi[i]["cognomeAnziano"] + `</h2>
           <h3>` + listaServizi[preventivi[i]["idServizio"]] + `</h3>
         </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
+        <a href="#" class="linkprofilo" onclick="apriProfiloAnziano(` + preventivi[i]["idAnziano"] + `)">Visualizza profilo</a>
       </div>
       `;
       document.getElementById("richiestePreventivo").innerHTML += element;

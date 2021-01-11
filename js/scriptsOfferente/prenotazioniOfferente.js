@@ -70,6 +70,11 @@ function loadJSONPrenotazioni(){
 
 loadJSONPrenotazioni();
 
+function apriProfiloAnziano(idAnziano){
+  localStorage.setItem('idUtente', idAnziano);
+  window.location.href = 'profiloAnziano.html';
+}
+
 function loadPrenotazioniInSospeso(){
   document.getElementById("richiesteSospeso").innerHTML = "";
   //Scrivere la lista delle richieste in sospeso
@@ -81,7 +86,7 @@ function loadPrenotazioniInSospeso(){
       element += '<h2>' + prenotazioni[i]["nomeAnziano"] + prenotazioni[i]["cognomeAnziano"] + '</h2>'
       element += '<h3>' + listaServizi[prenotazioni[i]["idServizio"]] + '</h3>';
       element += '</button>';
-      element += '<a href="#" class="linkprofilo" onclick="">Visualizza profilo</a>';
+      element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni[i]["idAnziano"] + ')">Visualizza profilo</a>';
       element += '</div>';
       document.getElementById("richiesteSospeso").innerHTML += element;
     }

@@ -18,7 +18,7 @@
 }
 
 .prenotazione {
-  position: absolute;
+  position: relative;
   top: 25%;
   left: 10%;
   margin-top: 40px;

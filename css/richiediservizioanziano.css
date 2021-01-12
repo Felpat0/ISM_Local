@@ -1,31 +1,4 @@
-#testa {
-  position: fixed;
-  width: 96%;
-  height: 28%;
-  top: 0%;
-  background-color: white;
-  z-index: 99;
-}
 
-#menu {
-  position: relative;
-  width: 98%;
-  height: 33%;
-  left: 1%;
-  background-color: #f5c312;
-  top: 10%;
-  z-index: 99;
-}
-
-#logo {
-  position: relative;
-  width: 90px;
-  height: 90px;
-  top: 1%;
-  left: 35%;
-  background-color: #43d4a2;
-  z-index: 99;
-}
 
 #back {
   position: absolute;
@@ -199,6 +172,11 @@ button:active, button:focus {
  position: relative;
  top: 40%;
  left: 30%;
+}
+
+#dataOra {
+  position: relative;
+  top: 40%;
 }
 
 /* Riepilogo prenotazione */

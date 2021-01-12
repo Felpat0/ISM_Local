@@ -1,51 +1,63 @@
+var email;
 function inviaCodiceRecupero(){
-  //var mail = document.getElementById("").text;
-  var mail = "felpatochannel@gmail.com";
+  email = document.getElementById("email").value;
+  confermaEmail = document.getElementById("conferma-email").value;
 
-  const url= ip + 'registrazioneLogin/passwordDimenticata.php';
-  var http = new XMLHttpRequest();
-  http.open("POST", url, true);
-  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  if(email == confermaEmail){
+    const url= ip + 'registrazioneLogin/passwordDimenticata.php';
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-  var vars = "email=" + mail;
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      localStorage.setItem("codice", http.responseText);
-      //hideDiv(); //Va al div dove si può inserire il codice
-    }
-  };
-  http.send(vars);
+    var vars = "email=" + email;
+    http.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        localStorage.setItem("codice", http.responseText);
+      }
+    };
+    http.send(vars);
+
+    hideDiv("form-login", "inviaCodice"); //Va al div dove si può inserire il codice
+  }else{
+    document.getElementById("error1").innerHTML = "Le email non corrispondono";
+  }
 }
 
-inviaCodiceRecupero();
 
 function controllaCodice(){
-  //var codiceInserito = document.getElementById("").text;
-  var codiceInserito = localStorage["codice"];
+  var codiceInserito = document.getElementById("codice").value;
   var codiceCorretto = localStorage["codice"];
 
   if(codiceInserito == codiceCorretto){
-    //hideDiv(); //Va al div dove permette di inserire la nuova password
+    hideDiv("inviaCodice", "inserisciPassword"); //Va al div dove permette di inserire la nuova password
   }else{
-    //document.getElementById("").innerHTML = "Codice non corretto, riprovare";
+    document.getElementById("error2").innerHTML = "Codice non corretto, riprovare";
   }
 }
 
 function inviaNuovaPassword(){
-  const url= ip + 'registrazioneLogin/passwordDimenticata.php';
-  var http = new XMLHttpRequest();
-  http.open("POST", url, true);
-  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  password = document.getElementById("password").value;
+  confermaPassword = document.getElementById("conferma-password").value;
 
-  var vars = "password=" + document.getElementById("").text;
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      if(http.responseText == "ok"){
-        //hideDiv(); //Va al div dove si conferma il cambio e c'è un tasto per tornare al login
-      }else{
-        console.log(http.responseText);
+  if(password == confermaPassword){
+    const url= ip + 'registrazioneLogin/passwordDimenticata.php';
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    var vars = "email=" + email + "&password=" + document.getElementById("password").value + "&tipoUtente=" + document.getElementById("selectTipo").value;
+    console.log(vars);
+    http.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        if(http.responseText == "ok"){
+          hideDiv("inserisciPassword", "finale"); //Va al div dove si conferma il cambio e c'è un tasto per tornare al login
+        }else{
+          console.log(http.responseText);
+        }
       }
-    }
-  };
-  http.send(vars);
+    };
+    http.send(vars);
+  }else{
+    document.getElementById("error3").innerHTML = "Le password non corrispondono";
+  }
 }

@@ -21,7 +21,7 @@ function register(){
         document.getElementById('error').innerHTML = "Errore interno";
       }
       else if(http.responseText == "ok"){
-        window.location.href = "index.html";
+        window.location.href = "login.html";
       }
     }
   };

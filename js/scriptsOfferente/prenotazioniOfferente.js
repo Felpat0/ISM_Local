@@ -1,5 +1,29 @@
 var prenotazioni;
 
+var messaggio = localStorage["messaggioPrenotazioni"];
+if(messaggio){
+  document.getElementById("schermata1").innerHTML += `
+  <div class="modal fade" tabindex="-1" id="modalMessaggio" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">` + messaggio + `</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+  var myModal = new bootstrap.Modal(document.getElementById('modalMessaggio'), {
+  keyboard: false
+  });
+  myModal.toggle()
+  localStorage["messaggioPrenotazioni"] = "";
+}
+
 function updateBackButton(newDiv){
   var newOnclick;
   switch (newDiv){
@@ -46,6 +70,11 @@ function loadJSONPrenotazioni(){
 
 loadJSONPrenotazioni();
 
+function apriProfiloAnziano(idAnziano){
+  localStorage.setItem('idUtente', idAnziano);
+  window.location.href = 'profiloAnziano.html';
+}
+
 function loadPrenotazioniInSospeso(){
   document.getElementById("richiesteSospeso").innerHTML = "";
   //Scrivere la lista delle richieste in sospeso
@@ -57,7 +86,7 @@ function loadPrenotazioniInSospeso(){
       element += '<h2>' + prenotazioni[i]["nomeAnziano"] + prenotazioni[i]["cognomeAnziano"] + '</h2>'
       element += '<h3>' + listaServizi[prenotazioni[i]["idServizio"]] + '</h3>';
       element += '</button>';
-      element += '<a href="#" class="linkprofilo" onclick="">Visualizza profilo</a>';
+      element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni[i]["idAnziano"] + ')">Visualizza profilo</a>';
       element += '</div>';
       document.getElementById("richiesteSospeso").innerHTML += element;
     }
@@ -138,7 +167,8 @@ function modificaPrenotazione(idPrenotazione, nuovoStato, idAnziano, idOfferente
   var vars = "idPrenotazione=" + idPrenotazione + "&nuovoStato=" + nuovoStato + "&idAnziano=" + idAnziano  + "&idOfferente=" + idOfferente + "&nomeOfferente=" + nomeOfferente;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(http.responseText);
+      localStorage.setItem("messaggioPrenotazioni", "La prenotazione e' stata " + nuovoStato);
+      window.location.href='prenotazioniOfferente.html';
     }
   };
   http.send(vars);

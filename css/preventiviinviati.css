@@ -12,7 +12,6 @@
   height: 30%;
   top: 1%;
   left: 1%;
-  background-color: #4f98a2;
 }
 
 .finalizzato {
@@ -25,24 +24,45 @@
 
 .preventivoInviato {
   position: relative;
-  width: 85%;
-  height: 120px;
-  left: 7%;
-  background-color: #ff9900;
+  left: 10%;
+  margin-top: 40px;
+  width: 300px;
+  height: 140px;
+  background-color: #ffa700;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
 }
 
 .preventivoRifiutato {
   position: relative;
-  width: 85%;
-  height: 120px;
-  left: 7%;
-  background-color: #ff0000;
+  left: 10%;
+  margin-top: 40px;
+  width: 300px;
+  height: 140px;
+  background-color: #de0000;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
 }
 
 .richiestaRifiutata {
   position: relative;
-  width: 85%;
-  height: 120px;
-  left: 7%;
-  background-color: #ff0000;
+  left: 10%;
+  margin-top: 40px;
+  width: 300px;
+  height: 140px;
+  background-color: #de0000;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
 }

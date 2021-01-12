@@ -1,5 +1,29 @@
 var preventivi;
 
+var messaggio = localStorage["messaggioPreventivi"];
+if(messaggio){
+  document.getElementById("schermata1").innerHTML += `
+  <div class="modal fade" tabindex="-1" id="modalMessaggio" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">` + messaggio + `</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+  var myModal = new bootstrap.Modal(document.getElementById('modalMessaggio'), {
+  keyboard: false
+  });
+  myModal.toggle()
+  localStorage["messaggioPreventivi"] = "";
+}
+
 function updateBackButton(newDiv){
   var newOnclick;
   switch (newDiv){
@@ -46,6 +70,11 @@ function loadJSONPreventivi(){
 
 loadJSONPreventivi();
 
+function apriProfiloAnziano(idAnziano){
+  localStorage.setItem('idUtente', idAnziano);
+  window.location.href = 'profiloAnziano.html';
+}
+
 function loadRichiestePreventivo(){
   document.getElementById("richiestePreventivo").innerHTML = "";
   for(i = 0; i != preventivi.length; i++){
@@ -56,7 +85,7 @@ function loadRichiestePreventivo(){
           <h2>` + preventivi[i]["nomeAnziano"] + ` ` + preventivi[i]["cognomeAnziano"] + `</h2>
           <h3>` + listaServizi[preventivi[i]["idServizio"]] + `</h3>
         </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
+        <a href="#" class="linkprofilo" onclick="apriProfiloAnziano(` + preventivi[i]["idAnziano"] + `)">Visualizza profilo</a>
       </div>
       `;
       document.getElementById("richiestePreventivo").innerHTML += element;
@@ -83,10 +112,29 @@ function showRiepilogoRichiesta(i){
     <p>Ora: ` + preventivi[i]["ora"] + `</p>
     <p>Indirizzo: ` + preventivi[i]["indirizzo"] + `</p>
     <p>Descrizione: ` + preventivi[i]["note"] + `</p>
-    <p>Paga oraria:</p>
-    <input type="number" id="pagaOraria" class="form-control">
+    <div class="modal fade" tabindex="-1" id="modalPaga" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Inserisci la paga oraria per questo preventivo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="rating">
+                  <input type="number" id="pagaOraria" class="form-control">
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+            <button type="button" onclick="inviaPreventivo(` + preventivi[i]["idPreventivo"] + `, ` + preventivi[i]["idAnziano"] + `, ` + preventivi[i]["idOfferente"] + `, '` + preventivi[i]["nomeOfferente"] + ` ` + preventivi[i]["cognomeOfferente"] + `');" class="btn btn-primary">Invia preventivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <button onclick="inviaPreventivo(` + preventivi[i]["idPreventivo"] + `, ` + preventivi[i]["idAnziano"] + `, ` + preventivi[i]["idOfferente"] + `, '` + preventivi[i]["nomeOfferente"] + ` ` + preventivi[i]["cognomeOfferente"] + `');" class="accetta">Invia</button>
+  <button data-bs-toggle="modal" data-bs-target="#modalPaga" class="accetta">Invia</button>
   <button onclick="rifiutaPreventivo(` + preventivi[i]["idPreventivo"] + `, ` + preventivi[i]["idAnziano"] + `, ` + preventivi[i]["idOfferente"] + `, '` + preventivi[i]["nomeOfferente"] + ` ` + preventivi[i]["cognomeOfferente"] + `');" class="rifiuta">Rifiuta</button>
   `;
 
@@ -152,7 +200,8 @@ function inviaPreventivo(idPreventivo, idAnziano, idOfferente, nomeOfferente){
   var vars = "idPreventivo=" + idPreventivo + "&prezzo=" + document.getElementById("pagaOraria").value + "&idAnziano=" + idAnziano  + "&idOfferente=" + idOfferente + "&nomeOfferente=" + nomeOfferente;;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(http.responseText);
+      localStorage.setItem("messaggioPreventivi", "Il preventivo e' stato inviato");
+      window.location.href='preventiviOfferente.html';
     }
   };
   http.send(vars);
@@ -166,7 +215,8 @@ function rifiutaPreventivo(idPreventivo, idAnziano, idOfferente, nomeOfferente){
   var vars = "idPreventivo=" + idPreventivo + "&idAnziano=" + idAnziano  + "&idOfferente=" + idOfferente + "&nomeOfferente=" + nomeOfferente;;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(http.responseText);
+      localStorage.setItem("messaggioPreventivi", "La richiesta di preventivo e' stata rifiutata");
+      window.location.href='preventiviOfferente.html';
     }
   };
   http.send(vars);

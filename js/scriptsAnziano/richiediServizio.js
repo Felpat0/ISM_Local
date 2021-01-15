@@ -53,7 +53,7 @@ document.addEventListener('input', function (event) {
 
 function getDateTime(){
     data = document.getElementById('date').value;
-    ora = document.getElementById('time').value;
+    ora = document.getElementById('time').value+':00';
 }
 
 function displayServizi(){
@@ -79,32 +79,38 @@ function displayListaUtenti(){
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = "id="+idServizioScelto;
+    var vars = "idServizio="+idServizioScelto + "&idAnziano="+ localStorage['idUtente'];
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(http.responseText);
+            var currentId = 0;
 
             for(i=0; i<result.length; i++){
-                var checkbox = document.createElement('INPUT');
-                checkbox.type = 'checkbox';
-                checkbox.name = 'cb';
-                var num = i+1;
-                checkbox.id = 'cb'+num;
-
-                var nome = document.createElement('LABEL');
-                nome.setAttribute('for', checkbox.id);
-                nome.id = result[i]['idOfferente'];
-                nome.innerHTML = result[i]['nomeOfferente'] + ' ' + result[i]['cognomeOfferente'];
-
-                var linkProfilo = document.createElement('A');
-                linkProfilo.innerHTML = 'Visualizza profilo';
-                linkProfilo.setAttribute("href", "#");
-                linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
-
-                document.getElementById('listaUtenti').appendChild(checkbox);
-                document.getElementById('listaUtenti').appendChild(nome);
-                document.getElementById('listaUtenti').appendChild(linkProfilo);
+                if( ora >= result[i]['oraInizio'] && ora <= result[i]['oraFine']){
+                    if(result[i]['idOfferente'] != currentId){
+                        currentId = result[i]['idOfferente'];
+                        var checkbox = document.createElement('INPUT');
+                        checkbox.type = 'checkbox';
+                        checkbox.name = 'cb';
+                        var num = i+1;
+                        checkbox.id = 'cb'+num;
+        
+                        var nome = document.createElement('LABEL');
+                        nome.setAttribute('for', checkbox.id);
+                        nome.id = result[i]['idOfferente'];
+                        nome.innerHTML = result[i]['nomeOfferente'] + ' ' + result[i]['cognomeOfferente'];
+        
+                        var linkProfilo = document.createElement('A');
+                        linkProfilo.innerHTML = 'Visualizza profilo';
+                        linkProfilo.setAttribute("href", "#");
+                        linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
+        
+                        document.getElementById('listaUtenti').appendChild(checkbox);
+                        document.getElementById('listaUtenti').appendChild(nome);
+                        document.getElementById('listaUtenti').appendChild(linkProfilo);
+                    }
+                }
             }
         }
     };
@@ -149,7 +155,6 @@ function inviaRichiestaPreventivo(){
                     console.log('ok');
                     //display messaggio invio avvenuto
                 }
-                
             }
         };
 

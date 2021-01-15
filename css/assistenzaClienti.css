@@ -1,23 +1,43 @@
 .textbox {
   position: absolute;
   width: 92%;
-  height: 40%;
-  top: 45%;
+  height: 45%;
+  top: 40%;
   left: 4%;
+  border: 2px solid #004dff;;
+  border-radius: 20px;
+  font-size: 30;
+  background: white;
 }
 
 .assistenza {
   position: absolute;
-  width: 50%;
-  height: 8%;
-  left: 25%;
-  top: 87%;
+  top: 73%;
+  left: 23%;
+  margin-top: 140px;
+  width: 200px;
+  height: 50px;
+  background-color: #004dff;
+  border-radius: 40px;
+  border: none;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
+  transition: all 0.25s ease;
 }
 
 .opzioni {
   position: absolute;
   width: 92%;
   height: 5%;
-  top: 35%;
+  top: 30%;
   left: 4%;
+  background-color: #004dff;
+  border-radius: 40px;
+  border: none;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: white;
+  transition: all 0.25s ease;
 }

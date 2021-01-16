@@ -64,7 +64,6 @@ document.addEventListener('input', function (event) {
 }, false);
 
 
-
 function showZone(){
   //Riempire le select con regioni, province e comuni
   for(i = 0; i != jsonComuni["regioni"].length; i++){
@@ -79,7 +78,6 @@ function showZone(){
 
 function addZona(){
   nZone ++;
-
   //Aggiungere delle "select" per una nuova zona
   var fileInput = document.getElementById('zona1');
   var temp = document.createElement('div');
@@ -130,17 +128,19 @@ function showFasce(){
 }
 
 function addFascia(){
-	  nFasce ++;
-	  //Aggiungere degli input field per la nuova fascia
-	  var fileInput = document.getElementById('fascia1');
-	  var temp = document.createElement('div');
-	  temp.id = "fascia" + nFasce;
-	  temp.innerHTML = `
-			<input id="inizio` + nFasce + `" class="form-control form-control-lg" type="time" placeholder="Ora inizio">
-			<input id="fine` + nFasce + `" class="form-control form-control-lg" type="time" placeholder="Ora fine">
-			<br/>
-	  `;
-	  fileInput.parentNode.appendChild(temp);
+	nFasce ++;
+	//Aggiungere degli input field per la nuova fascia
+	var fileInput = document.getElementById('fascia1');
+	var temp = document.createElement('div');
+	temp.id = "fascia" + nFasce;
+	temp.innerHTML = `
+		<label for="inizio` + nFasce + `">Ora Inizio</label>
+		<input id="inizio` + nFasce + `" class="form-control form-control-lg" type="time" placeholder="Ora inizio">
+		<label for="fine` + nFasce + `">Ora Fine</label>
+		<input id="fine` + nFasce + `" class="form-control form-control-lg" type="time" placeholder="Ora fine">
+		<br/>
+	`;
+	fileInput.parentNode.appendChild(temp);
 }
 
 function register(){

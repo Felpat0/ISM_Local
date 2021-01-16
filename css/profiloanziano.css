@@ -10,10 +10,13 @@
 #nomecognome {
   position: absolute;
   width: 45%;
-  height: 16%;
-  top: 34%;
+  height: 20%;
+  top: 30%;
   left: 50%;
-  background-color: #43d4a2;
+  border: 2px solid #004dff;;
+  border-radius: 20px;
+  background: white;
+  text-align: center;
 }
 
 #info {
@@ -22,5 +25,8 @@
   height: 40%;
   left: 1%;
   top: 55%;
-  background-color: #7d4a9b;
+  border: 2px solid #004dff;
+  border-radius: 20px;
+  background: white;
+  text-align: center;
 }

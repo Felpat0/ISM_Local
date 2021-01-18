@@ -69,7 +69,7 @@ function loadJSONPrenotazioni(){
   http.send(vars);
 }
 
-loadJSONPrenotazioni();
+setTimeout(loadJSONPrenotazioni, 100);
 
 function apriProfiloAnziano(idAnziano){
   localStorage.setItem('idUtente', idAnziano);

@@ -2,6 +2,7 @@ var idServizioScelto = -1;
 var note = '';
 var data = 0;
 var ora = 0;
+var promise;
 var utenti = [];
 var idOfferenti = [];
 var x = 0; //Contatore elementi di utenti
@@ -74,12 +75,46 @@ function displayServizi(){
     }
 }
 
+
+function getValutazione(idOff){ //ottiene la media di stelle possedute dall'utente in questione 
+    const url= ip + '/rilascioValutazione/getValutazione.php';
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var vars = "idOfferente="+idOff+"&stato=rilasciataAnziano";
+    var media;
+    
+    function resolveAfter() { //permette di ricavare il valore di media, calcolato nella funzione asincrona
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(media);
+          }, 200);
+        });
+      }
+
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = JSON.parse(http.responseText);
+            var sum = 0;
+            for(i=0; i<result.length; i++){
+                var star = parseInt(result[i]['stelle'], 10);
+                sum += star;
+            }
+            media = sum / result.length;
+        }
+    };
+    
+    promise = resolveAfter(); 
+    http.send(vars);
+}
+
 function displayListaUtenti(){
     const url= ip + '/queryAnziano/listaUtenti.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = "idServizio="+idServizioScelto + "&idAnziano="+ localStorage['idUtente'];
+    var vars = "idServizio="+idServizioScelto + "&idAnziano=8";
+    var valutazione;
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -90,6 +125,20 @@ function displayListaUtenti(){
                 if( ora >= result[i]['oraInizio'] && ora <= result[i]['oraFine']){
                     if(result[i]['idOfferente'] != currentId){
                         currentId = result[i]['idOfferente'];
+                        getValutazione(currentId);
+                        promise.then(function(result) //una volta che è stato ricavato il valore della media viene eseguita la funzione
+                        {   valutazione = result; 
+                            console.log(valutazione);
+                            
+                            var recensione = document.createElement('p');
+                            recensione.innerHTML = 'Media di '+ valutazione + ' stelle';
+
+                            document.getElementById('listaUtenti').appendChild(checkbox);
+                            document.getElementById('listaUtenti').appendChild(nome);
+                            document.getElementById('listaUtenti').appendChild(recensione);
+                            document.getElementById('listaUtenti').appendChild(linkProfilo);
+                        });
+                        
                         var checkbox = document.createElement('INPUT');
                         checkbox.type = 'checkbox';
                         checkbox.name = 'cb';
@@ -100,15 +149,11 @@ function displayListaUtenti(){
                         nome.setAttribute('for', checkbox.id);
                         nome.id = result[i]['idOfferente'];
                         nome.innerHTML = result[i]['nomeOfferente'] + ' ' + result[i]['cognomeOfferente'];
-        
+
                         var linkProfilo = document.createElement('A');
                         linkProfilo.innerHTML = 'Visualizza profilo';
                         linkProfilo.setAttribute("href", "#");
                         linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
-        
-                        document.getElementById('listaUtenti').appendChild(checkbox);
-                        document.getElementById('listaUtenti').appendChild(nome);
-                        document.getElementById('listaUtenti').appendChild(linkProfilo);
                     }
                 }
             }
@@ -139,7 +184,7 @@ function inviaRichiestaPreventivo(){
         var http = new XMLHttpRequest();
         http.open("POST", url, true);
         http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var vars = 'idAnziano=' + localStorage['idUtente'] + '&idOfferente=' + idOfferenti[i] + '&idServizio=' + idServizioScelto + '&data=' + data + '&ora=' + ora + '&note=' + note; //idAnziano, idOfferente, idServizio, note, data, ora, stato
+        var vars = 'idAnziano=' + localStorage['id'] + '&idOfferente=' + idOfferenti[i] + '&idServizio=' + idServizioScelto + '&data=' + data + '&ora=' + ora + '&note=' + note; //idAnziano, idOfferente, idServizio, note, data, ora, stato
 
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -172,7 +217,7 @@ function inviaRichiestaPrenotazione(){
             var http = new XMLHttpRequest();
             http.open("POST", url, true);
             http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            var vars = 'idAnziano=' + localStorage['idUtente'] + '&idOfferente=' + idOfferenti[i] + '&idServizio=' + idServizioScelto + '&data=' + data + '&ora=' + ora; //idAnziano, idOfferente, idServizio, data, ora, stato
+            var vars = 'idAnziano=' + localStorage['id'] + '&idOfferente=' + idOfferenti[i] + '&idServizio=' + idServizioScelto + '&data=' + data + '&ora=' + ora; //idAnziano, idOfferente, idServizio, data, ora, stato
     
             http.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {

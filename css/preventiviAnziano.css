@@ -56,7 +56,7 @@ h2#titolo{
     justify-content: center;
 }
 
-.preventivoInviato{
+.richiestaInviata{
   margin-top: 40px;
   width: 300px;
   height: 140px;
@@ -69,7 +69,7 @@ h2#titolo{
   color: white; 
 }
 
-.preventivoAccettato{
+.preventivoInviato{
   margin-top: 40px;
   margin-left: 25px;
   width: 300px;

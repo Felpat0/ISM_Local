@@ -35,7 +35,7 @@ function displayLista(idLista, statoPrenotazione){
                         newBtn.setAttribute("onclick", "hideDiv('"+idLista+"','"+statoPrenotazione+"'); displayRiepilogoPrenotazione('"+result[i]['idPrenotazione']+"','"+statoPrenotazione+"')");
                     }
                    
-                    newBtn.className = 'prenotazione';
+                    newBtn.className = 'prenotazioni';
                     newBtn.id = 'btn'+i;
                     document.getElementById("div"+i).appendChild(newBtn); 
 

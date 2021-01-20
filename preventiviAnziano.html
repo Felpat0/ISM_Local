@@ -1,16 +1,13 @@
 <html>
   <head>
     <link href="css\home.css" rel="stylesheet" type="text/css">
-    <link href="css\richiesteprenotazioni.css" rel="stylesheet" type="text/css">
-    <link href="css\sospeso.css" rel="stylesheet" type="text/css">
-    <link href="css\sospesoriepilogo.css" rel="stylesheet" type="text/css">
     <link href="css\preventiviinviati.css" rel="stylesheet" type="text/css">
     <script src="js/ip.js"></script>
     <script src="js/scriptsAnziano/preventivi.js"></script>
     <script src="js/hideDiv.js"></script>
     <script src="js/listaServizi.js"></script>
-    <script> window.onload = displayListaPreventivi();</script>
-      <link href="css\preventiviAnziano.css" rel="stylesheet" type="text/css">
+    <script> window.onload = setTimeout(displayListaPreventivi,200);</script>
+    <link href="css\preventiviAnziano.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div id="testa" ></div>
@@ -18,45 +15,13 @@
     <p>&nbsp;</p><p>&nbsp;</p>
     <div class="titolo"><h2 id="titolo">Richieste inviate</h2></div>
     <!-- Inizio Lista preventivi -->
-    <div class="listaprev" id="listaPreventivi">
-    <button class="preventivoInviato">
-    <div class="contenuto-Inviato">
-     <h2>Mario Rossi</h2>
-     <h3>Accompagnamento</h3>  
-    </div>    
-    </button>
-    <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a> 
-    
-    <button class="preventivoAccettato">
-    <div class="contenuto-Accettato">
-    <h2>Maria Palazzo</h2>
-     <h3>Accompagnamento</h3>  
-    </div>    
-    </button>
-    <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a>
-    <button class="preventivoRifiutato">
-    <div class="contenuto-Rifiutato">
-    <h2>Sara Bianchi</h2>
-     <h3>Accompagnamento</h3>  
-    </div>    
-    </button>
-    <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a>  
+    <div class="listaprev" id="listaPreventivi" >
     </div>
 
     <!-- Inizio PreventiviRicevutiRiepilogo -->
     <div id="preventivoRicevuto" class="riepilogoRichiestaPreventivo" style="display: none;">
-    <div id="riepilogoPreventivo" style="display:none;">
-      <div id="prenotazione">
-        <h3>Richiesta preventivo da Mario Rossi</h3>
-        <p>Servizio: Accompagnamento</p>
-        <p>Data: 17/05/2021</p>
-        <p>Ora: 10:00</p>
-        <p>Indirizzo: Via 5 Maggio, 13</p>
-        <p>Descrizione:</p>
-        <p>Paga oraria: 10€</p>
-        <p>Stato preventivo: Accettato</p>
+      <div id="riepilogoPreventivo">
       </div>
-    </div>
       <button href="#" class="button" id="accetta">Accetta</button>
       <button href="#" class="button" id="rifiuta">Rifiuta</button>
     </div>

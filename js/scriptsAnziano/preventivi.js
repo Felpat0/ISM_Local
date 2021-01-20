@@ -4,7 +4,7 @@ function displayListaPreventivi() {
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = "id=1"; //+ localStorage["id"]; 
+    var vars = "id=1"//+localStorage["id"]; 
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -17,27 +17,32 @@ function displayListaPreventivi() {
                 if(result[i]['stato'] != 'finalizzato'){
                     //Creazione div che conterrà il preventivo
                     var newDiv = document.createElement('DIV');
-                    newDiv.className = 'p';
                     newDiv.id = 'div'+i;
                     //Inserimento del nuovo div in quello contenente la lista dei preventivi
                     document.getElementById('listaPreventivi').appendChild(newDiv);
 
+                    var contentDiv = document.createElement('DIV');
+                    contentDiv.id = 'contentDiv'+i;
                     //Creazione button contenente il nome dell'utente offerente e il servizio offerto
                     var newBtn = document.createElement('BUTTON');
                     
                     if(result[i]['stato'] == 'preventivoInviato'){
                         newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivoRicevuto'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivoRicevuto')");
                         newBtn.className = 'preventivoInviato'; //deve essere verde
+                        contentDiv.className = 'contenuto-Accettato';
                     } else if(result[i]['stato'] == 'richiestaInviata'){
                         newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
                         newBtn.className = 'richiestaInviata'; //deve essere giallo
+                        contentDiv.className = 'contenuto-Inviato';
                     } else if(result[i]['stato'] == 'richiestaRifiutata' || result[i]['stato'] == 'preventivoRifiutato'){
                         newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
                         newBtn.className = 'preventivoRifiutato'; //deve essere rosso
+                        contentDiv.className = 'contenuto-Rifiutato';
                     }
                     //aggiungere link al profilo
                     newBtn.id = 'btn'+i;
-                    document.getElementById("div"+i).appendChild(newBtn); 
+                    document.getElementById("div"+i).appendChild(contentDiv); 
+                    document.getElementById("contentDiv"+i).appendChild(newBtn);
 
                     //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
                     var name = document.createElement('H2');
@@ -56,6 +61,7 @@ function displayListaPreventivi() {
                     document.getElementById('div'+i).appendChild(linkProfilo);
 
                 } else {
+                    console.log("lol");
                     var fileName = location.href.split("/").slice(-1); 
                     if(fileName == 'prenotazioniAnziano.html'){
                         var position = listPosition+1
@@ -119,6 +125,7 @@ function displayListaPreventivi() {
     
                 //Inserimento informazioni relative al preventivo all'interno dell'html
                 if(statoPreventivo == 'preventivoRicevuto'){
+                    statoPreventivo = 'riepilogoPreventivo';
                     var name = document.createElement('P');
                     var servizio = document.createElement('P');
                     var data = document.createElement('P');

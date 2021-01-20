@@ -1,9 +1,15 @@
 <html>
   <head>
-    <link href="css\home.css" rel="stylesheet" type="text/css">
-    <link href="css\profiloanziano.css" rel="stylesheet" type="text/css">
+    <link href="css/home.css" rel="stylesheet" type="text/css">
+    <link href="css/profiloanziano.css" rel="stylesheet" type="text/css">
+    <link href="css/stars.css" rel="stylesheet" type="text/css">
+     <!-- CSS only -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+     <!-- JavaScript Bundle with Popper -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> 
     <script src="js/ip.js"></script>
     <script src="js/profiloUtente.js"></script>
+    <script src="js/rilascioValutazione.js"></script>
     <script src="cordova.js"></script>
   </head>
   <body>
@@ -24,7 +30,33 @@
       <label id="label5" for="email" class="">E-mail: </label>
       <p id="email"></p>
       <a href="#">Invia messaggio</a>
-      <a href="#">Lascia una recensione</a>
+      <a href="#"  data-bs-toggle="modal" data-bs-target="#recensione">Lascia una valutazione</a>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="recensione" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Lascia una valutazione</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="rating">
+                  <input type="radio" id="star5" name="rating" value="5" /><label for="star5">★</label>
+                  <input type="radio" id="star4" name="rating" value="4" /><label for="star4">★</label>
+                  <input type="radio" id="star3" name="rating" value="3" /><label for="star3">★</label>
+                  <input type="radio" id="star2" name="rating" value="2" /><label for="star2">★</label>
+                  <input type="radio" id="star1" name="rating" value="1" /><label for="star1">★</label>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+            <button type="button" class="btn btn-primary" onclick="inviaValutazione();" data-bs-dismiss="modal">Invia</button>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

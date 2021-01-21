@@ -12,92 +12,36 @@
     <div id="testa" ></div>
     <script src="js/header.js"></script>
     <!-- Inizio richiesteprenotazioni -->
-    <div class ="paginainiziale "id="firstpage" style="display: none">
+    <div class ="paginainiziale "id="firstpage" >
         <button class="prenotazioneInviata" onclick="hideDiv('firstpage', 'listaInviate'); displayLista('listaInviate', 'inviata')" id="inviate">In attesa</button>
         <button class="prenotazioneAccettata"onclick="hideDiv('firstpage', 'listaAttive'); displayLista('listaAttive', 'accettata'); displayListaPreventivi();" id="attive">Attive</button>
         <button class="prenotazioneNonAttiva"onclick="hideDiv('firstpage', 'listaNonAttive'); displayLista('listaNonAttive', 'rifiutata')" id="nonAttive">Non attive/Rifiutate</button>
     </div>
     <!-- Inizio RichiesteAttive -->
     <div class="paginainiziale" id="listaAttive" style="display: none">
-         <button class="prenotazioni" id="attive">
-         <div class="contenuto-prenotazioni">
-             <h2>Mario Rossi</h2>
-             <h3>Comprare Medicine</h3>
-             <h4>09/01/2021</h4>
-         </div>
-         </button>
-         <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a> 
     </div>
     <!-- Inizio RichiesteAttiveRiepilogo -->
-    <div class="riepilogoPrenotazione" id="accettata">
-        <h1>Mario Rossi</h1>
-        <h2>Servizio: Comprare Medicine</h2>
-        <h2>Data: 17/05/2021</h2>
-        <h2>Ora: 10:00</h2>
-        <h2>Paga oraria: 10€</h2>
-        <h2>Stato prenotazione: Accettata</h2>
+    <div class="riepilogoPrenotazione" id="accettata" style="display: none">
+    </div>
+
+    <!-- RiepilogoPreventivoFinalizzato -->           
+    <div class="riepilogoPrenotazione" id="preventivo" style="display: none">
     </div>
 
     <!-- RichiesteInAttesa --> 
     <div class="paginainiziale" id="listaInviate"  style="display: none">
-        <button class="prenotazioni" id="inviate">
-         <div class="contenuto-prenotazioni">
-             <h2>Mario Rossi</h2>
-             <h3>Comprare Medicine</h3>
-             <h4>09/01/2021</h4>
-         </div>
-         </button>
-        <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a> 
     </div>
     <!-- Inizio RichiesteInAttesaRiepilogo -->    
     <div class="riepilogoPrenotazione" id="inviata" style="display: none">
-        <h1>Mario Rossi</h1>
-        <h2>Servizio: Comprare Medicine</h2>
-        <h2>Data: 17/05/2021</h2>
-        <h2>Ora: 10:00</h2>
-        <h2>Paga oraria: 10€</h2>
-        <h2>Stato prenotazione: In attesa</h2>
     </div>
     
     <!-- Inizio RichiesteNonAttive -->
     <div class="paginainiziale" id="listaNonAttive"  style="display: none">
-        <button class="prenotazioni" id="nonAttive">
-         <div class="contenuto-prenotazioni">
-             <h2>Mario Rossi</h2>
-             <h3>Comprare Medicine</h3>
-             <h4>09/01/2021</h4>
-         </div>
-         </button>
-         <a href="#" class="linkprofilo" onclick="window.location.href='profiloutente.html';">Visualizza profilo</a> 
     </div>
     <!-- Inizio RichiesteArchiviateRifiutateRiepilogo -->
     <div class="riepilogoPrenotazione" id="rifiutata" style="display: none">
-        <h1>Mario Rossi</h1>
-        <h2>Servizio: Comprare Medicine</h2>
-        <h2>Data: 17/05/2021</h2>
-        <h2>Ora: 10:00</h2>
-        <h2>Paga oraria: 10€</h2>
-        <h2>Stato prenotazione: Rifiutata</h2>
-    </div>
-      
-    <div class="riepilogoPrenotazione" id="archiviata"  style="display: none">
-        <h1>Mario Rossi</h1>
-        <h2>Servizio: Comprare Medicine</h2>
-        <h2>Data: 17/05/2021</h2>
-        <h2>Ora: 10:00</h2>
-        <h2>Paga oraria: 10€</h2>
-        <h2>Stato prenotazione: Archiviata</h2>
     </div>
 
-    <!-- RiepilogoPreventivoFinalizzato -->           
-    <div class="riepilogoPreventivo" id="preventivo" style="display: none">
-        <h3>Mario Rossi</h3>
-        <h2>Servizio: Accompagnamento</h2>
-        <h2>Data: 17/05/2021</h2>
-        <h2>Ora: 10:00</h2>
-        <h2>Descrizione:</h2>
-        <h2>Paga oraria: 10€</h2>
-        <h2>Stato prenotazione: Accettata</h2>
-    </div>
+   
   </body>
 </html>

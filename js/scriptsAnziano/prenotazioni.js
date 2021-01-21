@@ -39,13 +39,18 @@ function displayLista(idLista, statoPrenotazione){
                     newBtn.id = 'btn'+i;
                     document.getElementById("div"+i).appendChild(newBtn); 
 
+                    var contentDiv = document.createElement('DIV');
+                    contentDiv.id = 'contentDiv'+i;
+                    contentDiv.className = 'contenuto-prenotazioni';
+                    document.getElementById('btn'+i).appendChild(contentDiv);
+
                     //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
                     var name = document.createElement('H2');
                     var servizio = document.createElement('H3');
                     name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
                     servizio.innerHTML = listaServizi[result[i]['idServizio']];
-                    document.getElementById('btn'+i).appendChild(name);
-                    document.getElementById('btn'+i).appendChild(servizio);
+                    document.getElementById('contentDiv'+i).appendChild(name);
+                    document.getElementById('contentDiv'+i).appendChild(servizio);
 
                     var linkProfilo = document.createElement('A');
                     linkProfilo.className = 'linkprofilo';

@@ -9,12 +9,11 @@ function displayListaPreventivi() {
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(http.responseText);
-
+            var fileName = location.href.split("/").slice(-1);
             //Per ciascun preventivo attivo viene creato un pulsante che porta alla schermata contenente i dettagli del preventivo
 
             for(var i=0; i<result.length; i++){
-                
-                if(result[i]['stato'] != 'finalizzato'){
+                if(result[i]['stato'] != 'finalizzato' && fileName != 'prenotazioniAnziano.html'){
                     //Creazione div che conterrà il preventivo
                     var newDiv = document.createElement('DIV');
                     newDiv.id = 'div'+i;
@@ -60,14 +59,9 @@ function displayListaPreventivi() {
                     linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
                     document.getElementById('div'+i).appendChild(linkProfilo);
 
-                } else {
-                    console.log("lol");
-                    var fileName = location.href.split("/").slice(-1); 
-                    if(fileName == 'prenotazioniAnziano.html'){
+                } else if(result[i]['stato'] == 'finalizzato' && fileName == 'prenotazioniAnziano.html'){
                         var position = listPosition+1
                         displayPreventiviFinalizzati(result, i, position);
-                    }
-                    
                 }
                 
             }
@@ -89,19 +83,24 @@ function displayListaPreventivi() {
         var newBtn = document.createElement('BUTTON');
         
         newBtn.setAttribute("onclick", "hideDiv('listaAttive','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
-        newBtn.className = 'prenotazione'; 
+        newBtn.className = 'prenotazioni'; 
         
         //aggiungere link al profilo
         newBtn.id = 'btn'+position;
         document.getElementById("div"+position).appendChild(newBtn); 
+
+        var contentDiv = document.createElement('DIV');
+        contentDiv.id = 'contentDiv'+position;
+        contentDiv.className = 'contenuto-prenotazioni';
+        document.getElementById('btn'+position).appendChild(contentDiv);
 
         //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
         var name = document.createElement('H2');
         var servizio = document.createElement('H3');
         servizio.innerHTML = listaServizi[result['0']['idServizio']]
         name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
-        document.getElementById('btn'+position).appendChild(name);
-        document.getElementById('btn'+position).appendChild(servizio);
+        document.getElementById('contentDiv'+position).appendChild(name);
+        document.getElementById('contentDiv'+position).appendChild(servizio);
 
         //<a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
         var linkProfilo = document.createElement('A');
@@ -152,7 +151,7 @@ function displayListaPreventivi() {
                     document.getElementById('accetta').setAttribute("onclick", "updatePreventivo('"+idPreventivo+"', 'finalizzato'); location.reload();");
                 } else if(statoPreventivo == 'preventivo'){
                     
-                    var name = document.createElement('P');
+                    var name = document.createElement('H2');
                     var servizio = document.createElement('P');
                     var data = document.createElement('P');
                     var ora = document.createElement('P');
@@ -160,7 +159,7 @@ function displayListaPreventivi() {
                     var note = document.createElement('P');
                     var stato = document.createElement('P');
     
-                    name.innerHTML = "Offerente servizio: "+ result['0']['nomeOfferente'] + " " + result['0']['cognomeOfferente'];
+                    name.innerHTML = result['0']['nomeOfferente'] + " " + result['0']['cognomeOfferente'];
                     servizio.innerHTML = "Servizio: "+listaServizi[result['0']['idServizio']];
                     data.innerHTML = "Data: " + result['0']['data'];
                     ora.innerHTML = "Ora: " + result['0']['ora'];
@@ -177,12 +176,12 @@ function displayListaPreventivi() {
                         stato.innerHTML = "Stato richiesta: Prenotazione attiva";
                     } 
 
+                    document.getElementById(statoPreventivo).appendChild(name);
                     document.getElementById(statoPreventivo).appendChild(servizio);
                     document.getElementById(statoPreventivo).appendChild(data);
                     document.getElementById(statoPreventivo).appendChild(ora);
                     document.getElementById(statoPreventivo).appendChild(paga);
                     document.getElementById(statoPreventivo).appendChild(note);
-                    document.getElementById(statoPreventivo).appendChild(name);
                     document.getElementById(statoPreventivo).appendChild(stato);
                 
                 }

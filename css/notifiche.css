@@ -1,0 +1,24 @@
+div#lista_notifiche
+{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+}
+
+
+.notifica_cliccabile
+{
+    border-bottom-style: solid;
+    border-color: black;
+    margin-top: 10px;
+    width: 100%;
+    height: 120px;
+    font-size: 20px;
+    justify-content: center;
+    background-color: #d5efff;
+    border: none;
+    outline: none;
+}
+
+

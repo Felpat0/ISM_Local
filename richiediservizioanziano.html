@@ -1,14 +1,19 @@
 <html>
   <head>
+     
     <link href="css\richiediservizioanziano.css" rel="stylesheet" type="text/css">
-    <link href="css/home.css" rel="stylesheet" type="text/css">
-    <script src="js/ip.js"></script>
+     <link href="css/home.css" rel="stylesheet" type="text/css">
+     <script src="js/ip.js"></script>
     <script src="js/listaServizi.js"></script>
     <script src="js/hideDiv.js"></script>
   </head>
   <body>
     <div id="testa" ></div>
     <script src="js/header.js"></script>
+    <script>
+      document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
+      
+    </script>
       <!-- Inizio RICHIEDI SERVIZIO -->
       <div id="firstPage">
         <div id="bottoni"  > 
@@ -17,7 +22,7 @@
           </div>  
         </div>
         <div id="conferma">
-          <button id="submit" type="submit" class="button" onclick="if(idServizioScelto != -1){hideDiv('firstPage', 'dataOra');}">
+          <button id="submit" type="submit" class="button" onclick="confermaServ();">
             <span id="label">Conferma</span>
           </button>
         </div>
@@ -34,7 +39,7 @@
              <input id="time" type="time" ng-model="test" mdp-time-picker />
         </div>
         <div id="conferma" >
-          <button id="submit" type="submit" class="button" onclick="getDateTime(); if(data != 0 && ora !=0){hideDiv('dataOra', 'selezionaUtente'); displayListaUtenti();}">
+          <button id="submit" type="submit" class="button" onclick="confermaDataOra();">
             <span id="label">Conferma</span>
           </button>
         </div>
@@ -49,7 +54,7 @@
             </div>
         </div>
         <div id="conferma">
-          <button id="submit" type="submit" class="button" onclick="hideDiv('selezionaUtente', 'riepilogo'); displayRiepilogoRichiesta();">
+          <button id="submit" type="submit" class="button" onclick="confermaUtenti()">
             <span id="label">Conferma</span>
           </button>
         </div>
@@ -77,9 +82,11 @@
             <span id="label">Richiedi Prenotazione</span>
           </button>
         </div>
+
+        
       </div>
      
-        
+      
 
       <script src="js/scriptsAnziano/richiediServizio.js"></script>
       <script> window.onload = displayServizi();</script>

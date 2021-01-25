@@ -1,42 +1,27 @@
  setTimeout(function(){
-        if(localStorage.getItem('tipoUtente') == 'offerente'){ //controllo se l'utente è offerente
-        const url= ip + '/profiloUtente/profiloAnziano.php';
+        const url= ip + '/profiloUtente/profiloUtente.php';
         var http = new XMLHttpRequest();
         http.open("POST", url, true);
         http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var vars = "id="+localStorage['idUtente']; 
+        var vars = "id="+localStorage['idUtente']+"&tipoUtente="+localStorage['tipoUtente']; 
 
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var result = JSON.parse(http.responseText);
+                var tipo;
+                
+                if(localStorage.getItem('tipoUtente') == 'offerente') {tipo = 'Anziano';}
+                else {tipo = 'Offerente';}
 
-                document.getElementById('nome').innerHTML = result['0']['nomeAnziano'];
-                document.getElementById('cognome').innerHTML = result['0']['cognomeAnziano'];
-                document.getElementById('indirizzo').innerHTML = result['0']['indirizzo'];
-                document.getElementById('telefono').innerHTML = result['0']['telefonoAnziano'];
-                document.getElementById('email').innerHTML = result['0']['emailAnziano'];
+                document.getElementById('nome').innerHTML = result['0']['nome'+tipo];
+                document.getElementById('cognome').innerHTML = result['0']['cognome'+tipo];
+                if(localStorage.getItem('tipoUtente')=='offerente'){
+                    document.getElementById('indirizzo').innerHTML = result['0']['indirizzo'];
+                }
+                document.getElementById('telefono').innerHTML = result['0']['telefono'+tipo];
+                document.getElementById('email').innerHTML = result['0']['email'+tipo];
             }
           };
 
           http.send(vars);
-          
-      } else if(localStorage.getItem('tipoUtente') == 'anziano'){ //controllo se l'utente è anziano
-          const url= ip + '/profiloUtente/profiloOfferente.php';
-          var http = new XMLHttpRequest();
-          http.open("POST", url, true);
-          http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-          var vars = "id="+localStorage['idUtente']; 
-          http.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
-                  var result = JSON.parse(http.responseText);
-
-                  document.getElementById('nome').innerHTML = result['0']['nomeOfferente'];
-                  document.getElementById('cognome').innerHTML = result['0']['cognomeOfferente'];
-                  document.getElementById('telefono').innerHTML = result['0']['telefonoOfferente'];
-                  document.getElementById('email').innerHTML = result['0']['emailOfferente'];
-              }
-            };
-
-            http.send(vars);
-     }
-  }, 100);
+  }, 250);

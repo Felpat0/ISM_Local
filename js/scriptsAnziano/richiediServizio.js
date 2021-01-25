@@ -113,7 +113,7 @@ function displayListaUtenti(){
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = "idServizio="+idServizioScelto + "&idAnziano=8";
+    var vars = "idServizio="+idServizioScelto + "&idAnziano=" + localStorage['id'];
     var valutazione;
 
     http.onreadystatechange = function() {
@@ -210,7 +210,26 @@ function inviaRichiestaPreventivo(){
 function inviaRichiestaPrenotazione(){
     if( document.getElementById('messaggio').value != ''){
         console.log('note inserite');
-        //display messaggio errore, le note non possono essere inserite
+        document.getElementById("riepilogo").innerHTML += `
+        <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        `;
+        document.getElementById('modalTitle').innerHTML = "Non puoi inserire note per richiedere una prenotazione";
+        var myModal = new bootstrap.Modal(document.getElementById('messaggioErrore'), {
+            keyboard: false
+            });
+            myModal.toggle()
     } else {
         for(i=0; i<idOfferenti.length; i++){
             const url= ip + '/queryAnziano/inviaPrenotazione.php';
@@ -240,4 +259,40 @@ function inviaRichiestaPrenotazione(){
             http.send(vars);
         }
     }
+}
+
+function resetBackButton(div){
+    switch (div){
+        case 'dataOra':
+            document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
+            break;
+        case 'selezionaUtente':
+            document.getElementById("back").setAttribute( "onclick", "hideDiv('dataOra', 'firstPage'); resetBackButton('dataOra')" );
+            break;
+        case 'riepilogo':
+            document.getElementById("back").setAttribute( "onclick", "hideDiv('selezionaUtente', 'dataOra'); resetBackButton('selezionaUtente')" );
+            break;
+    }
+}
+
+function confermaServ(){
+    if(idServizioScelto != -1){
+        hideDiv('firstPage', 'dataOra');
+        document.getElementById("back").setAttribute("onclick", "hideDiv('dataOra', 'firstPage'); resetBackButton('dataOra');");
+    }
+  }
+
+function confermaDataOra(){
+    getDateTime(); 
+    if(data != 0 && ora !=0){
+        hideDiv('dataOra', 'selezionaUtente'); 
+        displayListaUtenti();
+        document.getElementById("back").setAttribute("onclick", "hideDiv('selezionaUtente', 'dataOra'); resetBackButton('selezionaUtente');");
+    }
+}
+
+function confermaUtenti(){
+    hideDiv('selezionaUtente', 'riepilogo'); 
+    displayRiepilogoRichiesta();
+    document.getElementById("back").setAttribute("onclick", "hideDiv('riepilogo', 'selezionaUtente'); resetBackButton('riepilogo');");
 }

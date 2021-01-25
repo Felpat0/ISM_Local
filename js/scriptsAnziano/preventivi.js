@@ -4,7 +4,9 @@ function displayListaPreventivi() {
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = "id=1"//+localStorage["id"]; 
+    localStorage.setItem('id', 1); //da togliere
+    var vars = "id="+localStorage["id"]; 
+
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -117,11 +119,11 @@ function displayListaPreventivi() {
         http.open("POST", url, true);
         http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         var vars = "id="+idPreventivo;
-    
+        
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var result = JSON.parse(http.responseText);
-    
+                
                 //Inserimento informazioni relative al preventivo all'interno dell'html
                 if(statoPreventivo == 'preventivoRicevuto'){
                     statoPreventivo = 'riepilogoPreventivo';
@@ -148,7 +150,7 @@ function displayListaPreventivi() {
                     document.getElementById(statoPreventivo).appendChild(name);
 
                     document.getElementById('rifiuta').setAttribute("onclick", "updatePreventivo('"+idPreventivo+"', 'preventivoRifiutato')");
-                    document.getElementById('accetta').setAttribute("onclick", "updatePreventivo('"+idPreventivo+"', 'finalizzato'); location.reload();");
+                    document.getElementById('accetta').setAttribute("onclick", "updatePreventivo('"+idPreventivo+"', 'finalizzato');");
                 } else if(statoPreventivo == 'preventivo'){
                     
                     var name = document.createElement('H2');
@@ -193,7 +195,6 @@ function displayListaPreventivi() {
     }
 
     function updatePreventivo(idPreventivo, nuovoStato){
-        
         const url= ip + '/queryAnziano/updatePreventivo.php';
         var http = new XMLHttpRequest();
         http.open("POST", url, true);
@@ -203,6 +204,7 @@ function displayListaPreventivi() {
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 console.log(http.responseText);
+                location.reload()
             }
           };
     

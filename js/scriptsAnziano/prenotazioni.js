@@ -5,7 +5,7 @@ function displayLista(idLista, statoPrenotazione){
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = "id=1"; //+ localStorage["id"]; 
+    var vars = "id="+ localStorage["id"]; 
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {

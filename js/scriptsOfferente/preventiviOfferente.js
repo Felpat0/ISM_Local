@@ -69,7 +69,7 @@ function loadJSONPreventivi(){
   http.send(vars);
 }
 
-setTimeout(loadJSONPreventivi, 100);
+setTimeout(loadJSONPreventivi, 300);
 
 function apriProfiloAnziano(idAnziano){
   localStorage.setItem('idUtente', idAnziano);

@@ -42,6 +42,21 @@
     <div class="riepilogoPrenotazione" id="rifiutata" style="display: none">
     </div>
 
+
+    <script>
+      document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
+      if(localStorage.getItem('idLista')){
+          var idLista = localStorage['idLista'];
+          var statoPrenotazione = localStorage['statoPrenotazione'];
+          console.log(statoPrenotazione);
+          hideDiv('firstpage', idLista); 
+          displayLista(idLista, statoPrenotazione);
+          if(statoPrenotazione == 'accettata'){ displayListaPreventivi(); }
+
+          localStorage.removeItem('idLista');
+          localStorage.removeItem('statoPrenotazione');
+      }
+    </script>
    
   </body>
 </html>

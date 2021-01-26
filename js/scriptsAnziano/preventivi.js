@@ -109,7 +109,7 @@ function displayListaPreventivi() {
         linkProfilo.className = 'linkprofilo';
         linkProfilo.innerHTML = 'Visualizza profilo';
         linkProfilo.setAttribute("href", "#");
-        linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
+        linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('idLista', 'listaAttive'); localStorage.setItem('statoPrenotazione', 'accettata'); window.location.href='profiloOfferente.html';");
         document.getElementById('div'+position).appendChild(linkProfilo);
     }
 
@@ -125,8 +125,7 @@ function displayListaPreventivi() {
                 var result = JSON.parse(http.responseText);
                 
                 //Inserimento informazioni relative al preventivo all'interno dell'html
-                if(statoPreventivo == 'preventivoRicevuto'){
-                    statoPreventivo = 'riepilogoPreventivo';
+                if(statoPreventivo == 'preventivoRicevuto'){ statoPreventivo = 'riepilogoPreventivo';
                     var name = document.createElement('P');
                     var servizio = document.createElement('P');
                     var data = document.createElement('P');
@@ -151,8 +150,11 @@ function displayListaPreventivi() {
 
                     document.getElementById('rifiuta').setAttribute("onclick", "updatePreventivo('"+idPreventivo+"', 'preventivoRifiutato')");
                     document.getElementById('accetta').setAttribute("onclick", "updatePreventivo('"+idPreventivo+"', 'finalizzato');");
+
+                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivoRicevuto', 'listaPreventivi'); resetBackButton('riepilogo', 'preventivoRicevuto')");
                 } else if(statoPreventivo == 'preventivo'){
-                    
+                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaPreventivi'); resetBackButton('riepilogo', 'preventivo')");
+                    document.getElementById('preventivo').innerHTML='';
                     var name = document.createElement('H2');
                     var servizio = document.createElement('P');
                     var data = document.createElement('P');
@@ -175,6 +177,8 @@ function displayListaPreventivi() {
                     }else if(result['0']['stato'] == 'preventivoRifiutato'){
                         stato.innerHTML = "Stato richiesta: Rifiutata da te";
                     } else if(result['0']['stato'] == 'finalizzato'){
+                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaAttive'); resetBackButton('riepilogo', 'listaAttive')");
+                        document.getElementById('preventivo').innerHTML='';
                         stato.innerHTML = "Stato richiesta: Prenotazione attiva";
                     } 
 
@@ -209,4 +213,16 @@ function displayListaPreventivi() {
           };
     
           http.send(vars);
+    }
+
+    function resetBackButton(div, tipoRiepilogo){
+        switch (div){
+            case 'lista':
+                document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
+                break;
+            case 'riepilogo':
+                document.getElementById("back").setAttribute( "onclick", "hideDiv('"+tipoRiepilogo+"', 'listaPreventivi')" );
+                if(tipoRiepilogo == 'preventivoRicevuto') {document.getElementById('riepilogoPreventivo').innerHTML = '';}
+                break;
+        }
     }

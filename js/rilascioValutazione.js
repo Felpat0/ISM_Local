@@ -9,7 +9,7 @@ document.addEventListener('input', function (event) {
 }, false);
 
 function inviaValutazione(){
-    const url= ip + '/rilascioValutazione/rilascioValutazione.php';
+      const url= ip + '/rilascioValutazione/rilascioValutazione.php';
       var http = new XMLHttpRequest();
       http.open("POST", url, true);
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

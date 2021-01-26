@@ -6,7 +6,7 @@
     <script src="js/scriptsAnziano/preventivi.js"></script>
     <script src="js/hideDiv.js"></script>
     <script src="js/listaServizi.js"></script>
-    <script> window.onload = setTimeout(displayListaPreventivi,200);</script>
+    <script> window.onload = setTimeout(displayListaPreventivi(),200);</script>
     <link href="css\preventiviAnziano.css" rel="stylesheet" type="text/css">
   </head>
   <body>
@@ -33,5 +33,6 @@
       
     </div>
     
+    <script> document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );</script>
   </body>
 </html>

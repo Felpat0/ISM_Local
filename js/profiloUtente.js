@@ -1,4 +1,14 @@
  setTimeout(function(){
+        if(localStorage.getItem('idLista')){
+            document.getElementById("back").setAttribute("onclick", "window.location.href='prenotazioniAnziano.html'");
+        } else if(localStorage.getItem('statoPrenotazione') == 'listaUtenti') {
+            document.getElementById("back").setAttribute("onclick", "window.location.href='richiediServizioAnziano.html'");
+        } else {
+            document.getElementById("back").setAttribute("onclick", "window.location.href='preventiviAnziano.html'");
+        }
+  localStorage.setItem('id', 1);
+  localStorage.setItem('idUtente', 1);
+  localStorage.setItem('tipoUtente', 'anziano');
         const url= ip + '/profiloUtente/profiloUtente.php';
         var http = new XMLHttpRequest();
         http.open("POST", url, true);

@@ -7,6 +7,8 @@ var utenti = [];
 var idOfferenti = [];
 var x = 0; //Contatore elementi di utenti
 
+
+
 document.addEventListener('input', function (event) {
     //Se è stato scelto uno dei servizi
     if(event.target.id.includes("rb")){
@@ -153,7 +155,7 @@ function displayListaUtenti(){
                         var linkProfilo = document.createElement('A');
                         linkProfilo.innerHTML = 'Visualizza profilo';
                         linkProfilo.setAttribute("href", "#");
-                        linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
+                        linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('statoPrenotazione', 'listaUtenti'); window.location.href='profiloOfferente.html';");
                     }
                 }
             }
@@ -205,6 +207,8 @@ function inviaRichiestaPreventivo(){
 
         http.send(vars);
     }
+
+    window.location.href = 'homeAnziano.html';
 }
 
 function inviaRichiestaPrenotazione(){
@@ -258,6 +262,8 @@ function inviaRichiestaPrenotazione(){
     
             http.send(vars);
         }
+
+        window.location.href = 'homeAnziano.html';
     }
 }
 

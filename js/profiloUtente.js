@@ -6,9 +6,7 @@
         } else {
             document.getElementById("back").setAttribute("onclick", "window.location.href='preventiviAnziano.html'");
         }
-  localStorage.setItem('id', 1);
-  localStorage.setItem('idUtente', 1);
-  localStorage.setItem('tipoUtente', 'anziano');
+        
         const url= ip + '/profiloUtente/profiloUtente.php';
         var http = new XMLHttpRequest();
         http.open("POST", url, true);

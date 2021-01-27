@@ -18,15 +18,37 @@ function getListaChat(){
 
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
+                console.log(http.responseText);
                 var result = JSON.parse(http.responseText);
-                console.log(result);
+                
+                for(var i=0; i<result.length; i++){
+                    //Creazione div che conterrà la chat
+                    var newDiv = document.createElement('DIV');
+                    newDiv.id = 'div'+i;
+                    //Inserimento del nuovo div in quello contenente la lista delle chat
+                    document.getElementById('listaChat').appendChild(newDiv);
 
-                if(result == 'queryError'){
-                    console.log('errore server');
-                    //display messaggio errore
-                } else if(result == 'ok'){
-                    document.getElementById('messaggio').value = '';
-                    //display messaggio
+                    //Creazione button contenente il nome dell'utente e l'ultimo messaggio ricevuto/inviato
+                    var newBtn = document.createElement('BUTTON');
+                    newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi()");
+                    newBtn.className = 'element';
+                    newBtn.id = 'btn'+i;
+                    document.getElementById("div"+i).appendChild(newBtn); 
+
+                    //Inserimento del nome dell'utente offerente e del messaggio
+                    var name = document.createElement('H2');
+                    var messaggio = document.createElement('P');
+                    messaggio.innerHTML = result[i]['testo'];
+                    messaggio.className = 'msg';
+                    
+                    if(localStorage.getItem('tipoUtente') == 'anziano'){
+                        name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
+                    } else {
+                        name.innerHTML = result[i]['nomeAnziano'] + " " + result[i]['cognomeAnziano'];
+                    }
+
+                    document.getElementById('btn'+i).appendChild(name);
+                    document.getElementById('btn'+i).appendChild(messaggio);
                 }
             }
         };

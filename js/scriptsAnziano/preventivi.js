@@ -4,7 +4,7 @@ function displayListaPreventivi() {
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    localStorage.setItem('id', 1); //da togliere
+    //localStorage.setItem('id', 1); //da togliere
     var vars = "id="+localStorage["id"]; 
 
 
@@ -151,9 +151,9 @@ function displayListaPreventivi() {
                     document.getElementById('rifiuta').setAttribute("onclick", "updatePreventivo('"+idPreventivo+"', 'preventivoRifiutato')");
                     document.getElementById('accetta').setAttribute("onclick", "updatePreventivo('"+idPreventivo+"', 'finalizzato');");
 
-                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivoRicevuto', 'listaPreventivi'); resetBackButton('riepilogo', 'preventivoRicevuto')");
+                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivoRicevuto', 'listaPreventivi'); resetBackButton('lista')");
                 } else if(statoPreventivo == 'preventivo'){
-                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaPreventivi'); resetBackButton('riepilogo', 'preventivo')");
+                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaPreventivi'); resetBackButton('lista'");
                     document.getElementById('preventivo').innerHTML='';
                     var name = document.createElement('H2');
                     var servizio = document.createElement('P');
@@ -177,7 +177,7 @@ function displayListaPreventivi() {
                     }else if(result['0']['stato'] == 'preventivoRifiutato'){
                         stato.innerHTML = "Stato richiesta: Rifiutata da te";
                     } else if(result['0']['stato'] == 'finalizzato'){
-                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaAttive'); resetBackButton('riepilogo', 'listaAttive')");
+                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaAttive'); resetBackButton(''riepilogo', 'listaAttive'')");
                         document.getElementById('preventivo').innerHTML='';
                         stato.innerHTML = "Stato richiesta: Prenotazione attiva";
                     } 
@@ -221,7 +221,7 @@ function displayListaPreventivi() {
                 document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
                 break;
             case 'riepilogo':
-                document.getElementById("back").setAttribute( "onclick", "hideDiv('"+tipoRiepilogo+"', 'listaPreventivi')" );
+                document.getElementById("back").setAttribute( "onclick", "hideDiv('"+tipoRiepilogo+"', 'listaPreventivi'); " );
                 if(tipoRiepilogo == 'preventivoRicevuto') {document.getElementById('riepilogoPreventivo').innerHTML = '';}
                 break;
         }

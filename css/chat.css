@@ -5,6 +5,7 @@
   top: 28%;
   left: 1%;
 }
+
 .element {
   position: relative;
   width: 100%;
@@ -21,6 +22,18 @@
 
 .msg {
   text-align: left;
+}
+
+.msg-unread {
+  text-align: left;
+  font-weight: bold;
+}
+
+.notification {
+  position: absolute;
+  top: 4%;
+  color: #0000ff;
+  text-decoration: none;
 }
 
 .chat {

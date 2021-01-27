@@ -69,7 +69,7 @@ function loadJSONPreventivi(){
   http.send(vars);
 }
 
-setTimeout(loadJSONPreventivi, 300);
+loadJSONPreventivi();
 
 function apriProfiloAnziano(idAnziano){
   localStorage.setItem('idUtente', idAnziano);
@@ -213,7 +213,7 @@ function rifiutaPreventivo(idPreventivo, idAnziano, idOfferente, nomeOfferente){
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  var vars = "idPreventivo=" + idPreventivo + "&idAnziano=" + idAnziano  + "&idOfferente=" + idOfferente + "&nomeOfferente=" + nomeOfferente;;
+  var vars = "idPreventivo=" + idPreventivo + "&idAnziano=" + idAnziano  + "&idOfferente=" + idOfferente + "&nomeOfferente=" + nomeOfferente;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       localStorage.setItem("messaggioPreventivi", "La richiesta di preventivo e' stata rifiutata");

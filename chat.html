@@ -16,28 +16,16 @@
     <script src="js/header.js"></script>
     <!-- Inizio Lista delle chat -->
     <div class="lista-chat" id = "listaChat">
-      <button class="element">
-        <div class="nome-notifica">
-          <h2>Teresa Teresella<a class="notification" href="#">⬤</a></h2>
-        </div>
-        <p class="msg-unread">Vorrei buttare la spazzatura</p>
-      </button>
     </div>
     <!-- Inizio Chat specifica -->
 
     <div class="chat" id = "chat" style="display: none">
-      <div class="nome-chat" >Nome a caso</div>
-      <div class="cronologia">
-        <div class="bubble-ricevuto bubble-bottom-left">
-          Ciao belli de nonno come state mannaggia a cristina d'avena me fa male la cazzo di schiena
-        </div>
-        <div class="bubble-inviato bubble-bottom-right">
-          Oh no nonno che peccato vabbe dai mo ti portiamo le medicine
-        </div>
+      <div class="nome-chat" id = "nomeCognome">Nome a caso</div>
+      <div class="cronologia" id = "cronologia">
       </div>
       <div class="container">
-        <input type="text" class="messaggio" id="messaggio"></input>
-        <button class="invio" onclick="inviaMessaggio();">Invio</button>
+        <input type="text" class="messaggio" id="msg"></input>
+        <button class="invio" id = "send" onclick="inviaMessaggio();">Invio</button>
       </div>
     </div>
   </body>

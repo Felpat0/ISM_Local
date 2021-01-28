@@ -1,9 +1,3 @@
-var idOfferente = 0;
-
-function getIdOfferente(id){
-    idOfferente = id;
-}
-
 
 function getListaChat(){
     setTimeout(function(){
@@ -14,11 +8,10 @@ function getListaChat(){
         var http = new XMLHttpRequest();
         http.open("POST", url, true);
         http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var vars = "id=" + localStorage['id'] + "&tipoUtente=" + localStorage['tipoUtente'];//+ localStorage['id']; 
+        var vars = "id=" + localStorage['id'] + "&tipoUtente=" + localStorage['tipoUtente'];
 
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(http.responseText);
                 var result = JSON.parse(http.responseText);
                 
                 for(var i=0; i<result.length; i++){
@@ -30,23 +23,35 @@ function getListaChat(){
 
                     //Creazione button contenente il nome dell'utente e l'ultimo messaggio ricevuto/inviato
                     var newBtn = document.createElement('BUTTON');
-                    newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi()");
                     newBtn.className = 'element';
                     newBtn.id = 'btn'+i;
-                    document.getElementById("div"+i).appendChild(newBtn); 
-
+                   
                     //Inserimento del nome dell'utente offerente e del messaggio
                     var name = document.createElement('H2');
                     var messaggio = document.createElement('P');
                     messaggio.innerHTML = result[i]['testo'];
-                    messaggio.className = 'msg';
                     
                     if(localStorage.getItem('tipoUtente') == 'anziano'){
                         name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
+                        newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idOfferente'] +"')");
+                        if(result[i]['daLeggere'] && result[i]['mittente'] != 'anziano'){
+                            messaggio.className = 'msg-unread';
+                            name.innerHTML += '<a class="notification">⬤</a><';
+                        } else {
+                            messaggio.className = 'msg';
+                        }
                     } else {
                         name.innerHTML = result[i]['nomeAnziano'] + " " + result[i]['cognomeAnziano'];
+                        newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idAnziano'] +"')");
+                        if(result[i]['daLeggere'] && result[i]['mittente'] != 'offerente'){
+                            messaggio.className = 'msg-unread';
+                            name.innerHTML += '<a class="notification">⬤</a><';
+                        } else {
+                            messaggio.className = 'msg';
+                        }
                     }
 
+                    document.getElementById("div"+i).appendChild(newBtn); 
                     document.getElementById('btn'+i).appendChild(name);
                     document.getElementById('btn'+i).appendChild(messaggio);
                 }
@@ -57,24 +62,76 @@ function getListaChat(){
     }, 250);
 }
 
-function getMessaggi(){
+function getMessaggi(id){
+    localStorage.setItem('id', 1);
+    localStorage.setItem('tipoUtente', 'anziano');
 
+    const url= ip + '/chat/getMessaggi.php';
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var vars = 'id=' + localStorage['id'] + '&id2=' + id + '&tipoUtente=' + localStorage['tipoUtente']; 
+
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            
+            var result = JSON.parse(http.responseText);
+
+            for(var i=0; i<result.length; i++){
+                var newDiv = document.createElement('DIV');
+                newDiv.id = 'divM'+i;
+                document.getElementById('cronologia').appendChild(newDiv);
+
+                var messaggio = document.createElement('DIV');
+
+                if(localStorage.getItem('tipoUtente') == 'anziano'){
+                    document.getElementById('nomeCognome').innerHTML =  result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
+                    if(result[i]['mittente'] != 'anziano'){
+                        messaggio.className = 'bubble-ricevuto bubble-bottom-left';
+                    } else {
+                        messaggio.className = 'bubble-inviato bubble-bottom-right';
+                    }
+                } else {
+                    document.getElementById('nomeCognome').innerHTML =  result[i]['nomeAnziano'] + " " + result[i]['cognomeAnziano'];
+                    if(result[i]['mittente'] != 'offerente'){
+                        messaggio.className = 'bubble-ricevuto bubble-bottom-left';
+                    } else {
+                        messaggio.className = 'bubble-inviato bubble-bottom-right';
+                    }
+                }
+
+                messaggio.innerHTML = result[i]['testo'];
+                
+                document.getElementById('divM'+i).appendChild(messaggio);
+                document.getElementById('send').setAttribute("onclick", "inviaMessaggio('"+id+"')");
+
+                var e = document.getElementById('divM'+i);
+                e.scrollIntoView(false);
+            }
+        }
+    };
+
+    http.send(vars);
 }
 
 
-function inviaMessaggio(){
+function inviaMessaggio(id){
     var data = new Date().toISOString().slice(0, 10);
     var ora = new Date().toLocaleTimeString();
-    var testo = document.getElementById('messaggio').value;
+    var testo = document.getElementById('msg').value;
     localStorage.setItem('id', 1);
     localStorage.setItem('tipoUtente', 'anziano');
-    idOfferente = 1;
 
     const url= ip + '/chat/inviaMessaggio.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = 'idAnziano=' + localStorage['id'] + '&idOfferente=' + idOfferente + '&tipoUtente=' + localStorage['tipoUtente'] + '&data=' + data + '&ora=' + ora + '&testo=' + testo; //idAnziano, idOfferente, idServizio, note, data, ora, stato
+    if(localStorage.getItem('tipoUtente') == 'anziano'){
+        var vars = 'idAnziano=' + localStorage['id'] + '&idOfferente=' + id + '&tipoUtente=' + localStorage['tipoUtente'] + '&data=' + data + '&ora=' + ora + '&testo=' + testo; //idAnziano, idOfferente, idServizio, note, data, ora, stato
+    } else {
+        var vars = 'idAnziano=' + id + '&idOfferente=' + localStorage['id'] + '&tipoUtente=' + localStorage['tipoUtente'] + '&data=' + data + '&ora=' + ora + '&testo=' + testo; //idAnziano, idOfferente, idServizio, note, data, ora, stato
+    }
+    
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -84,12 +141,15 @@ function inviaMessaggio(){
                 console.log('errore server');
                 //display messaggio errore
             } else if(result == 'ok'){
-                document.getElementById('messaggio').value = '';
-                //display messaggio
+                document.getElementById('msg').value = '';
+                document.getElementById('cronologia').innerHTML = '';
+                getMessaggi(id);
+                
             }
         }
     };
 
     http.send(vars);
 }
+
 

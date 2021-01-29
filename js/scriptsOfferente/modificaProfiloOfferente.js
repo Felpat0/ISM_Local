@@ -11,7 +11,7 @@ function loadJSONPrenotazioni(){
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   //SETTO UN ID TEMPORANEO A CASO, DA ELIMINARE
-  localStorage.setItem("id", 11);
+  localStorage.setItem("id", 1);
   localStorage.setItem("tipoUtente", "offerente");
   var vars = "idOfferente=" + localStorage["id"];
   http.onreadystatechange = function() {
@@ -30,7 +30,6 @@ function loadJSONPrenotazioni(){
 function setZoneEsistenti(){
   //Aggiungi e riempi una select per ogni zona dell'utente
   for(t = 1; t != dati["zone"].length + 1; t++){
-    console.log(t);
     nZone ++;
 
     tempHtml = `
@@ -146,7 +145,6 @@ function setFasceEsistenti(){
   //Riempo gli input con le fasce dell'utente corrente
   for(i = 0; i != dati["fasceOrarie"].length; i++){
     t = i + 1;
-    console.log("inizio" + t);
     document.getElementById("inizio" + t).value = dati["fasceOrarie"][i]["oraInizio"];
     document.getElementById("fine" + t).value = dati["fasceOrarie"][i]["oraFine"];
   }
@@ -211,10 +209,6 @@ document.addEventListener('input', function (event) {
 	}
 }, false);
 
-
-
-function showZone(){
-}
 
 function addZona(){
   nZone ++;
@@ -336,9 +330,7 @@ function inviaModifiche(){
 		vars += "&inizio" + i + "=" + fasce[i]["inizio"];
 		vars += "&fine" + i + "=" + fasce[i]["fine"];
 	}
-
   console.log(vars);
-
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         window.location.href = "homeutente.html";

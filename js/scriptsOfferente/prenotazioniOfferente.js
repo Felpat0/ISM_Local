@@ -30,9 +30,17 @@ function updateBackButton(newDiv){
     case "schermata1":
       newOnclick = "window.location.href='homeutente.html'";
       break;
+    case "prenotazioniAttive":
+      newOnclick = "hideDiv('prenotazioniAttive', 'schermata1'); ";
+      newOnclick += "updateBackButton('schermata1');";
+      break;
     case "richiesteSospeso":
       newOnclick = "hideDiv('richiesteSospeso', 'schermata1'); ";
       newOnclick += "updateBackButton('schermata1');";
+      break;
+    case "riepilogoAttive":
+      newOnclick = "hideDiv('riepilogoAttive', 'prenotazioniAttive'); ";
+      newOnclick += "updateBackButton('prenotazioniAttive');";
       break;
     case "riepilogoSospeso":
       newOnclick = "hideDiv('riepilogoSospeso', 'richiesteSospeso'); ";
@@ -62,6 +70,8 @@ function loadJSONPrenotazioni(){
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       prenotazioni = JSON.parse(http.responseText);
+      console.log(prenotazioni);
+      loadPrenotazioniAttive();
       loadPrenotazioniInSospeso();
       loadPrenotazioniArchiviate();
     }
@@ -76,22 +86,57 @@ function apriProfiloAnziano(idAnziano){
   window.location.href = 'profiloAnziano.html';
 }
 
+function loadPrenotazioniAttive(){
+  document.getElementById("prenotazioniAttive").innerHTML = "";
+  //Scrivere la lista delle prenotazioni attive
+  for(i = 0; i != prenotazioni["prenotazioni"].length; i++){
+    if(prenotazioni["prenotazioni"][i]["stato"] == "accettata"){
+      element = "";
+      element += '<div class="p">';
+      element += '<button onclick="showRiepilogoAttiva(' + i + ')" class="prenotazione">';
+      element += '<h2>' + prenotazioni["prenotazioni"][i]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][i]["cognomeAnziano"] + '</h2>'
+      element += '<h3>' + listaServizi[prenotazioni["prenotazioni"][i]["idServizio"]] + '</h3>';
+      element += '</button>';
+      element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>';
+      element += '</div>';
+      document.getElementById("prenotazioniAttive").innerHTML += element;
+    }
+  }
+  //Scrivere la lista delle prenotazioni attive derivanti da preventivo
+  for(i = 0; i != prenotazioni["preventiviAttivi"].length; i++){
+      element = "";
+      element += '<div class="p">';
+      element += '<button onclick="showRiepilogoPreventivoAttivo(' + i + ')" class="prenotazione">';
+      element += '<h2>' + prenotazioni["preventiviAttivi"][i]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][i]["cognomeAnziano"] + '</h2>'
+      element += '<h3>' + listaServizi[prenotazioni["preventiviAttivi"][i]["idServizio"]] + '</h3>';
+      element += '</button>';
+      element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni["preventiviAttivi"][i]["idAnziano"] + ')">Visualizza profilo</a>';
+      element += '</div>';
+      document.getElementById("prenotazioniAttive").innerHTML += element;
+  }
+}
+
 function loadPrenotazioniInSospeso(){
   document.getElementById("richiesteSospeso").innerHTML = "";
   //Scrivere la lista delle richieste in sospeso
-  for(i = 0; i != prenotazioni.length; i++){
-    if(prenotazioni[i]["stato"] == "inviata"){
+  for(i = 0; i != prenotazioni["prenotazioni"].length; i++){
+    if(prenotazioni["prenotazioni"][i]["stato"] == "inviata"){
       element = "";
       element += '<div class="p">';
       element += '<button onclick="showRiepilogoSospeso(' + i + ')" class="prenotazione">';
-      element += '<h2>' + prenotazioni[i]["nomeAnziano"] + prenotazioni[i]["cognomeAnziano"] + '</h2>'
-      element += '<h3>' + listaServizi[prenotazioni[i]["idServizio"]] + '</h3>';
+      element += '<h2>' + prenotazioni["prenotazioni"][i]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][i]["cognomeAnziano"] + '</h2>'
+      element += '<h3>' + listaServizi[prenotazioni["prenotazioni"][i]["idServizio"]] + '</h3>';
       element += '</button>';
-      element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni[i]["idAnziano"] + ')">Visualizza profilo</a>';
+      element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>';
       element += '</div>';
       document.getElementById("richiesteSospeso").innerHTML += element;
     }
   }
+}
+
+function showPrenotazioniAttive(){
+  updateBackButton("prenotazioniAttive");
+  hideDiv("schermata1", "prenotazioniAttive");
 }
 
 function showRichiesteSospeso(){
@@ -104,18 +149,51 @@ function showRichiesteArchiviate(){
   hideDiv("schermata1", "richiesteArchiviate");
 }
 
+function showRiepilogoAttiva(index){
+  element = `
+  <div id="prenotazione">
+    <h3>Richiesta prenotazione di ` + prenotazioni["prenotazioni"][index]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][index]["cognomeAnziano"] + `</h3>
+    <p>Servizio: ` + listaServizi[prenotazioni["prenotazioni"][index]["idServizio"]] + `</p>
+    <p>Data: ` + prenotazioni["prenotazioni"][index]["data"] + `</p>
+    <p>Ora: ` + prenotazioni["prenotazioni"][index]["ora"] + `</p>
+    <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
+    <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + `€ l'ora</p>
+  </div>`;
+  document.getElementById("riepilogoAttive").innerHTML = element;
+
+  updateBackButton("riepilogoAttive");
+  hideDiv("prenotazioniAttive", "riepilogoAttive");
+}
+
+function showRiepilogoPreventivoAttivo(index){
+  element = `
+  <div id="prenotazione">
+    <h3>Richiesta prenotazione di ` + prenotazioni["preventiviAttivi"][index]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][index]["cognomeAnziano"] + `</h3>
+    <p>Servizio: ` + listaServizi[prenotazioni["preventiviAttivi"][index]["idServizio"]] + `</p>
+    <p>Data: ` + prenotazioni["preventiviAttivi"][index]["data"] + `</p>
+    <p>Ora: ` + prenotazioni["preventiviAttivi"][index]["ora"] + `</p>
+    <p>Indirizzo: ` + prenotazioni["preventiviAttivi"][index]["indirizzo"] + `</p>
+    <p>Paga: ` + prenotazioni["preventiviAttivi"][index]["prezzo"] + `€ l'ora</p>
+    <p>Note: ` + prenotazioni["preventiviAttivi"][index]["note"] + `</p>
+  </div>`;
+  document.getElementById("riepilogoAttive").innerHTML = element;
+
+  updateBackButton("riepilogoAttive");
+  hideDiv("prenotazioniAttive", "riepilogoAttive");
+}
+
 function showRiepilogoSospeso(index){
   element = `
   <div id="prenotazione">
-    <h3>Richiesta prenotazione di ` + prenotazioni[index]["nomeAnziano"] + " " + prenotazioni[index]["cognomeAnziano"] + `</h3>
-    <p>Servizio: ` + listaServizi[prenotazioni[index]["idServizio"]] + `</p>
-    <p>Data: ` + prenotazioni[index]["data"] + `</p>
-    <p>Ora: ` + prenotazioni[index]["ora"] + `</p>
-    <p>Indirizzo: ` + prenotazioni[index]["indirizzo"] + `</p>
-    <p>Paga: ` + prenotazioni[index]["pagaOraria"] + `€ l'ora</p>
+    <h3>Richiesta prenotazione di ` + prenotazioni["prenotazioni"][index]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][index]["cognomeAnziano"] + `</h3>
+    <p>Servizio: ` + listaServizi[prenotazioni["prenotazioni"][index]["idServizio"]] + `</p>
+    <p>Data: ` + prenotazioni["prenotazioni"][index]["data"] + `</p>
+    <p>Ora: ` + prenotazioni["prenotazioni"][index]["ora"] + `</p>
+    <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
+    <p>Paga: ` + prenotazioni["prenotazioni"][index]["pagaOraria"] + `€ l'ora</p>
   </div>
-  <button class="accetta" onclick="modificaPrenotazione(` + prenotazioni[index]["idPrenotazione"] + `, 'accettata', ` + prenotazioni[index]["idAnziano"] + `, ` + prenotazioni[index]["idOfferente"] + `, '` + prenotazioni[index]["nomeOfferente"] + ` ` + prenotazioni[index]["cognomeOfferente"] + `');">Accetta</button>
-  <button class="rifiuta" onclick="modificaPrenotazione(` + prenotazioni[index]["idPrenotazione"] + `, 'rifiutata', ` + prenotazioni[index]["idAnziano"] + `, ` + prenotazioni[index]["idOfferente"] + `, '` + prenotazioni[index]["nomeOfferente"] + ` ` + prenotazioni[index]["cognomeOfferente"] + `');">Rifiuta</button>
+  <button class="accetta" onclick="modificaPrenotazione(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `, 'accettata', ` + prenotazioni["prenotazioni"][index]["idAnziano"] + `, ` + prenotazioni["prenotazioni"][index]["idOfferente"] + `, '` + prenotazioni["prenotazioni"][index]["nomeOfferente"] + ` ` + prenotazioni["prenotazioni"][index]["cognomeOfferente"] + `');">Accetta</button>
+  <button class="rifiuta" onclick="modificaPrenotazione(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `, 'rifiutata', ` + prenotazioni["prenotazioni"][index]["idAnziano"] + `, ` + prenotazioni["prenotazioni"][index]["idOfferente"] + `, '` + prenotazioni["prenotazioni"][index]["nomeOfferente"] + ` ` + prenotazioni["prenotazioni"][index]["cognomeOfferente"] + `');">Rifiuta</button>
   `;
   document.getElementById("riepilogoSospeso").innerHTML = element;
 
@@ -126,13 +204,13 @@ function showRiepilogoSospeso(index){
 function loadPrenotazioniArchiviate(){
   document.getElementById("richiesteArchiviate").innerHTML = "";
   //Scrivere la lista delle richieste in sospeso
-  for(i = 0; i != prenotazioni.length; i++){
-    if(prenotazioni[i]["stato"] == "completata" || prenotazioni[i]["stato"] == "rifiutata"){
+  for(i = 0; i != prenotazioni["prenotazioni"].length; i++){
+    if(prenotazioni["prenotazioni"][i]["stato"] == "completata" || prenotazioni["prenotazioni"][i]["stato"] == "rifiutata"){
       element = "";
       element += '<div class="p">';
       element += '<button onclick="showRiepilogoArchiviate(' + i + ')" class="prenotazione">';
-      element += '<h2>' + prenotazioni[i]["nomeAnziano"] + prenotazioni[i]["cognomeAnziano"] + '</h2>'
-      element += '<h3>' + listaServizi[prenotazioni[i]["idServizio"]] + '</h3>';
+      element += '<h2>' + prenotazioni["prenotazioni"][i]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][i]["cognomeAnziano"] + '</h2>'
+      element += '<h3>' + listaServizi[prenotazioni["prenotazioni"][i]["idServizio"]] + '</h3>';
       element += '</button>';
       element += '<a href="#" class="linkprofilo" onclick="">Visualizza profilo</a>';
       element += '</div>';
@@ -144,13 +222,13 @@ function loadPrenotazioniArchiviate(){
 function showRiepilogoArchiviate(index){
   element = `
   <div id="prenotazione">
-    <h3>Richiesta prenotazione di ` + prenotazioni[index]["nomeAnziano"] + " " + prenotazioni[index]["cognomeAnziano"] + `</h3>
-    <p>Servizio: ` + listaServizi[prenotazioni[index]["idServizio"]] + `</p>
-    <p>Data: ` + prenotazioni[index]["data"] + `</p>
-    <p>Ora: ` + prenotazioni[index]["ora"] + `</p>
-    <p>Indirizzo: ` + prenotazioni[index]["indirizzo"] + `</p>
-    <p>Paga: ` + prenotazioni[index]["pagaOraria"] + `€ l'ora</p>
-    <p>Stato: ` + prenotazioni[index]["stato"] + `</p>
+    <h3>Richiesta prenotazione di ` + prenotazioni["prenotazioni"][index]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][index]["cognomeAnziano"] + `</h3>
+    <p>Servizio: ` + listaServizi[prenotazioni["prenotazioni"][index]["idServizio"]] + `</p>
+    <p>Data: ` + prenotazioni["prenotazioni"][index]["data"] + `</p>
+    <p>Ora: ` + prenotazioni["prenotazioni"][index]["ora"] + `</p>
+    <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
+    <p>Paga: ` + prenotazioni["prenotazioni"][index]["pagaOraria"] + `€ l'ora</p>
+    <p>Stato: ` + prenotazioni["prenotazioni"][index]["stato"] + `</p>
   </div>
   `;
   document.getElementById("riepilogoSospeso").innerHTML = element;

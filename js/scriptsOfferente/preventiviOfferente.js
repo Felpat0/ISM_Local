@@ -146,7 +146,7 @@ function showRiepilogoRichiesta(i){
 function loadPreventiviInviati(){
   document.getElementById("preventiviInviati").innerHTML = "";
   for(i = 0; i != preventivi.length; i++){
-    if(preventivi[i]["stato"] != "richiestaInviata"){
+    if(preventivi[i]["stato"] != "richiestaInviata" && preventivi[i]["stato"] != "finalizzato"){
       var element = `
       <div class="p">
         <button onclick="showRiepilogoPreventivoInviato(` + i + `)" class="` + preventivi[i]["stato"] + `">

@@ -21,16 +21,21 @@
     </script>
     <!-- Inizio richiesteprenotazioni -->
     <div id="schermata1" class="prenotazioni">
+      <button onclick="showPrenotazioniAttive()" class="prenotazione-selection">In corso</button>
       <button onclick="showRichiesteSospeso()" class="prenotazione-selection">In sospeso</button>
-      <button onclick="#" class="prenotazione-selection">In corso</button>
       <button onclick="showRichiesteArchiviate()" class="prenotazione-selection">Archiviate</button>
+    </div>
+    <!-- Inizio PrenotazioniAttive -->
+    <div id="prenotazioniAttive" class="listapren" style="display:none;">
+    </div>
+    <!-- Inizio PrenotazioniAttiveRiepilogo -->
+    <div id="riepilogoAttive" style="display:none;">
     </div>
     <!-- Inizio RichiesteSospeso -->
     <div id="richiesteSospeso" class="listapren" style="display:none;">
     </div>
     <!-- Inizio RichiesteSospesoRiepilogo -->
     <div id="riepilogoSospeso" style="display:none;">
-
     </div>
     <!-- Inizio RichiesteArchiviate -->
     <div id="richiesteArchiviate" class="listapren" style="display:none;">

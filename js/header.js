@@ -53,7 +53,6 @@ function loadJSONNotifiche(){
           //SCRIVERE QUI LE NOTIFICHE NELL'HTML
         }
       }
-      console.log(notifiche);
 
       //Se ci sono nuove notifiche, cambiare l'icona sulla barra
       if(nuoveNotifiche){

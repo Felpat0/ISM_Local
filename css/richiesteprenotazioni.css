@@ -1,7 +1,7 @@
 .sospeso {
   position: relative;
   width: 96%;
-  height: 180px;
+  height: 100px;
   left: 2%;
   background: white;
   border: 2px solid forestgreen;
@@ -17,7 +17,7 @@
 .archiviate {
   position: relative;
   width: 96%;
-  height: 180px;
+  height: 100px;
   top: 1%;
   left: 2%;
   background: white;

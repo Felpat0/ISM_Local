@@ -25,7 +25,7 @@ if(fileName == 'homeanziano.html' || fileName == 'homeutente.html'){
 }
 
 if(localStorage.getItem('tipoUtente') == 'offerente'){
-  document.getElementById('home').setAttribute("onclick", "window.location.href = 'homeofferente.html'");
+  document.getElementById('home').setAttribute("onclick", "window.location.href = 'homeutente.html'");
 } else {
   document.getElementById('home').setAttribute("onclick", "window.location.href = 'homeanziano.html'");
 }

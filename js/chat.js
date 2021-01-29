@@ -1,8 +1,8 @@
-
+//var interval = setInterval(test, 10000);
 function getListaChat(){
     setTimeout(function(){
         localStorage.setItem('id', 1);
-        localStorage.setItem('tipoUtente', 'anziano');
+        localStorage.setItem('tipoUtente', 'offerente');
 
         const url= ip + '/chat/listaChat.php';
         var http = new XMLHttpRequest();
@@ -33,21 +33,23 @@ function getListaChat(){
                     
                     if(localStorage.getItem('tipoUtente') == 'anziano'){
                         name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
-                        newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idOfferente'] +"')");
-                        if(result[i]['daLeggere'] && result[i]['mittente'] != 'anziano'){
+                        if(result[i]['daLeggere'] == 1 && result[i]['mittente'] != 'anziano'){
                             messaggio.className = 'msg-unread';
                             name.innerHTML += '<a class="notification">⬤</a><';
+                            newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); updateMessaggio('"+ result[i]['idOfferente'] +"'); getMessaggi('"+ result[i]['idOfferente'] +"'); setBackButton('chat')");
                         } else {
                             messaggio.className = 'msg';
+                            newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idOfferente'] +"'); setBackButton('chat')");
                         }
                     } else {
                         name.innerHTML = result[i]['nomeAnziano'] + " " + result[i]['cognomeAnziano'];
-                        newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idAnziano'] +"')");
-                        if(result[i]['daLeggere'] && result[i]['mittente'] != 'offerente'){
+                        if(result[i]['daLeggere'] == 1 && result[i]['mittente'] != 'offerente'){
                             messaggio.className = 'msg-unread';
                             name.innerHTML += '<a class="notification">⬤</a><';
+                            newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); updateMessaggio('"+ result[i]['idAnziano'] +"'); getMessaggi('"+ result[i]['idAnziano'] +"'); setBackButton('chat')");
                         } else {
                             messaggio.className = 'msg';
+                            newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idAnziano'] +"'); setBackButton('chat')");
                         }
                     }
 
@@ -64,7 +66,7 @@ function getListaChat(){
 
 function getMessaggi(id){
     localStorage.setItem('id', 1);
-    localStorage.setItem('tipoUtente', 'anziano');
+    localStorage.setItem('tipoUtente', 'offerente');
 
     const url= ip + '/chat/getMessaggi.php';
     var http = new XMLHttpRequest();
@@ -120,7 +122,7 @@ function inviaMessaggio(id){
     var ora = new Date().toLocaleTimeString();
     var testo = document.getElementById('msg').value;
     localStorage.setItem('id', 1);
-    localStorage.setItem('tipoUtente', 'anziano');
+    localStorage.setItem('tipoUtente', 'offerente');
 
     const url= ip + '/chat/inviaMessaggio.php';
     var http = new XMLHttpRequest();
@@ -152,4 +154,41 @@ function inviaMessaggio(id){
     http.send(vars);
 }
 
+function updateMessaggio(id){
+    const url= ip + '/chat/updateMessaggio.php';
+        var http = new XMLHttpRequest();
+        http.open("POST", url, true);
+        http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        if(localStorage.getItem('tipoUtente') == 'anziano'){
+            var vars = 'idAnziano=' + localStorage['id'] + '&idOfferente=' + id +'&daLeggere=0';  
+        } else {
+            var vars = 'idAnziano=' + id + '&idOfferente=' + localStorage['id'] + '&daLeggere=0'; 
+        }
+
+        http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(http.responseText);
+            }
+          };
+    
+          http.send(vars);
+}
+
+
+function setBackButton(div){
+    switch (div){
+        case 'chat':
+            document.getElementById("back").setAttribute( "onclick", "hideDiv('chat', 'listaChat'); setBackButton('home');" );
+            document.getElementById('cronologia').innerHTML = '';
+            break;
+        case 'home':
+            if(localStorage.getItem('tipoUtente') == 'anziano'){
+                document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
+              } else {
+                document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
+              }
+              break;
+    }
+}
 

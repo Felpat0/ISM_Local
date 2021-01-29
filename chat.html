@@ -28,5 +28,13 @@
         <button class="invio" id = "send" onclick="inviaMessaggio();">Invio</button>
       </div>
     </div>
+
+    <script> 
+      if(localStorage.getItem('tipoUtente') == 'anziano'){
+        document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
+      } else {
+        document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
+      }
+    </script>
   </body>
 </html>

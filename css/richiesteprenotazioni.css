@@ -1,4 +1,4 @@
-.sospeso {
+.prenotazione-selection {
   position: relative;
   width: 96%;
   height: 100px;
@@ -14,10 +14,10 @@
   display: inline;
 }
 
-.archiviate {
+.preventivo {
   position: relative;
   width: 96%;
-  height: 100px;
+  height: 180px;
   top: 1%;
   left: 2%;
   background: white;

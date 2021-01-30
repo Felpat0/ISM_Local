@@ -10,7 +10,7 @@ var html = `
     <li><a id="messaggio" onclick="window.location.href = 'chat.html'"><img id="icona" src="img/messaggio.png"></a></li>
     <li> <a id="nuovoMessaggio" onclick="window.location.href = 'chat.html'"><img id="icona" src="img/nuovomessaggio.png"></a></li>
     <li><a id="profilo"><img id="icona" src="img/account.png"></a> </li>
-    <li> <a id="logout"><img id="icona" src="img/logout.png"></a></li>
+    <li> <a id="logout" onclick="logout();"><img id="icona" src="img/logout.png"></a></li>
   </ul>
 </div>
 <button onclick="" id="back"><</button> `;
@@ -137,3 +137,8 @@ function messaggiNonLetti(){
 }
 
 messaggiNonLetti();
+function logout(){
+  localStorage["id"] = "";
+  localStorage["tipoUtente"] = "";
+  window.location.href = "login.html";
+}

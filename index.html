@@ -15,7 +15,12 @@
   <body>
     <script>
       //Inserire qui l'url della pagina da testare
-      window.location.href = "preventiviOfferente.html";
+      if(localStorage["id"] != "" && localStorage["tipoUtente"] == "offerente")
+        window.location.href = "homeutente.html";
+      else if(localStorage["id"] != "" && localStorage["tipoUtente"] == "anziano")
+        window.location.href = "homeanziano.html";
+      else if(localStorage["id"] == "" && localStorage["tipoUtente"] == "")
+        window.location.href = "login.html";
     </script>
     <script src="cordova.js"></script>
   </body>

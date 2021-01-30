@@ -4,6 +4,14 @@
   height: 10%;
   top: 72%;
   left: 5%;
+  background-color: #b9d8ff;
+  border-radius: 40px;
+  border: 2px solid #004dff;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: black;
+  transition: all 0.25s ease;
 }
 
 .rifiuta {
@@ -12,12 +20,23 @@
   height: 10%;
   top: 72%;
   left: 55%;
+  background-color: #b9d8ff;
+  border-radius: 40px;
+  border: 2px solid #004dff;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  color: black;
+  transition: all 0.25s ease;
 }
 
 #prenotazione {
   position: absolute;
   width: 96%;
   height: 60%;
-  background-color: #f549a6;
+  border-radius: 20px;
+  border: 2px solid #004dff;
+  background-color: #b9d8ff;
   top: 30%;
+  left: 2%;
 }

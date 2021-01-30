@@ -15,9 +15,10 @@
       <link href="css\login.css" rel="stylesheet" type="text/css">
   </head>
   <body>
+    <div id="contenitore-form">
     <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
-    <div id="back1"><button id="back" onclick="window.location.href = 'individuazione-utente.html'" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
-    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
+    <div id="back"><button id="back" onclick="window.location.href = 'individuazione-utente.html'" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
+    <h2 class="txt-titolo">Registrazione</h2>
     <div class="form" id="form-registrazione">
       <div class="mb-3">
         <label id="label1" for="nome" class="form-label">Nome</label>
@@ -47,10 +48,13 @@
         <label id="label6" for="città" class="form-label">Città</label>
         <input type="text" class="form-control" id="città">
       </div>
+    <div class="mb-3">
+        <label id="label7" for="cap" class="form-label">Cap</label>
+        <input type="text" class="form-control" id="cap">
+      </div>
       </div>
     <label id="error" style="color:red;"></label><br/>
       <div id="reg-anz"><button id="submit" onclick="register()" type="submit" class="button">Registrati</button></div>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
+</div>
   </body>
 </html>

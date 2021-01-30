@@ -80,9 +80,6 @@ function getMessaggi(id){
             var result = JSON.parse(http.responseText);
 
             for(var i=0; i<result.length; i++){
-                /*var newDiv = document.createElement('DIV');
-                newDiv.id = 'divM'+i;
-                document.getElementById('cronologia').appendChild(newDiv);*/
 
                 var messaggio = document.createElement('DIV');
                 messaggio.id = 'divM'+i;

@@ -81,8 +81,12 @@ function getMessaggi(id){
 
             for(var i=0; i<result.length; i++){
 
+                var newDiv = document.createElement('DIV');
+                newDiv.id = 'divM'+i;
+                newDiv.className = 'message';
+                document.getElementById('cronologia').appendChild(newDiv);
+
                 var messaggio = document.createElement('DIV');
-                messaggio.id = 'divM'+i;
 
                 if(localStorage.getItem('tipoUtente') == 'anziano'){
                     document.getElementById('nomeCognome').innerHTML =  result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
@@ -102,7 +106,7 @@ function getMessaggi(id){
 
                 messaggio.innerHTML = result[i]['testo'];
                 
-                document.getElementById('cronologia').appendChild(messaggio);
+                document.getElementById('divM'+i).appendChild(messaggio);
                 document.getElementById('send').setAttribute("onclick", "inviaMessaggio('"+id+"')");
 
                 var e = document.getElementById('divM'+i);

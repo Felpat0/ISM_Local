@@ -79,7 +79,7 @@ function loadJSONPrenotazioni(){
   http.send(vars);
 }
 
-setTimeout(loadJSONPrenotazioni, 300);
+loadJSONPrenotazioni();
 
 function apriProfiloAnziano(idAnziano){
   localStorage.setItem('idUtente', idAnziano);
@@ -231,11 +231,11 @@ function showRiepilogoArchiviate(index){
     <p>Stato: ` + prenotazioni["prenotazioni"][index]["stato"] + `</p>
   </div>
   `;
-  document.getElementById("riepilogoSospeso").innerHTML = element;
+  
   document.getElementById("riepilogoArchiviate").innerHTML = element;
 
   updateBackButton("riepilogoArchiviate");
-  hideDiv("richiesteSospeso", "riepilogoArchiviate");
+  hideDiv("richiesteArchiviate", "riepilogoArchiviate");
 }
 
 function modificaPrenotazione(idPrenotazione, nuovoStato, idAnziano, idOfferente, nomeOfferente){

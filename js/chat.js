@@ -13,7 +13,7 @@ function getListaChat(){
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var result = JSON.parse(http.responseText);
-                
+
                 for(var i=0; i<result.length; i++){
                     //Creazione div che conterrà la chat
                     var newDiv = document.createElement('DIV');
@@ -25,7 +25,7 @@ function getListaChat(){
                     var newBtn = document.createElement('BUTTON');
                     newBtn.className = 'element';
                     newBtn.id = 'btn'+i;
-                   
+
                     //Inserimento del nome dell'utente offerente e del messaggio
                     var name = document.createElement('H2');
                     var messaggio = document.createElement('P');
@@ -80,11 +80,12 @@ function getMessaggi(id){
             var result = JSON.parse(http.responseText);
 
             for(var i=0; i<result.length; i++){
-                var newDiv = document.createElement('DIV');
+                /*var newDiv = document.createElement('DIV');
                 newDiv.id = 'divM'+i;
-                document.getElementById('cronologia').appendChild(newDiv);
+                document.getElementById('cronologia').appendChild(newDiv);*/
 
                 var messaggio = document.createElement('DIV');
+                messaggio.id = 'divM'+i;
 
                 if(localStorage.getItem('tipoUtente') == 'anziano'){
                     document.getElementById('nomeCognome').innerHTML =  result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
@@ -104,7 +105,7 @@ function getMessaggi(id){
 
                 messaggio.innerHTML = result[i]['testo'];
                 
-                document.getElementById('divM'+i).appendChild(messaggio);
+                document.getElementById('cronologia').appendChild(messaggio);
                 document.getElementById('send').setAttribute("onclick", "inviaMessaggio('"+id+"')");
 
                 var e = document.getElementById('divM'+i);
@@ -146,7 +147,6 @@ function inviaMessaggio(id){
                 document.getElementById('msg').value = '';
                 document.getElementById('cronologia').innerHTML = '';
                 getMessaggi(id);
-                
             }
         }
     };
@@ -169,6 +169,8 @@ function updateMessaggio(id){
         http.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 console.log(http.responseText);
+                document.getElementById('messaggio').style.display = "inline";
+                document.getElementById('nuovoMessaggio').style.display = "none";
             }
           };
     

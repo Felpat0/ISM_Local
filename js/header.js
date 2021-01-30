@@ -6,8 +6,9 @@ var html = `
   <ul id="menu">
     <li><a id="home"><img id="icona" src="img/home.png"></a></li>
     <li><a id="notifica" onclick="window.location.href = 'notifiche.html'"><img id="icona" src="img/notifica.png"></a>
-    <li id="nuovaNotifica" onclick="window.location.href = 'notifiche.html'"><img id="icona" src="img/nuovanotifica.png"></a></li>
+    <li> <a id="nuovaNotifica" onclick="window.location.href = 'notifiche.html'"><img id="icona" src="img/nuovanotifica.png"></a></li>
     <li><a id="messaggio" onclick="window.location.href = 'chat.html'"><img id="icona" src="img/messaggio.png"></a></li>
+    <li> <a id="nuovoMessaggio" onclick="window.location.href = 'chat.html'"><img id="icona" src="img/nuovomessaggio.png"></a></li>
     <li><a id="profilo"><img id="icona" src="img/account.png"></a> </li>
     <li> <a id="logout"><img id="icona" src="img/logout.png"></a></li>
   </ul>
@@ -33,6 +34,7 @@ if(localStorage.getItem('tipoUtente') == 'offerente'){
 }
 
 document.getElementById('nuovaNotifica').style.display = "none";
+document.getElementById('nuovoMessaggio').style.display = "none";
 
 //Carica le notifiche
 function loadJSONNotifiche(){
@@ -113,3 +115,25 @@ function readNotifica(idNotifica, i){
   };
   http.send(vars);
 }
+
+function messaggiNonLetti(){
+  const url= ip + '/chat/getNuoviMessaggi.php';
+  var http = new XMLHttpRequest();
+  http.open("POST", url, true);
+  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  var vars = "id=" + localStorage['id'] + "&tipoUtente=" + localStorage['tipoUtente'];
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(http.responseText);
+      for(var i=0; i<result.length; i++){
+        if(result[i]['daLeggere'] == 1 && result[i]['mittente'] != localStorage.getItem('tipoUtente')){
+          document.getElementById('nuovoMessaggio').style.display = "inline";
+          document.getElementById('messaggio').style.display = "none";
+        }
+      }
+    }
+  };
+  http.send(vars);
+}
+
+messaggiNonLetti();

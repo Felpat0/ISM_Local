@@ -107,6 +107,7 @@ function getMessaggi(id){
                 messaggio.innerHTML = result[i]['testo'];
                 
                 document.getElementById('divM'+i).appendChild(messaggio);
+                document.getElementById('divM'+i).innerHTML += '<br style="clear:both" />';
                 document.getElementById('send').setAttribute("onclick", "inviaMessaggio('"+id+"')");
 
                 var e = document.getElementById('divM'+i);

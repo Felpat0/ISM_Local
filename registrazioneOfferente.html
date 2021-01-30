@@ -19,10 +19,11 @@
       <link href="css\login.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-      <div id="dati" class="form">
+      <div id="dati">
         <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
         <div id="back"><button id="back" onclick="window.location.href = 'individuazione-utente.html'" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
-        <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
+        <div class="txt-titolo"><h2>Registrazione</h2></div>
+        <div id="contenitore-dati">
         <div class="mb-3">
             <label id="label1" for="nome" class="form-label">Nome</label>
             <input type="text" class="form-control" id="nome">
@@ -44,15 +45,17 @@
           <input type="text" class="form-control" id="telefono">
         </div>
       <label id="error" style="color:red;"></label><br/>
+      </div>
       <div id="avanti1"><button id="addZona" onclick="showZone()" type="submit" class="button">Avanti</button></div>
     </div>
 
 
-    <div id="zone" style="display:none;" class="form">
+    <div id="zone" style="display:none;">
     <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
     <div id="back"><button id="back" onclick="hideDiv('zone', 'dati');" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
-    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
-      <h3>Inserisci zone</h3>
+    <h2 class="txt-titolo">Registrazione</h2>
+    <div id="contenitore-zone">
+      <center><h3>Inserisci zone</h3></center>
       <div id="listaZone">
         <div id="zona1">
           <div class="mb-3">
@@ -68,31 +71,32 @@
           </div>
         </div>
       </div>
-      <div id="btn-aggzona"><button id="submit" onclick="addZona()" type="submit" class="button-plus">+</button></div>
+    </div>
+      <div id="agg"><button id="submit" onclick="addZona()" type="submit" class="button-plus">+</button></div>
       <div id="avanti2"><button id="submit" onclick="showServizi()" type="submit" class="button">Avanti</button></div>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
     </div>
 
 
-    <div id="servizi" style="display:none;">
+    <div id="servizi"  style="display:none;">
     <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
     <div id="back"><button id="back" onclick="hideDiv('servizi', 'zone');" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
-    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
-      <div id="listaServizi">
+    <h2 class="txt-titolo" id="titolo-servizi">Registrazione</h2>
+    <div id="contenitore-servizi">
+      <div class="form" id="listaServizi">
       </div>
+    </div>
         <div id="avanti3"><button id="submit" onclick="showFasce()" type="submit" class="button">Avanti</button></div>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
     </div>
 
 
 
-    <div id="fasce" style="display:none;" class="form">
+    <div id="fasce"  style="display:none;">
     <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
     <div id="back"><button id="back" onclick="hideDiv('fasce', 'servizi');" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
-    <h2 class="txt-titolo" id="registrazioneA">Registrazione</h2>
+    <h2 class="txt-titolo">Registrazione</h2>
+    <div id="contenitore-fasce">
       <div id="listaFasce">
         <div id="fascia1">
           <label for="inizio1">Ora Inizio</label>
@@ -102,12 +106,12 @@
           <br/>
         </div>
       </div>
-      <div id="agg-or"><button id="addFascia" onclick="addFascia()" type="submit" class="button-plus">+</button></div>
+     </div>
+      <div id="agg-fasce"><button id="addFascia" onclick="addFascia()" type="submit" class="button-plus">+</button></div>
       <label id="error" style="color:red;"></label><br/>
         <div id="completa"><button id="submit" onclick="register()" type="submit" class="button">Completa registrazione</button></div>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     </div>
-
   </body>
 </html>

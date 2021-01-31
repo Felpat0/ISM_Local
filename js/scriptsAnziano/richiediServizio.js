@@ -20,12 +20,12 @@ document.addEventListener('input', function (event) {
         var checked = document.getElementById(event.target.id).checked;
         var nomeUtente = document.getElementById(event.target.id).labels['0'].innerHTML;
         var idOfferente = document.getElementById(event.target.id).labels['0'].id;
-        
+
         //Se il checkbox viene deselezionato elimino il nome dall'array
         if(!checked){
-            for(i=0; i<utenti.length; i++){ 
+            for(i=0; i<utenti.length; i++){
                 if(utenti[i] == nomeUtente){
-                    utenti[i] = ''; 
+                    utenti[i] = '';
                 }
 
                 if(idOfferenti[i] == idOfferente){
@@ -42,7 +42,7 @@ document.addEventListener('input', function (event) {
         var filtered = utenti.filter(function (el) {
             return el != '';
           });
-        
+
         utenti = filtered;
 
         filtered = idOfferenti.filter(function (el) {
@@ -78,14 +78,14 @@ function displayServizi(){
 }
 
 
-function getValutazione(idOff){ //ottiene la media di stelle possedute dall'utente in questione 
+function getValutazione(idOff){ //ottiene la media di stelle possedute dall'utente in questione
     const url= ip + '/rilascioValutazione/getValutazione.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     var vars = "idOfferente="+idOff+"&stato=rilasciataAnziano";
     var media;
-    
+
     function resolveAfter() { //permette di ricavare il valore di media, calcolato nella funzione asincrona
         return new Promise(resolve => {
           setTimeout(() => {
@@ -105,14 +105,12 @@ function getValutazione(idOff){ //ottiene la media di stelle possedute dall'uten
             media = sum / result.length;
         }
     };
-    
-    promise = resolveAfter(); 
+
+    promise = resolveAfter();
     http.send(vars);
 }
 
 function displayListaUtenti(){
-    localStorage.setItem("id", 1);
-    localStorage.setItem("tipoUtente", "anziano");
     const url= ip + '/queryAnziano/listaUtenti.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
@@ -131,9 +129,9 @@ function displayListaUtenti(){
                         currentId = result[i]['idOfferente'];
                         getValutazione(currentId);
                         promise.then(function(result) //una volta che è stato ricavato il valore della media viene eseguita la funzione
-                        {   valutazione = result; 
+                        {   valutazione = result;
                             console.log(valutazione);
-                            
+
                             var recensione = document.createElement('p');
                             recensione.className = 'valutazione';
                             recensione.innerHTML = 'Media di '+ valutazione + ' stelle';
@@ -144,13 +142,13 @@ function displayListaUtenti(){
                             document.getElementById('listaUtenti').appendChild(prezzo);
                             document.getElementById('listaUtenti').appendChild(linkProfilo);
                         });
-                        
+
                         var checkbox = document.createElement('INPUT');
                         checkbox.type = 'checkbox';
                         checkbox.name = 'cb';
                         var num = i+1;
                         checkbox.id = 'cb'+num;
-        
+
                         var nome = document.createElement('LABEL');
                         nome.setAttribute('for', checkbox.id);
                         nome.id = result[i]['idOfferente'];
@@ -178,7 +176,7 @@ function displayRiepilogoRichiesta(){
     document.getElementById('nomeServizio').innerHTML = listaServizi[idServizioScelto];
     document.getElementById('dataRichiesta').innerHTML = data;
     document.getElementById('oraRichiesta').innerHTML = ora;
-    
+
     for(i=0; i<utenti.length; i++){
         document.getElementById('utentiSelezionati').innerHTML += utenti[i] + '<br><br>';
     }
@@ -250,11 +248,11 @@ function inviaRichiestaPrenotazione(){
             http.open("POST", url, true);
             http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             var vars = 'idAnziano=' + localStorage['id'] + '&idOfferente=' + idOfferenti[i] + '&idServizio=' + idServizioScelto + '&data=' + data + '&ora=' + ora; //idAnziano, idOfferente, idServizio, data, ora, stato
-    
+
             http.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var result = http.responseText;
-    
+
                     if(result == 'existing'){
                         console.log('esiste già');
                         //display messaggio errore
@@ -265,10 +263,10 @@ function inviaRichiestaPrenotazione(){
                         console.log('ok');
                         //display messaggio invio avvenuto
                     }
-                    
+
                 }
             };
-    
+
             http.send(vars);
         }
 
@@ -298,16 +296,16 @@ function confermaServ(){
   }
 
 function confermaDataOra(){
-    getDateTime(); 
+    getDateTime();
     if(data != 0 && ora !=0){
-        hideDiv('dataOra', 'selezionaUtente'); 
+        hideDiv('dataOra', 'selezionaUtente');
         displayListaUtenti();
         document.getElementById("back").setAttribute("onclick", "hideDiv('selezionaUtente', 'dataOra'); resetBackButton('selezionaUtente');");
     }
 }
 
 function confermaUtenti(){
-    hideDiv('selezionaUtente', 'riepilogo'); 
+    hideDiv('selezionaUtente', 'riepilogo');
     displayRiepilogoRichiesta();
     document.getElementById("back").setAttribute("onclick", "hideDiv('riepilogo', 'selezionaUtente'); resetBackButton('riepilogo');");
 }

@@ -1,11 +1,8 @@
-.paginainiziale{
+h1{
     position: absolute;
-    top:180px;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    
+    top:25%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .prenotazioni{
@@ -36,43 +33,51 @@
 }
 
 .prenotazioneInviata{
-  margin-top: 40px;
-  width: 300px;
-  height: 140px;
-  background-color: #ffa700;
-  border-radius: 20px;
-  border: none;
+  position: absolute;
+  left:5%;
+  right: 5%;
+  top:35%;
+  width: 90%;
+  height: 17%;
+  border-radius: 15px;
+  background-color: #b9d8ff;
+  border: 2px solid #004dff ;
   text-align: center;
-  font-family: "Arial", sans-serif;
-  font-size: 20px;
-  color: white; 
+  font-size: 26;
+  font-family: 'Roboto', sans-serif;
+  color: black; 
 }
 
 .prenotazioneAccettata{
-  margin-top: 40px;
-  margin-left: 25px;
-  width: 300px;
-  height: 140px;
-  background-color: #08b443;
-  border-radius: 20px;
-  border: none;
+  position: absolute;
+  left:5%;
+  right: 5%;
+  top:53%;
+  width: 90%;
+  height: 17%;   
+  border-radius: 15px;
+  background-color: #b9d8ff;
+  border: 2px solid #004dff ;
   text-align: center;
-  font-family: "Arial", sans-serif;
-  font-size: 20px;
-  color: white; 
+  font-size: 26;
+  font-family: 'Roboto', sans-serif;
+  color: black; 
 }
 
 .prenotazioneNonAttiva{
-  margin-top: 40px;
-  width: 300px;
-  height: 140px;
-  background-color: #de0000;
-  border-radius: 20px;
-  border: none;
+  position: absolute;
+  left:5%;
+  right: 5%;
+  top:71%;
+  width: 90%;
+  height: 17%;
   text-align: center;
-  font-family: "Arial", sans-serif;
-  font-size: 20px;
-  color: white;
+  font-size: 26;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 15px;
+  background-color: #b9d8ff;
+  border: 2px solid #004dff ;
+  color: black;
 }
 
 .contenuto-prenotazioni{

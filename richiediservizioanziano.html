@@ -17,8 +17,8 @@
     </script>
       <!-- Inizio RICHIEDI SERVIZIO -->
       <div id="firstPage">
+        <h1>Seleziona Servizio</h1>
         <div id="bottoni"  > 
-          <h4 >Seleziona Servizio</h4>
           <div class="group" id="servizi">
           </div>  
         </div>
@@ -31,12 +31,12 @@
       <!-- Inizio SELEZIONA DATA e ORA-->    
       <div id = "dataOra" style="display: none;">
         <div id="data" >
-          <h4 >Seleziona data</h4>
+            <h2>Seleziona Data</h2>
             <input type="date" name="date" id="date" >
         </div>
         <div id="ora" >
-          <h4 >Seleziona ora</h4>
-            <mdp-time-picker mdp-auto-switch="true" ng-model="currentTime"></mdp-time-picker>
+             <h2>Seleziona Ora</h2>
+             <mdp-time-picker mdp-auto-switch="true" ng-model="currentTime"></mdp-time-picker>
              <input id="time" type="time" ng-model="test" mdp-time-picker />
         </div>
         <div id="conferma" >
@@ -45,13 +45,12 @@
           </button>
         </div>
       </div>
-    </div>
+
       <!-- Inizio SELEZIONA UTENTE-->
       <div id = "selezionaUtente" style="display: none;">
         <div id="bottoni" > 
-          <h2>Seleziona gli utenti</h2>
+            <h2>Seleziona gli utenti</h2>
             <div class="group" id="listaUtenti">
-              
             </div>
         </div>
         <div id="conferma">
@@ -63,7 +62,7 @@
       
       <!-- Inizio RIEPILOGO SERVIZIO-->
       <div id ="riepilogo" style="display: none;">
-        <div class="box" id="riepilogo"> 
+        <div class="box" id="riepilogo">
           <p> Servizio:  </p> <p id="nomeServizio"></p>
           <p> Data:  </p> <p id="dataRichiesta"></p>
           <p> Ora:  </p> <p id="oraRichiesta"></p>
@@ -82,9 +81,7 @@
           <button id="submit" type="submit" class="button" onclick="inviaRichiestaPrenotazione();">
             <span id="label">Richiedi Prenotazione</span>
           </button>
-        </div>
-
-        
+        </div> 
       </div>
      
       

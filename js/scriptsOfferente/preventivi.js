@@ -55,9 +55,6 @@ function loadJSONPreventivi(){
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  //SETTO UN ID TEMPORANEO A CASO, DA ELIMINARE
-  localStorage.setItem("id", 1);
-  localStorage.setItem("tipoUtente", "offerente");
   var vars = "idOfferente=" + localStorage["id"];
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {

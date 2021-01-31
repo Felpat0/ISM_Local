@@ -1,9 +1,6 @@
 //var interval = setInterval(test, 10000);
 function getListaChat(){
     setTimeout(function(){
-        localStorage.setItem('id', 1);
-        localStorage.setItem('tipoUtente', 'offerente');
-
         const url= ip + '/chat/listaChat.php';
         var http = new XMLHttpRequest();
         http.open("POST", url, true);
@@ -30,7 +27,7 @@ function getListaChat(){
                     var name = document.createElement('H2');
                     var messaggio = document.createElement('P');
                     messaggio.innerHTML = result[i]['testo'];
-                    
+
                     if(localStorage.getItem('tipoUtente') == 'anziano'){
                         name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
                         if(result[i]['daLeggere'] == 1 && result[i]['mittente'] != 'anziano'){
@@ -53,7 +50,7 @@ function getListaChat(){
                         }
                     }
 
-                    document.getElementById("div"+i).appendChild(newBtn); 
+                    document.getElementById("div"+i).appendChild(newBtn);
                     document.getElementById('btn'+i).appendChild(name);
                     document.getElementById('btn'+i).appendChild(messaggio);
                 }
@@ -65,18 +62,15 @@ function getListaChat(){
 }
 
 function getMessaggi(id){
-    localStorage.setItem('id', 1);
-    localStorage.setItem('tipoUtente', 'offerente');
-
     const url= ip + '/chat/getMessaggi.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = 'id=' + localStorage['id'] + '&id2=' + id + '&tipoUtente=' + localStorage['tipoUtente']; 
+    var vars = 'id=' + localStorage['id'] + '&id2=' + id + '&tipoUtente=' + localStorage['tipoUtente'];
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            
+
             var result = JSON.parse(http.responseText);
 
             for(var i=0; i<result.length; i++){
@@ -105,7 +99,7 @@ function getMessaggi(id){
                 }
 
                 messaggio.innerHTML = result[i]['testo'];
-                
+
                 document.getElementById('divM'+i).appendChild(messaggio);
                 document.getElementById('divM'+i).innerHTML += '<br style="clear:both" />';
                 document.getElementById('send').setAttribute("onclick", "inviaMessaggio('"+id+"')");
@@ -124,8 +118,6 @@ function inviaMessaggio(id){
     var data = new Date().toISOString().slice(0, 10);
     var ora = new Date().toLocaleTimeString();
     var testo = document.getElementById('msg').value;
-    localStorage.setItem('id', 1);
-    localStorage.setItem('tipoUtente', 'offerente');
 
     const url= ip + '/chat/inviaMessaggio.php';
     var http = new XMLHttpRequest();
@@ -136,7 +128,7 @@ function inviaMessaggio(id){
     } else {
         var vars = 'idAnziano=' + id + '&idOfferente=' + localStorage['id'] + '&tipoUtente=' + localStorage['tipoUtente'] + '&data=' + data + '&ora=' + ora + '&testo=' + testo; //idAnziano, idOfferente, idServizio, note, data, ora, stato
     }
-    
+
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -163,9 +155,9 @@ function updateMessaggio(id){
         http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         if(localStorage.getItem('tipoUtente') == 'anziano'){
-            var vars = 'idAnziano=' + localStorage['id'] + '&idOfferente=' + id +'&daLeggere=0';  
+            var vars = 'idAnziano=' + localStorage['id'] + '&idOfferente=' + id +'&daLeggere=0';
         } else {
-            var vars = 'idAnziano=' + id + '&idOfferente=' + localStorage['id'] + '&daLeggere=0'; 
+            var vars = 'idAnziano=' + id + '&idOfferente=' + localStorage['id'] + '&daLeggere=0';
         }
 
         http.onreadystatechange = function() {
@@ -175,7 +167,7 @@ function updateMessaggio(id){
                 document.getElementById('nuovoMessaggio').style.display = "none";
             }
           };
-    
+
           http.send(vars);
 }
 
@@ -195,4 +187,3 @@ function setBackButton(div){
               break;
     }
 }
-

@@ -42,9 +42,6 @@ function loadJSONNotifiche(){
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  //SETTO UN ID TEMPORANEO A CASO, DA ELIMINARE
-  localStorage.setItem("id", 1);
-  localStorage.setItem("tipoUtente", "anziano");
   var vars = "id=" + localStorage["id"] + "&tipoUtente=" + localStorage["tipoUtente"];
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {

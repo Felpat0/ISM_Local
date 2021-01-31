@@ -28,10 +28,7 @@ function richiestaAssistenza(){
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  //SETTO UN ID TEMPORANEO A CASO, DA ELIMINARE
-  localStorage.setItem("id", 1);
-  localStorage.setItem("tipoUtente", "anziano")
-
+  
   var selectCategoria = document.getElementById("selectCategoria");
   var categoria = selectCategoria.options[selectCategoria.selectedIndex].text;
   var messaggio = document.getElementById("messaggio").value;

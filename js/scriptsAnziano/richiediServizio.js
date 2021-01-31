@@ -135,11 +135,13 @@ function displayListaUtenti(){
                             console.log(valutazione);
                             
                             var recensione = document.createElement('p');
+                            recensione.className = 'valutazione';
                             recensione.innerHTML = 'Media di '+ valutazione + ' stelle';
 
                             document.getElementById('listaUtenti').appendChild(checkbox);
                             document.getElementById('listaUtenti').appendChild(nome);
                             document.getElementById('listaUtenti').appendChild(recensione);
+                            document.getElementById('listaUtenti').appendChild(prezzo);
                             document.getElementById('listaUtenti').appendChild(linkProfilo);
                         });
                         
@@ -154,8 +156,13 @@ function displayListaUtenti(){
                         nome.id = result[i]['idOfferente'];
                         nome.innerHTML = result[i]['nomeOfferente'] + ' ' + result[i]['cognomeOfferente'];
 
+                        var prezzo = document.createElement('p');
+                            prezzo.className = 'prezzo';
+                            prezzo.innerHTML = 'Costo orario ' + result[i]['pagaOraria'] + 'euro.';
+
                         var linkProfilo = document.createElement('A');
                         linkProfilo.innerHTML = 'Visualizza profilo';
+                        linkProfilo.className = 'link';
                         linkProfilo.setAttribute("href", "#");
                         linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('statoPrenotazione', 'listaUtenti'); window.location.href='profiloOfferente.html';");
                     }

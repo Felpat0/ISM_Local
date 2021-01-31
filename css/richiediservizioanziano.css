@@ -1,54 +1,39 @@
-
-
-#back {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  top: 16%;
-  left: 7%;
-  z-index: 100;
+h1{
+    position: absolute;
+    top:26%;
+    font-size: 26;
+    font-family: 'Roboto', sans-serif;
 }
 
-p {
-  color: #18191b;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-family: 'Roboto', sans-serif;  
-  font-weight: 100;
-  text-align: center;
+h2{
+    font-size: 26;
+    font-family: 'Roboto', sans-serif;
 }
-
-p#scegli{
-    margin-top: 50px;
-    font-size: 26px;
-}
-
-section {
-  display: flex;
-  flex-flow: row wrap;
-  margin-top:50px;
-}
-
-section > div {
-  flex: 1;
-  padding: 0.5rem;
-}
-
 
 /* Radio button e check button */
+
 #bottoni {
-  position:relative;
-  top:215px;
+  position:absolute;
+  top:33%;
+  height: 50%;
   color: black;
-  font-size: 20;
+  font-size: 24;
 }
+
+#conferma{
+  position:absolute;
+  top:85%;
+  height: 10%;
+  width: 90%;
+}
+
 
 .group {
   display:grid;
   align-items: center;
   margin-bottom: 2em;
-  width: 360px;
-  
+  width:100%;
+  height: 50%;
 }
 
 input[type=checkbox],
@@ -89,7 +74,7 @@ input[type=radio] + label::before {
 input[type=checkbox]:checked + label,
 input[type=radio]:checked + label {
   padding-left: 1em;
-  color:white;
+  color:black;
 }
 
 input[type=checkbox]:checked + label:before,
@@ -97,7 +82,7 @@ input[type=radio]:checked + label:before {
   top: 0;
   width: 100%;
   height: 2em;
-  background: #004dff;
+  background: #b9d8ff;
 }
 
 /* Transition */
@@ -109,49 +94,32 @@ label::before {
 
 /*  Bottone conferma, richiedi preventivo, richiedi prenotazione */
 
-div#conferma{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -100px;
-  margin-top: -25px;
-  width: 200px;
-  height: 50px;
-  text-align: center;
-}
-
 div#richiedipreventivo{
   position: absolute;
-  top: 80%;
-  left: 50%;
-  margin-left: -100px;
-  margin-top: -25px;
-  width: 200px;
-  height: 50px;
-  text-align: center;
+  top:95%;
+  height: 13%;
+  width: 90%;
 }
 
 div#richiediprenotazione{
   position: absolute;
-  top: 90%;
-  left: 50%;
-  margin-left: -100px;
-  margin-top: -25px;
-  width: 200px;
-  height: 50px;
-  text-align: center;
+  top:85%;
+  height: 13%;
+  width: 90%;
 }
 
 button {
-  margin-top: 210px;
-  width: 200px;
-  height: 50px;
+  position:relative;
+  top:18%;
+  left:10%;
+  width: 80%;
+  height: 70%;
   background-color: #004dff;
   border-radius: 40px;
   border: none;
   text-align: center;
-  font-family: "Arial", sans-serif;
-  font-size: 20px;
+  font-size: 23;
+  font-family: 'Roboto', sans-serif;
   color: white;
   transition: all 0.25s ease;
 }
@@ -163,66 +131,76 @@ button:active, button:focus {
 
 /* Data e ora */
 #data { 
- position: relative;
- top: 30%;
- left: 30%;
+ position: absolute;
+ top:25%;
+ left: 25%;
+ width: 60%;
+ height: 30%;
+}
+
+#date{
+    position: relative;
+    top:20%;
+    height:26%;
+    width:80%;
+    background-color: #b9d8ff;
+    border: 2px solid #004dff;
+    border-radius: 0.25em;
+    font-size: 23;
+}
+
+#time{
+    position: relative;
+    top:20%;
+    height:26%;
+    width:80%;
+    background-color: #b9d8ff;
+    border: 2px solid #004dff;
+    border-radius: 0.25em;
+    font-size: 23;
 }
 
 #ora { 
- position: relative;
- top: 40%;
- left: 30%;
-}
-
-#dataOra {
-  position: relative;
-  top: 40%;
+ position: absolute;
+ top: 53%;
+ left: 25%;
+ width: 60%;
+ height: 30%;
 }
 
 /* Riepilogo prenotazione */
 
 
 .box{
-    position: relative;
+    position: absolute;
+    top: 32%;
+    align-items: center;
     text-align: left;
     vertical-align: text-top;
-    height: 250px;
-    width: 250px;
-    resize: none;
-    overflow: auto;
-    outline: none;
-    overflow: auto;
+    height: 30%;
+    width: 90%;
     border-radius: 15px;
-    border: 2px solid forestgreen;
+     background-color: #b9d8ff;
+    border: 2px solid #004dff ;
+    font-size: 24;
+    font-family: 'Roboto', sans-serif;
 }
 
-div#riepilogo{
-    position: relative;
-    background: white;
-    top: 30%; 
-}
 
 .textarea{
-    position: relative;
-    top:70%;
+    position: absolute;
+    top:65%;
     word-break: normal;
-    height: 200px;
-    width: 400px;
+    height: 20%;
+    width: 90%;
     text-align: left;
     vertical-align: text-top;
     overflow: visible;
     outline: none;
-    border: 2px solid forestgreen;
+    border: 2px solid #004dff ;
+    font-size: 23;
+    font-family: 'Roboto', sans-serif;
 }
 
-div#note{
-    position: relative;
-    top:35%;
-}
 
-p#riepilogo{
-    top: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 500;
-}
+

@@ -162,7 +162,7 @@ function displayListaUtenti(){
 
                         var linkProfilo = document.createElement('A');
                         linkProfilo.innerHTML = 'Visualizza profilo';
-                        linkProfilo.className = 'link';
+                        linkProfilo.className = 'profilo';
                         linkProfilo.setAttribute("href", "#");
                         linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('statoPrenotazione', 'listaUtenti'); window.location.href='profiloOfferente.html';");
                     }

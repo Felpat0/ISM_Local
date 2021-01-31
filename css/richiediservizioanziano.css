@@ -22,7 +22,7 @@ h2{
 
 #conferma{
   position:absolute;
-  top:85%;
+  top:88%;
   height: 10%;
   width: 90%;
 }
@@ -174,7 +174,6 @@ button:active, button:focus {
 .box{
     position: absolute;
     top: 32%;
-    align-items: center;
     text-align: left;
     vertical-align: text-top;
     height: 30%;
@@ -202,5 +201,24 @@ button:active, button:focus {
     font-family: 'Roboto', sans-serif;
 }
 
-
-
+.profilo{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: #004dff;
+    font-size: 23;
+}
+.valutazione{
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 23;
+}
+.prezzo{
+    position: relative;
+    top:-20%;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 23;
+}

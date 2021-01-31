@@ -111,6 +111,8 @@ function getValutazione(idOff){ //ottiene la media di stelle possedute dall'uten
 }
 
 function displayListaUtenti(){
+    localStorage.setItem("id", 1);
+    localStorage.setItem("tipoUtente", "anziano");
     const url= ip + '/queryAnziano/listaUtenti.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);

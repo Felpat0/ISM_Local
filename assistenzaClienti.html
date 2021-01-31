@@ -15,7 +15,10 @@
     <script src="js/header.js"></script>
     <div id="divModal"></div>
     <script>
+    if(localStorage["tipoUtente"] == "offerente")
       document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
+    else if(localStorage["tipoUtente"] == "anziano")
+      document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
     </script>
     <select id="selectCategoria" class="opzioni">
       <option value="value1">Ho prenotato ma non risulta tra le prenotazioni</option>

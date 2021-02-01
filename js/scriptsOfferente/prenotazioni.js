@@ -165,6 +165,7 @@ function showRiepilogoAttiva(index){
 }
 
 function showRiepilogoPreventivoAttivo(index){
+  console.log(prenotazioni["preventiviAttivi"][index]["idServizio"]);
   element = `
   <div id="prenotazione">
     <h3>Richiesta prenotazione di ` + prenotazioni["preventiviAttivi"][index]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][index]["cognomeAnziano"] + `</h3>

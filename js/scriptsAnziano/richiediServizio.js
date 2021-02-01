@@ -90,7 +90,7 @@ function getValutazione(idOff){ //ottiene la media di stelle possedute dall'uten
         return new Promise(resolve => {
           setTimeout(() => {
             resolve(media);
-          }, 200);
+          }, 300);
         });
       }
 
@@ -105,7 +105,6 @@ function getValutazione(idOff){ //ottiene la media di stelle possedute dall'uten
             media = sum / result.length;
         }
     };
-
     promise = resolveAfter();
     http.send(vars);
 }
@@ -122,25 +121,22 @@ function displayListaUtenti(){
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(http.responseText);
             var currentId = 0;
+            console.log(result);
 
             for(i=0; i<result.length; i++){
                 if( ora >= result[i]['oraInizio'] && ora <= result[i]['oraFine']){
                     if(result[i]['idOfferente'] != currentId){
+                        console.log(i);
                         currentId = result[i]['idOfferente'];
+
                         getValutazione(currentId);
                         promise.then(function(result) //una volta che è stato ricavato il valore della media viene eseguita la funzione
-                        {   valutazione = result;
-                            console.log(valutazione);
-
-                            var recensione = document.createElement('p');
-                            recensione.className = 'valutazione';
-                            recensione.innerHTML = 'Media di '+ valutazione + ' stelle';
-
-                            document.getElementById('listaUtenti').appendChild(checkbox);
-                            document.getElementById('listaUtenti').appendChild(nome);
-                            document.getElementById('listaUtenti').appendChild(recensione);
-                            document.getElementById('listaUtenti').appendChild(prezzo);
-                            document.getElementById('listaUtenti').appendChild(linkProfilo);
+                        {   if(!result){
+                                valutazione = 0;
+                            } else{
+                                valutazione = result;
+                            }
+                            //recensione.innerHTML = 'Media di '+ valutazione + ' stelle';
                         });
 
                         var checkbox = document.createElement('INPUT');
@@ -155,14 +151,23 @@ function displayListaUtenti(){
                         nome.innerHTML = result[i]['nomeOfferente'] + ' ' + result[i]['cognomeOfferente'];
 
                         var prezzo = document.createElement('p');
-                            prezzo.className = 'prezzo';
-                            prezzo.innerHTML = 'Costo orario ' + result[i]['pagaOraria'] + 'euro.';
+                        prezzo.className = 'prezzo';
+                        prezzo.innerHTML = 'Costo orario ' + result[i]['pagaOraria'] + ' euro.';
+
+                        var recensione = document.createElement('p');
+                        recensione.className = 'valutazione';
 
                         var linkProfilo = document.createElement('A');
                         linkProfilo.innerHTML = 'Visualizza profilo';
                         linkProfilo.className = 'profilo';
                         linkProfilo.setAttribute("href", "#");
                         linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('statoPrenotazione', 'listaUtenti'); window.location.href='profiloOfferente.html';");
+                    
+                        document.getElementById('listaUtenti').appendChild(checkbox);
+                        document.getElementById('listaUtenti').appendChild(nome);
+                        document.getElementById('listaUtenti').appendChild(prezzo);
+                        document.getElementById('listaUtenti').appendChild(recensione);
+                        document.getElementById('listaUtenti').appendChild(linkProfilo);
                     }
                 }
             }

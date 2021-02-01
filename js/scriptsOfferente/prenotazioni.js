@@ -100,16 +100,18 @@ function loadPrenotazioniAttive(){
     }
   }
   //Scrivere la lista delle prenotazioni attive derivanti da preventivo
-  for(i = 0; i != prenotazioni["preventiviAttivi"].length; i++){
-      element = "";
-      element += '<div class="p">';
-      element += '<button onclick="showRiepilogoPreventivoAttivo(' + i + ')" class="prenotazione">';
-      element += '<h2>' + prenotazioni["preventiviAttivi"][i]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][i]["cognomeAnziano"] + '</h2>'
-      element += '<h3>' + listaServizi[prenotazioni["preventiviAttivi"][i]["idServizio"]] + '</h3>';
-      element += '</button>';
-      element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni["preventiviAttivi"][i]["idAnziano"] + ')">Visualizza profilo</a>';
-      element += '</div>';
-      document.getElementById("prenotazioniAttive").innerHTML += element;
+  if(prenotazioni["preventiviAttivi"]){
+    for(i = 0; i != prenotazioni["preventiviAttivi"].length; i++){
+        element = "";
+        element += '<div class="p">';
+        element += '<button onclick="showRiepilogoPreventivoAttivo(' + i + ')" class="prenotazione">';
+        element += '<h2>' + prenotazioni["preventiviAttivi"][i]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][i]["cognomeAnziano"] + '</h2>'
+        element += '<h3>' + listaServizi[prenotazioni["preventiviAttivi"][i]["idServizio"]] + '</h3>';
+        element += '</button>';
+        element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni["preventiviAttivi"][i]["idAnziano"] + ')">Visualizza profilo</a>';
+        element += '</div>';
+        document.getElementById("prenotazioniAttive").innerHTML += element;
+    }
   }
 }
 

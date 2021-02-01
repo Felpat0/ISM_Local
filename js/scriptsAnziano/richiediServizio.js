@@ -153,7 +153,7 @@ function displayListaUtenti(){
 
                         var prezzo = document.createElement('p');
                         prezzo.className = 'prezzo';
-                        prezzo.innerHTML = 'Costo orario ' + result[i]['pagaOraria'] + ' euro.';
+                        prezzo.innerHTML = 'Costo orario ' + result[i]['pagaOraria'] + '  euro.';
 
                         var recensione = document.createElement('p');
                         recensione.className = 'valutazione';

@@ -94,7 +94,7 @@ function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idList
                 servizio.innerHTML = listaServizi[result['0']['idServizio']];
                 data.innerHTML = "Data: " + result['0']['data'];
                 ora.innerHTML = "Ora: " + result['0']['ora'];
-                paga.innerHTML = "Paga: " + result['0']['pagaOraria'] + "€ l'ora";
+                paga.innerHTML = "Paga: " + result['0']['pagaOraria'] + " euro l'ora";
                 
                 switch(statoPrenotazione){
                     case 'accettata':

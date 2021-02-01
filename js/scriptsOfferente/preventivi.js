@@ -182,7 +182,7 @@ function showRiepilogoPreventivoInviato(i){
     <p>Ora: ` + preventivi[i]["ora"] + `</p>
     <p>Indirizzo: ` + preventivi[i]["indirizzo"] + `</p>
     <p>Descrizione: ` + preventivi[i]["note"] + `</p>
-    <p>Paga oraria: ` + preventivi[i]["prezzo"] + `€</p>
+    <p>Paga oraria: ` + preventivi[i]["prezzo"] + ` euro</p>
     <p>Stato preventivo: ` + statoPreventivo + `</p>
   </div>
   `;

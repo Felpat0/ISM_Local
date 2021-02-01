@@ -136,7 +136,7 @@ function displayListaPreventivi() {
                     servizio.innerHTML = "Servizio: "+listaServizi[result['0']['idServizio']];
                     data.innerHTML = "Data: " + result['0']['data'];
                     ora.innerHTML = "Ora: " + result['0']['ora'];
-                    paga.innerHTML = "Paga: " + result['0']['prezzo'] + "€ l'ora";
+                    paga.innerHTML = "Paga: " + result['0']['prezzo'] + " euro l'ora";
                     note.innerHTML = "Descrizione: " + result['0']['note'];
 
 
@@ -166,7 +166,7 @@ function displayListaPreventivi() {
                     servizio.innerHTML = "Servizio: "+listaServizi[result['0']['idServizio']];
                     data.innerHTML = "Data: " + result['0']['data'];
                     ora.innerHTML = "Ora: " + result['0']['ora'];
-                    paga.innerHTML = "Paga: " + result['0']['prezzo'] + "€ l'ora";
+                    paga.innerHTML = "Paga: " + result['0']['prezzo'] + " euro l'ora";
                     note.innerHTML = "Descrizione: " + result['0']['note'];
 
                     if(result['0']['stato'] == 'richiestaInviata'){

@@ -156,7 +156,7 @@ function showRiepilogoAttiva(index){
     <p>Data: ` + prenotazioni["prenotazioni"][index]["data"] + `</p>
     <p>Ora: ` + prenotazioni["prenotazioni"][index]["ora"] + `</p>
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
-    <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + `€ l'ora</p>
+    <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
   </div>`;
   document.getElementById("riepilogoAttive").innerHTML = element;
 
@@ -172,7 +172,7 @@ function showRiepilogoPreventivoAttivo(index){
     <p>Data: ` + prenotazioni["preventiviAttivi"][index]["data"] + `</p>
     <p>Ora: ` + prenotazioni["preventiviAttivi"][index]["ora"] + `</p>
     <p>Indirizzo: ` + prenotazioni["preventiviAttivi"][index]["indirizzo"] + `</p>
-    <p>Paga: ` + prenotazioni["preventiviAttivi"][index]["prezzo"] + `€ l'ora</p>
+    <p>Paga: ` + prenotazioni["preventiviAttivi"][index]["prezzo"] + ` euro l'ora</p>
     <p>Note: ` + prenotazioni["preventiviAttivi"][index]["note"] + `</p>
   </div>`;
   document.getElementById("riepilogoAttive").innerHTML = element;
@@ -189,7 +189,7 @@ function showRiepilogoSospeso(index){
     <p>Data: ` + prenotazioni["prenotazioni"][index]["data"] + `</p>
     <p>Ora: ` + prenotazioni["prenotazioni"][index]["ora"] + `</p>
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
-    <p>Paga: ` + prenotazioni["prenotazioni"][index]["pagaOraria"] + `€ l'ora</p>
+    <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
   </div>
   <button class="accetta" onclick="modificaPrenotazione(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `, 'accettata', ` + prenotazioni["prenotazioni"][index]["idAnziano"] + `, ` + prenotazioni["prenotazioni"][index]["idOfferente"] + `, '` + prenotazioni["prenotazioni"][index]["nomeOfferente"] + ` ` + prenotazioni["prenotazioni"][index]["cognomeOfferente"] + `');">Accetta</button>
   <button class="rifiuta" onclick="modificaPrenotazione(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `, 'rifiutata', ` + prenotazioni["prenotazioni"][index]["idAnziano"] + `, ` + prenotazioni["prenotazioni"][index]["idOfferente"] + `, '` + prenotazioni["prenotazioni"][index]["nomeOfferente"] + ` ` + prenotazioni["prenotazioni"][index]["cognomeOfferente"] + `');">Rifiuta</button>
@@ -226,7 +226,7 @@ function showRiepilogoArchiviate(index){
     <p>Data: ` + prenotazioni["prenotazioni"][index]["data"] + `</p>
     <p>Ora: ` + prenotazioni["prenotazioni"][index]["ora"] + `</p>
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
-    <p>Paga: ` + prenotazioni["prenotazioni"][index]["pagaOraria"] + `€ l'ora</p>
+    <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
     <p>Stato: ` + prenotazioni["prenotazioni"][index]["stato"] + `</p>
   </div>
   `;

@@ -226,7 +226,7 @@ function inviaRichiestaPreventivo(){
 function inviaRichiestaPrenotazione(){
     if( document.getElementById('messaggio').value != ''){
         console.log('note inserite');
-        document.getElementById("riepilogo").innerHTML += `
+        /*document.getElementById("riepilogo").innerHTML += `
         <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -245,7 +245,7 @@ function inviaRichiestaPrenotazione(){
         var myModal = new bootstrap.Modal(document.getElementById('messaggioErrore'), {
             keyboard: false
             });
-            myModal.toggle()
+            myModal.toggle()*/
     } else {
         for(i=0; i<idOfferenti.length; i++){
             const url= ip + '/queryAnziano/inviaPrenotazione.php';

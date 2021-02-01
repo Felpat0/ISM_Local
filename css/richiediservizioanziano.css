@@ -183,6 +183,8 @@ button:active, button:focus {
     border: 2px solid #004dff ;
     font-size: 24;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+  overflow-y: auto;
 }
 
 

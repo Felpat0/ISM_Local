@@ -224,7 +224,7 @@ function inviaRichiestaPreventivo(){
 }
 
 function inviaRichiestaPrenotazione(){
-    if( document.getElementById('messaggio').value != ''){
+    if( document.getElementById('messaggio').value != null){
         console.log('note inserite');
         /*document.getElementById("riepilogo").innerHTML += `
         <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">

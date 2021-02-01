@@ -119,9 +119,10 @@ function displayListaUtenti(){
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            console.log(http.responseText);
             var result = JSON.parse(http.responseText);
             var currentId = 0;
-            console.log(result);
+            
 
             for(i=0; i<result.length; i++){
                 if( ora >= result[i]['oraInizio'] && ora <= result[i]['oraFine']){
@@ -188,7 +189,7 @@ function displayRiepilogoRichiesta(){
 }
 
 function getNote(){
-    note = document.getElementById('messaggio').value;
+    note = document.getElementById('memo').value;
 }
 
 

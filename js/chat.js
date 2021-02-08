@@ -1,64 +1,62 @@
 //var interval = setInterval(test, 10000);
 function getListaChat(){
-    setTimeout(function(){
-        const url= ip + '/chat/listaChat.php';
-        var http = new XMLHttpRequest();
-        http.open("POST", url, true);
-        http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var vars = "id=" + localStorage['id'] + "&tipoUtente=" + localStorage['tipoUtente'];
+    const url= ip + '/chat/listaChat.php';
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var vars = "id=" + localStorage['id'] + "&tipoUtente=" + localStorage['tipoUtente'];
 
-        http.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var result = JSON.parse(http.responseText);
+    http.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = JSON.parse(http.responseText);
 
-                for(var i=0; i<result.length; i++){
-                    //Creazione div che conterrà la chat
-                    var newDiv = document.createElement('DIV');
-                    newDiv.id = 'div'+i;
-                    //Inserimento del nuovo div in quello contenente la lista delle chat
-                    document.getElementById('listaChat').appendChild(newDiv);
+            for(var i=0; i<result.length; i++){
+                //Creazione div che conterrà la chat
+                var newDiv = document.createElement('DIV');
+                newDiv.id = 'div'+i;
+                //Inserimento del nuovo div in quello contenente la lista delle chat
+                document.getElementById('listaChat').appendChild(newDiv);
 
-                    //Creazione button contenente il nome dell'utente e l'ultimo messaggio ricevuto/inviato
-                    var newBtn = document.createElement('BUTTON');
-                    newBtn.className = 'element';
-                    newBtn.id = 'btn'+i;
+                //Creazione button contenente il nome dell'utente e l'ultimo messaggio ricevuto/inviato
+                var newBtn = document.createElement('BUTTON');
+                newBtn.className = 'element';
+                newBtn.id = 'btn'+i;
 
-                    //Inserimento del nome dell'utente offerente e del messaggio
-                    var name = document.createElement('H2');
-                    var messaggio = document.createElement('P');
-                    messaggio.innerHTML = result[i]['testo'];
+                //Inserimento del nome dell'utente offerente e del messaggio
+                var name = document.createElement('H2');
+                var messaggio = document.createElement('P');
+                messaggio.innerHTML = result[i]['testo'];
 
-                    if(localStorage.getItem('tipoUtente') == 'anziano'){
-                        name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
-                        if(result[i]['daLeggere'] == 1 && result[i]['mittente'] != 'anziano'){
-                            messaggio.className = 'msg-unread';
-                            name.innerHTML += '<a class="notification">⬤</a><';
-                            newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); updateMessaggio('"+ result[i]['idOfferente'] +"'); getMessaggi('"+ result[i]['idOfferente'] +"'); setBackButton('chat')");
-                        } else {
-                            messaggio.className = 'msg';
-                            newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idOfferente'] +"'); setBackButton('chat')");
-                        }
+                if(localStorage.getItem('tipoUtente') == 'anziano'){
+                    name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
+                    if(result[i]['daLeggere'] == 1 && result[i]['mittente'] != 'anziano'){
+                        messaggio.className = 'msg-unread';
+                        name.innerHTML += '<a class="notification">⬤</a><';
+                        newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); updateMessaggio('"+ result[i]['idOfferente'] +"'); getMessaggi('"+ result[i]['idOfferente'] +"'); setBackButton('chat')");
                     } else {
-                        name.innerHTML = result[i]['nomeAnziano'] + " " + result[i]['cognomeAnziano'];
-                        if(result[i]['daLeggere'] == 1 && result[i]['mittente'] != 'offerente'){
-                            messaggio.className = 'msg-unread';
-                            name.innerHTML += '<a class="notification">⬤</a><';
-                            newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); updateMessaggio('"+ result[i]['idAnziano'] +"'); getMessaggi('"+ result[i]['idAnziano'] +"'); setBackButton('chat')");
-                        } else {
-                            messaggio.className = 'msg';
-                            newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idAnziano'] +"'); setBackButton('chat')");
-                        }
+                        messaggio.className = 'msg';
+                        newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idOfferente'] +"'); setBackButton('chat')");
                     }
-
-                    document.getElementById("div"+i).appendChild(newBtn);
-                    document.getElementById('btn'+i).appendChild(name);
-                    document.getElementById('btn'+i).appendChild(messaggio);
+                } else {
+                    name.innerHTML = result[i]['nomeAnziano'] + " " + result[i]['cognomeAnziano'];
+                    if(result[i]['daLeggere'] == 1 && result[i]['mittente'] != 'offerente'){
+                        messaggio.className = 'msg-unread';
+                        name.innerHTML += '<a class="notification">⬤</a><';
+                        newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); updateMessaggio('"+ result[i]['idAnziano'] +"'); getMessaggi('"+ result[i]['idAnziano'] +"'); setBackButton('chat')");
+                    } else {
+                        messaggio.className = 'msg';
+                        newBtn.setAttribute("onclick", "hideDiv('listaChat','chat'); getMessaggi('"+ result[i]['idAnziano'] +"'); setBackButton('chat')");
+                    }
                 }
-            }
-        };
 
-        http.send(vars);
-    }, 250);
+                document.getElementById("div"+i).appendChild(newBtn);
+                document.getElementById('btn'+i).appendChild(name);
+                document.getElementById('btn'+i).appendChild(messaggio);
+            }
+        }
+    };
+
+    http.send(vars);
 }
 
 function getMessaggi(id){

@@ -79,7 +79,7 @@ function displayServizi(){
 
 
 function displayListaUtenti(){
-    localStorage.setItem('id', 25);
+    //localStorage.setItem('id', 25);
     const url= ip + '/queryAnziano/listaUtenti.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);

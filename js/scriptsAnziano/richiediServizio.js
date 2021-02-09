@@ -78,38 +78,8 @@ function displayServizi(){
 }
 
 
-function getValutazione(idOff){ //ottiene la media di stelle possedute dall'utente in questione
-    const url= ip + '/rilascioValutazione/getValutazione.php';
-    var http = new XMLHttpRequest();
-    http.open("POST", url, true);
-    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = "idOfferente="+idOff+"&stato=rilasciataAnziano";
-    var media;
-
-    function resolveAfter() { //permette di ricavare il valore di media, calcolato nella funzione asincrona
-        return new Promise(resolve => {
-          setTimeout(() => {
-            resolve(media);
-          }, 300);
-        });
-      }
-
-    http.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var result = JSON.parse(http.responseText);
-            var sum = 0;
-            for(i=0; i<result.length; i++){
-                var star = parseInt(result[i]['stelle'], 10);
-                sum += star;
-            }
-            media = sum / result.length;
-        }
-    };
-    promise = resolveAfter();
-    http.send(vars);
-}
-
 function displayListaUtenti(){
+    //localStorage.setItem('id', 25);
     const url= ip + '/queryAnziano/listaUtenti.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
@@ -119,60 +89,78 @@ function displayListaUtenti(){
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(http.responseText);
             var result = JSON.parse(http.responseText);
             var currentId = 0;
-            
+            var j = 1;
 
-            for(i=0; i<result.length; i++){
-                if( ora >= result[i]['oraInizio'] && ora <= result[i]['oraFine']){
-                    if(result[i]['idOfferente'] != currentId){
-                        console.log(i);
-                        currentId = result[i]['idOfferente'];
-
-                        getValutazione(currentId);
-                        promise.then(function(result) //una volta che è stato ricavato il valore della media viene eseguita la funzione
-                        {   if(!result){
+            if(!result){
+                document.getElementById("riepilogo").innerHTML += `
+                <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle"></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+                document.getElementById('modalTitle').innerHTML = "Non ci sono utenti disponibili in quella data e ora nella tua zona.";
+                var myModal = new bootstrap.Modal(document.getElementById('messaggioErrore'), {
+                    keyboard: false
+                    });
+                    myModal.toggle();
+            } else {
+                for(i=0; i<result.length; i++){
+                    if( ora >= result[i]['oraInizio'] && ora <= result[i]['oraFine']){
+                        if(result[i]['idOfferente'] != currentId){
+                            currentId = result[i]['idOfferente'];
+                            if(!isNaN(result[j])){
+                                valutazione = result[j];
+                            } else {
                                 valutazione = 0;
-                            } else{
-                                valutazione = result;
                             }
-                            //recensione.innerHTML = 'Media di '+ valutazione + ' stelle';
-                        });
+                            j++;
 
-                        var checkbox = document.createElement('INPUT');
-                        checkbox.type = 'checkbox';
-                        checkbox.name = 'cb';
-                        var num = i+1;
-                        checkbox.id = 'cb'+num;
+                            var checkbox = document.createElement('INPUT');
+                            checkbox.type = 'checkbox';
+                            checkbox.name = 'cb';
+                            var num = i+1;
+                            checkbox.id = 'cb'+num;
 
-                        var nome = document.createElement('LABEL');
-                        nome.setAttribute('for', checkbox.id);
-                        nome.id = result[i]['idOfferente'];
-                        nome.innerHTML = result[i]['nomeOfferente'] + ' ' + result[i]['cognomeOfferente'];
+                            var nome = document.createElement('LABEL');
+                            nome.setAttribute('for', checkbox.id);
+                            nome.id = result[i]['idOfferente'];
+                            nome.innerHTML = result[i]['nomeOfferente'] + ' ' + result[i]['cognomeOfferente'];
 
-                        var prezzo = document.createElement('p');
-                        prezzo.className = 'prezzo';
-                        prezzo.innerHTML = 'Costo orario ' + result[i]['pagaOraria'] + '  euro.';
+                            var prezzo = document.createElement('p');
+                            prezzo.className = 'prezzo';
+                            prezzo.innerHTML = 'Costo orario ' + result[i]['pagaOraria'] + '  euro.';
 
-                        var recensione = document.createElement('p');
-                        recensione.className = 'valutazione';
+                            var recensione = document.createElement('p');
+                            recensione.className = 'valutazione';
+                            recensione.innerHTML = 'Media di '+ valutazione + ' stelle';
 
-                        var linkProfilo = document.createElement('A');
-                        linkProfilo.innerHTML = 'Visualizza profilo';
-                        linkProfilo.className = 'profilo';
-                        linkProfilo.setAttribute("href", "#");
-                        linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('statoPrenotazione', 'listaUtenti'); window.location.href='profiloOfferente.html';");
-                    
-                        document.getElementById('listaUtenti').appendChild(checkbox);
-                        document.getElementById('listaUtenti').appendChild(nome);
-                        document.getElementById('listaUtenti').appendChild(prezzo);
-                        document.getElementById('listaUtenti').appendChild(recensione);
-                        document.getElementById('listaUtenti').appendChild(linkProfilo);
+                            var linkProfilo = document.createElement('A');
+                            linkProfilo.innerHTML = 'Visualizza profilo';
+                            linkProfilo.className = 'profilo';
+                            linkProfilo.setAttribute("href", "#");
+                            linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('statoPrenotazione', 'listaUtenti'); window.location.href='profiloOfferente.html';");
+                            
+                            document.getElementById('listaUtenti').appendChild(checkbox);
+                            document.getElementById('listaUtenti').appendChild(nome);
+                            document.getElementById(result[i]['idOfferente']).appendChild(prezzo);
+                            document.getElementById(result[i]['idOfferente']).appendChild(recensione);
+                            document.getElementById('listaUtenti').appendChild(linkProfilo);
+                        }
                     }
                 }
-            }
-        }
+             }
+          }
     };
 
     http.send(vars);
@@ -225,20 +213,20 @@ function inviaRichiestaPreventivo(){
 }
 
 function inviaRichiestaPrenotazione(){
-    if( document.getElementById('messaggio').value != null){
+    if( document.getElementById('memo').value != null){
         console.log('note inserite');
-        /*document.getElementById("riepilogo").innerHTML += `
+        document.getElementById("riepilogo").innerHTML += `
         <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="modalTitle"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                </div>
-            </div>
             </div>
         </div>
         `;
@@ -246,7 +234,7 @@ function inviaRichiestaPrenotazione(){
         var myModal = new bootstrap.Modal(document.getElementById('messaggioErrore'), {
             keyboard: false
             });
-            myModal.toggle()*/
+            myModal.toggle();
     } else {
         for(i=0; i<idOfferenti.length; i++){
             const url= ip + '/queryAnziano/inviaPrenotazione.php';
@@ -262,12 +250,53 @@ function inviaRichiestaPrenotazione(){
                     if(result == 'existing'){
                         console.log('esiste già');
                         //display messaggio errore
+
+                        document.getElementById("riepilogo").innerHTML += `
+                        <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalTitle"></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        document.getElementById('modalTitle').innerHTML = "La prenotazione esiste già";
+                        var myModal = new bootstrap.Modal(document.getElementById('messaggioErrore'), {
+                            keyboard: false
+                            });
+                            myModal.toggle();
                     } else if(result == 'queryError'){
                         console.log('errore server');
                         //display messaggio errore
+
+                        document.getElementById("riepilogo").innerHTML += `
+                        <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalTitle"></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        document.getElementById('modalTitle').innerHTML = "Errore del server";
+                        var myModal = new bootstrap.Modal(document.getElementById('messaggioErrore'), {
+                            keyboard: false
+                            });
+                            myModal.toggle();
                     } else if(result == 'ok'){
                         console.log('ok');
-                        //display messaggio invio avvenuto
                     }
 
                 }

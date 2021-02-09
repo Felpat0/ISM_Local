@@ -15,7 +15,6 @@ function register(){
   var vars = "nome=" + nome + "&cognome=" + cognome + "&email=" + email + "&password=" + password + "&telefono=" + telefono + "&indirizzo=" + indirizzo + "&città=" + città;
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById('error').innerHTML = http.responseText;
       if(http.responseText == "existing"){
         document.getElementById('error').innerHTML = "Utente già esistente";
       }else if(http.responseText == "queryError"){

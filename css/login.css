@@ -21,6 +21,7 @@ img#back{
 }
 
 .button {
+  font-family: Helvetica, Sans-Serif;
   position: absolute;  
   width: 50%;
   height: 10%;
@@ -29,7 +30,8 @@ img#back{
   border: none;
   text-align: center;
   font-family: "Arial", sans-serif;
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: 600;
   color: white;
   transition: all 0.25s ease;
 }
@@ -39,6 +41,18 @@ img#back{
   background-color: rgb(0, 167, 255);
 }
 
+
+label{
+    font-family: Helvetica, Sans-Serif;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+div#pw-dimenticata a#recupera-pw{
+    font-family: Helvetica, Sans-Serif;
+    font-size: 20px;
+    font-weight: 400;
+}
 
 /*---- Individuazione Utente------*/
 
@@ -415,7 +429,7 @@ div#registrati{
 div#pw-dimenticata{
     position: relative;
     height: 5%;
-    width: 50%;
+    width: 55%;
     top: -155%;
-    left: 28%; 
+    left: 24%; 
 }

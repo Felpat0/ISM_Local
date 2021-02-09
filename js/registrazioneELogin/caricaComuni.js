@@ -17,7 +17,7 @@ function init() {
  loadJSON(function(response) {
     jsonComuni = JSON.parse(response);
     if(window.location.href.includes("modificaProfiloOfferente")){
-      loadJSONPrenotazioni();
+      loadDati();
     }
  });
 }

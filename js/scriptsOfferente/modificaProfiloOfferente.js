@@ -5,7 +5,7 @@ var fasce = [];
 var nFasce = 1;
 var prezzi = [];
 
-function loadJSONPrenotazioni(){
+function loadDati(){
   const url = ip + '/profiloUtente/getZoneServiziFasce.php';
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
@@ -22,7 +22,6 @@ function loadJSONPrenotazioni(){
   };
   http.send(vars);
 }
-
 
 function setZoneEsistenti(){
   //Aggiungi e riempi una select per ogni zona dell'utente

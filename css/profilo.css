@@ -48,3 +48,8 @@ img#btn-modifica{
     width: 40px;
     height: 40px;
 }
+
+a#modifica-altro
+{
+    font-size: 20px;
+}

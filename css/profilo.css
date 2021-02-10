@@ -1,0 +1,50 @@
+#imgprofilo {
+  position: absolute;
+  width: 45%;
+  height: 25%;
+  top: 30%;
+  left: 2%;
+  background-color: #ffa427;
+}
+
+#nomecognome {
+  position: absolute;
+  width: 45%;
+  height: 25%;
+  top: 30%;
+  left: 50%;
+  border: 2px solid #ffa427;
+  border-radius: 20px;
+  background: none;
+  text-align: center;
+}
+
+#info {
+  position: absolute;
+  width: 94%;
+  height: 40%;
+  left: %;
+  top: 58%;
+  border: 2px solid #ffa427;
+  border-radius: 20px;
+  background: none;
+  text-align: center;
+}
+
+label{
+    padding-left: 20px;
+    font-size: 20px;
+}
+p{
+    text-align: left;
+    padding-left: 20px;
+    margin-top: -1%;
+    font-size: 24px;
+    
+}
+
+img#btn-modifica{
+    position:relative;
+    width: 40px;
+    height: 40px;
+}

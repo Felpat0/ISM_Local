@@ -4,7 +4,7 @@ function inviaCodiceRecupero(){
   confermaEmail = document.getElementById("conferma-email").value;
 
   if(email == confermaEmail){
-    const url= ip + 'registrazioneLogin/passwordDimenticata.php';
+    const url= ip + '/registrazioneLogin/passwordDimenticata.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -12,6 +12,7 @@ function inviaCodiceRecupero(){
     var vars = "email=" + email;
     http.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        console.log(http.responseText);
         localStorage.setItem("codice", http.responseText);
       }
     };
@@ -40,13 +41,12 @@ function inviaNuovaPassword(){
   confermaPassword = document.getElementById("conferma-password").value;
 
   if(password == confermaPassword){
-    const url= ip + 'registrazioneLogin/passwordDimenticata.php';
+    const url= ip + '/registrazioneLogin/passwordDimenticata.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     var vars = "email=" + email + "&password=" + document.getElementById("password").value + "&tipoUtente=" + document.getElementById("selectTipo").value;
-    console.log(vars);
     http.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         if(http.responseText == "ok"){

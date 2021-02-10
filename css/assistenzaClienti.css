@@ -4,7 +4,7 @@
   height: 45%;
   top: 40%;
   left: 4%;
-  border: 2px solid #004dff;;
+  border: 2px solid rgba(255, 164, 39, 0.68);
   border-radius: 20px;
   font-size: 30;
   background: white;
@@ -17,13 +17,13 @@
   margin-top: 140px;
   width: 200px;
   height: 50px;
-  background-color: #b9d8ff;
+  background-color: #004dff;
   border-radius: 40px;
-  border: 2px solid #004dff;
+  border: none;
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 20px;
-  color: black;
+  color: white;
   transition: all 0.25s ease;
 }
 
@@ -33,9 +33,9 @@
   height: 5%;
   top: 30%;
   left: 4%;
-  background-color: #b9d8ff;
+  background: rgba(255, 164, 39, 0.28);
+  border: 2px solid rgba(255, 164, 39, 0.68);
   border-radius: 40px;
-  border: 2px solid #004dff;
   font-family: "Arial", sans-serif;
   font-size: 20px;
   color: black;

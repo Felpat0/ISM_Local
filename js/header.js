@@ -13,7 +13,7 @@ var html = `
     <li> <a id="logout" onclick="logout();"><img id="icona" src="img/logout.png"></a></li>
   </ul>
 </div>
-<button onclick="" id="back"><</button> `;
+<button onclick="" id="back"><img id="back" src="img/back.png"></button> `;
 
 document.getElementById('testa').innerHTML = html;
 

@@ -24,11 +24,11 @@ if(messaggio){
 
 
 function richiestaAssistenza(){
-  const url= ip + '/assistenza/inviaMail.php';
+  const url= ip + '/inviaMailAssistenza.php';
   var http = new XMLHttpRequest();
   http.open("POST", url, true);
   http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  
+
   var selectCategoria = document.getElementById("selectCategoria");
   var categoria = selectCategoria.options[selectCategoria.selectedIndex].text;
   var messaggio = document.getElementById("messaggio").value;

@@ -1,39 +1,77 @@
 h1{
     position: absolute;
     top:26%;
+    left: 5%;
+    right: 5%;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 600;
+    text-align: center;
     font-size: 26;
-    font-family: 'Roboto', sans-serif;
 }
 
 h2{
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 600;
+    text-align: center;
     font-size: 26;
-    font-family: 'Roboto', sans-serif;
 }
 
+p{
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    font-size: 26;
+}
+
+#firstPage{
+    position: absolute;
+    width:100%;
+    height: 100%;
+}
+
+#dataOra{
+    position: absolute;
+    width:100%;
+    height: 100%;
+}
+
+#selezionaUtente{
+    position: absolute;
+    width:100%;
+    height: 100%;
+}
 /* Radio button e check button */
 
 #bottoni {
-  position:absolute;
+  position:relative;
   top:33%;
-  height: 50%;
+  left: 2%;
+  right: 2%;
+  width: 100%;
+  height: 67%;
   color: black;
   font-size: 24;
 }
 
 #conferma{
-  position:absolute;
-  top:88%;
+  position: absolute;
+  top:90%;
+  bottom: 52%;
   height: 10%;
   width: 90%;
+  left: 13%;
+  right: 5%;
 }
 
 
 .group {
+  position: relative;
+  height: 100%;
+  width: 100%;
   display:grid;
   align-items: center;
   margin-bottom: 2em;
-  width:100%;
-  height: 50%;
+  
 }
 
 input[type=checkbox],
@@ -45,11 +83,17 @@ input[type=radio] {
 
 label {
   position: relative;
+  width: 100%;
   margin-right: 1em;
   padding-left: 2em;
   padding-right: 1em;
   line-height: 2;
   cursor: pointer;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 400;
+  text-align: left;
+  font-size: 26;
+  
 }
 label:before {
   box-sizing: border-box;
@@ -60,7 +104,7 @@ label:before {
   display: block;
   width: 1.4em;
   height: 1.4em;
-  border: 2px solid #004dff;
+  border: 2px solid rgba(255, 164, 39, 0.68);
   border-radius: 0.25em;
   z-index: -1;
 }
@@ -82,7 +126,7 @@ input[type=radio]:checked + label:before {
   top: 0;
   width: 100%;
   height: 2em;
-  background: #b9d8ff;
+  background: rgba(255, 164, 39, 0.28);
 }
 
 /* Transition */
@@ -108,23 +152,24 @@ div#richiediprenotazione{
   width: 90%;
 }
 
-button {
+.button {
   position:relative;
-  top:18%;
-  left:10%;
+  top:100%;
   width: 80%;
-  height: 70%;
+  height: 80%;
   background-color: #004dff;
   border-radius: 40px;
   border: none;
   text-align: center;
-  font-size: 23;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  font-size: 26;
   color: white;
   transition: all 0.25s ease;
 }
 
-button:active, button:focus {
+.button:active, button:focus {
   outline: none;
   background-color: rgb(0, 167, 255);
 }
@@ -142,22 +187,28 @@ button:active, button:focus {
     position: relative;
     top:20%;
     height:26%;
-    width:80%;
-    background-color: #b9d8ff;
-    border: 2px solid #004dff;
+    width:90%;
+    background-color: rgba(255, 164, 39, 0.28) ;
+    border: 2px solid rgba(255, 164, 39, 0.68);
     border-radius: 0.25em;
-    font-size: 23;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 26;
 }
 
 #time{
     position: relative;
     top:20%;
     height:26%;
-    width:80%;
-    background-color: #b9d8ff;
-    border: 2px solid #004dff;
+    width:90%;
+    background-color: rgba(255, 164, 39, 0.28);
+    border: 2px solid rgba(255, 164, 39, 0.68);
     border-radius: 0.25em;
-    font-size: 23;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 26;
 }
 
 #ora { 
@@ -179,12 +230,14 @@ button:active, button:focus {
     height: 30%;
     width: 90%;
     border-radius: 15px;
-     background-color: #b9d8ff;
-    border: 2px solid #004dff ;
-    font-size: 24;
-    font-family: 'Roboto', sans-serif;
+     background-color: rgba(255, 164, 39, 0.28);
+    border: 2px solid rgba(255, 164, 39, 0.68) ;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 26;
     overflow-x: hidden;
-  overflow-y: auto;
+    overflow-y: auto;
 }
 
 
@@ -198,29 +251,38 @@ button:active, button:focus {
     vertical-align: text-top;
     overflow: visible;
     outline: none;
-    border: 2px solid #004dff ;
-    font-size: 23;
-    font-family: 'Roboto', sans-serif;
+    border: 2px solid rgba(255, 164, 39, 0.68);
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 26;
 }
 
 .profilo{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 26;
     text-decoration: none;
     color: #004dff;
-    font-size: 23;
 }
 .valutazione{
     position: relative;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 26;
     text-decoration: none;
     color: black;
-    font-size: 23;
+
 }
 .prezzo{
     position: relative;
     top:-20%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 26;
     text-decoration: none;
     color: black;
-    font-size: 23;
 }

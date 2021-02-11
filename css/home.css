@@ -1,7 +1,7 @@
 
 /*----- BTN-Back--------*/
 
-.button {
+.button#back {
   font-family: Helvetica, Sans-Serif;
   position: absolute;  
   width: 18%;
@@ -17,7 +17,7 @@
   transition: all 0.25s ease;
 }
 
-.button:active, .button:focus {
+.button#back:active, .button#back:focus {
   outline: none;
   background-color: rgb(0, 167, 255);
 }

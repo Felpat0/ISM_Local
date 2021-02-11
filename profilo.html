@@ -2,11 +2,20 @@
   <head>
     <link href="css\home.css" rel="stylesheet" type="text/css">
     <link href="css\profilo.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="js/ip.js"></script>
+    <script src="js/modificaProfiloUtente.js"></script>
   </head>
   <body>
     <div id="testa" ></div>
     <script src="js/header.js"></script>
+    <script>
+      if(localStorage["tipoUtente"] == "offerente")
+        document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
+      else
+        document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
+    </script>
     <div id="contenitore-dati">
      <div id="imgprofilo">
       <p>Immagine profilo</p>
@@ -14,23 +23,33 @@
     <div id="nomecognome">
       <table>
           <td><label id="label1" for="nome" class="">Nome: </label></td>
-          <td><a><img id="btn-modifica" src="img/modifica.png"></a></td></table>
-      <p id="nome">Gianni</p>
+          </table>
+      <input type="text" class="form-control" id="nome" value="" disabled="true"></input>
       <table><td><label id="label2" for="cognome" class="">Cognome: </label></td>
-          <td><a><img id="btn-modifica" src="img/modifica.png"></a></td></table>
-      <p id="cognome">Barba</p>
+          </table>
+      <input type="text" class="form-control" id="cognome" value="" disabled="true"></input>
         </div>
     <div id="info">
-      <table><td><label id="label3" for="indirizzo" class="">Indirizzo: </label></td>
-          <td><a><img id="btn-modifica" src="img/modifica.png"></a></td></table>
-      <p id="indirizzo">Via Gianni Barba 12</p>
+      <div id="divAnziano">
+        <table><td><label id="label6" for="indirizzo" class="">Indirizzo: </label></td>
+            </table>
+        <input type="text" class="form-control" id="indirizzo" value="" disabled="true"></input>
+        <table><td><label id="label7" for="città" class="">Indirizzo: </label></td>
+            </table>
+        <input type="text" class="form-control" id="città" value="" disabled="true"></input>
+      </div>
       <table><td><label id="label4" for="telefono" class="">Numero di telefono: </label></td>
-      <td><a><img id="btn-modifica" src="img/modifica.png"></a></td></table>
-      <p id="telefono">324 5675434</p>
+      </table>
+      <input type="tel" class="form-control" id="telefono" value="" disabled="true"></input>
       <table><td><label id="label5" for="email" class="">E-mail: </label></td>
-          <td><a><img id="btn-modifica" src="img/modifica.png"></a></td></table>
-      <p id="email">giannibarba@anziano.it</p>
-      <a id="modifica-altro" href="#">Modifica altro</a>
+      </table>
+      <input type="email" class="form-control" id="email" value="" disabled="true"></input>
+      <div id="linksGenerici">
+        <a id="modifica-profilo" onclick="enableModifiche()" href="#">Modifica profilo<img id="btn-modifica" src="img/modifica.png"></a><br/>
+      </div>
+      <div id="linksOfferente">
+        <a id="modifica-altro" href="modificaProfiloOfferente.html">Modifica zone, servizi offerti e fasce orarie</a>
+      </div>
     </div>
     </div>
   </body>

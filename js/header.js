@@ -6,10 +6,10 @@ var html = `
   <ul id="menu">
     <li><a id="home"><img id="icona" src="img/home.png"></a></li>
     <li><a id="notifica" onclick="window.location.href = 'notifiche.html'"><img id="icona" src="img/notifica.png"></a>
-    <li> <a id="nuovaNotifica" onclick="window.location.href = 'notifiche.html'"><img id="icona" src="img/nuovanotifica.png"></a></li>
+    <li><a id="nuovaNotifica" onclick="window.location.href = 'notifiche.html'"><img id="icona" src="img/nuovanotifica.png"></a></li>
     <li><a id="messaggio" onclick="window.location.href = 'chat.html'"><img id="icona" src="img/messaggio.png"></a></li>
-    <li> <a id="nuovoMessaggio" onclick="window.location.href = 'chat.html'"><img id="icona" src="img/nuovomessaggio.png"></a></li>
-    <li><a id="profilo"><img id="icona" src="img/account.png"></a> </li>
+    <li><a id="nuovoMessaggio" onclick="window.location.href = 'chat.html'"><img id="icona" src="img/nuovomessaggio.png"></a></li>
+    <li><a id="profilo" onclick="window.location.href = 'profilo.html'"><img id="icona" src="img/account.png"></a> </li>
     <li> <a id="logout" onclick="logout();"><img id="icona" src="img/logout.png"></a></li>
   </ul>
 </div>
@@ -138,4 +138,31 @@ function logout(){
   localStorage["id"] = "";
   localStorage["tipoUtente"] = "";
   window.location.href = "login.html";
+}
+
+//Messaggio pop up se necessario
+if(fileName == 'homeanziano.html' || fileName == 'homeutente.html'){
+  var messaggio = localStorage["messaggioHome"];
+  if(messaggio){
+    document.getElementById("divPopUp").innerHTML += `
+    <div class="modal fade" tabindex="-1" id="modalMessaggio" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">` + messaggio + `</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+    var myModal = new bootstrap.Modal(document.getElementById('modalMessaggio'), {
+    keyboard: false
+    });
+    myModal.toggle()
+    localStorage["messaggioHome"] = "";
+  }
 }

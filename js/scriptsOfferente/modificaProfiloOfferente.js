@@ -14,7 +14,6 @@ function loadDati(){
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       dati = JSON.parse(http.responseText);
-      console.log(dati);
       setZoneEsistenti();
       setServiziEsistenti();
       setFasceEsistenti();
@@ -326,10 +325,10 @@ function inviaModifiche(){
 		vars += "&inizio" + i + "=" + fasce[i]["inizio"];
 		vars += "&fine" + i + "=" + fasce[i]["fine"];
 	}
-  console.log(vars);
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        window.location.href = "homeutente.html";
+      localStorage.setItem("messaggioHome", "Le modifiche sono state apportate");
+      window.location.href = "homeutente.html";
     }
   };
   http.send(vars);

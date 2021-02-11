@@ -1,30 +1,37 @@
-.prenotazione-selection {
+.titolo {
   position: relative;
-  width: 96%;
-  height: 100px;
-  left: 2%;
-  background: rgba(255, 164, 39, 0.28);
-  border: 2px solid rgba(255, 164, 39, 0.68);
-  border-radius: 20px;
-  padding: 1rem;
-  margin-bottom: 3rem;
+  width: 100%;
+  height: 5%;
+  top: -5%;
+}
+
+.prenotazioneInviata{
+  position: relative;
+  left:5%;
+  width: 90%;
+  height: 35%;
+  margin-top: 2%;
+  border-radius: 15px;
+  background-color:rgba(255, 164, 39, 0.28);
+  border: 2px solid rgba(255, 164, 39, 0.68) ;
   text-align: center;
-  font-size: 23;
-  box-shadow: 0px 3px 10px -2px rgba(161, 170, 166, 0.5);
-  display: inline;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  font-size: 26;
+  color: black;
 }
 
 .preventivo {
   position: relative;
-  width: 96%;
-  height: 180px;
+  width: 90%;
+  height: 45%;
   top: 1%;
-  left: 2%;
+  left: 5%;
+  margin-top: 10%;
   background: rgba(255, 164, 39, 0.28);
   border: 2px solid rgba(255, 164, 39, 0.68);
   border-radius: 20px;
-  padding: 1rem;
-  margin-bottom: 3rem;
   text-align: center;
   font-size: 23;
   box-shadow: 0px 3px 10px -2px rgba(161, 170, 166, 0.5);
@@ -35,6 +42,6 @@
   position: absolute;
   width: 96%;
   height: 55%;
-  top: 35%;
+  top: 30%;
   left: 2%;
 }

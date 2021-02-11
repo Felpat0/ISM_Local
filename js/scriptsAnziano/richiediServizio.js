@@ -94,7 +94,7 @@ function displayListaUtenti(){
             var j = 1;
 
             if(!result){
-                document.getElementById("riepilogo").innerHTML += `
+                document.getElementById("selezionaUtente").innerHTML += `
                 <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -213,8 +213,8 @@ function inviaRichiestaPreventivo(){
 }
 
 function inviaRichiestaPrenotazione(){
-    if( document.getElementById('memo').value != null){
-        console.log('note inserite');
+    if( document.getElementById('memo').value != '' && document.getElementById('memo').value != null){
+        console.log(document.getElementById('memo').value);
         document.getElementById("riepilogo").innerHTML += `
         <div class="modal fade" tabindex="-1" id="messaggioErrore" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

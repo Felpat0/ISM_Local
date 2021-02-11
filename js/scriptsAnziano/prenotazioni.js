@@ -47,8 +47,8 @@ function displayLista(idLista, statoPrenotazione){
                     document.getElementById('btn'+i).appendChild(contentDiv);
 
                     //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
-                    var name = document.createElement('H2');
-                    var servizio = document.createElement('H3');
+                    var name = document.createElement('H3');
+                    var servizio = document.createElement('H2');
                     name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
                     servizio.innerHTML = listaServizi[result[i]['idServizio']];
                     document.getElementById('contentDiv'+i).appendChild(name);

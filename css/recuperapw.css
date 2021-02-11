@@ -1,0 +1,42 @@
+div#form-login
+{
+    position:absolute;
+    top: 30%;
+}
+
+.txt-titolo{
+    position: absolute;
+    top: 21%;
+    left: 20%;
+}
+
+button#back{
+    position: absolute;
+    top:8%;
+    left:8%;
+}
+
+.button{
+    position:absolute;
+    width: 80%;
+    height: 25%;
+    left: 8%;
+    font-size: 26px;
+}
+
+div#form-codice
+{
+    position:absolute;
+    width: 80%;
+    top:35%;
+    left:11%;
+}
+
+
+div#btn-verifica button#submit{
+    position: absolute;
+    top:65%;
+    width: 50%;
+    height: 10%;
+    left:25%;
+}

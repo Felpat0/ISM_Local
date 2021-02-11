@@ -13,10 +13,12 @@
     <script src="js/header.js"></script>
     <!-- Inizio richiesteprenotazioni -->
     <div class ="paginainiziale "id="firstpage" >
+        <div id=titolo>
         <h1>Le mie prenotazioni</h1>
+        </div>
         <button class="prenotazioneInviata" onclick="hideDiv('firstpage', 'listaInviate'); displayLista('listaInviate', 'inviata')" id="inviate">In attesa</button>
         <button class="prenotazioneAccettata"onclick="hideDiv('firstpage', 'listaAttive'); displayLista('listaAttive', 'accettata'); displayListaPreventivi();" id="attive">Attive</button>
-        <button class="prenotazioneNonAttiva"onclick="hideDiv('firstpage', 'listaNonAttive'); displayLista('listaNonAttive', 'rifiutata')" id="nonAttive">Non attive/Rifiutate</button>
+        <button class="prenotazioneNonAttiva"onclick="hideDiv('firstpage', 'listaNonAttive'); displayLista('listaNonAttive', 'rifiutata')" id="nonAttive">Archiviate/Rifiutate</button>
     </div>
     <!-- Inizio RichiesteAttive -->
     <div class="paginainiziale" id="listaAttive" style="display: none">

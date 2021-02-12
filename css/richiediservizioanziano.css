@@ -286,3 +286,10 @@ div#richiediprenotazione{
     text-decoration: none;
     color: black;
 }
+
+
+.stella{
+  position: relative;
+  width: 20%;
+  height: 10%;
+}

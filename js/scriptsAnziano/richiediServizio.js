@@ -143,7 +143,19 @@ function displayListaUtenti(){
 
                             var recensione = document.createElement('p');
                             recensione.className = 'valutazione';
-                            recensione.innerHTML = 'Media di '+ valutazione + ' stelle';
+                            stelle = Math.floor(valutazione);
+                            stars = '';
+                            
+                            for(var k=1; k<=stelle; k++){
+                                stars = stars.concat('<img class="stella" src="img/stella-piena.png">');
+                            }
+                            if(stelle<5){
+                                for(var k=stelle; k<5; k++){
+                                    
+                                    stars = stars.concat('<img class="stella" src="img/stella-vuota.png">');
+                                }
+                            }
+                            recensione.innerHTML = stars;
 
                             var linkProfilo = document.createElement('A');
                             linkProfilo.innerHTML = 'Visualizza profilo';

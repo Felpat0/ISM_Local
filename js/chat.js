@@ -68,7 +68,7 @@ function getMessaggi(id){
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
+            document.getElementById('send').setAttribute("onclick", "inviaMessaggio('"+id+"')");
             var result = JSON.parse(http.responseText);
 
             for(var i=0; i<result.length; i++){
@@ -100,7 +100,7 @@ function getMessaggi(id){
 
                 document.getElementById('divM'+i).appendChild(messaggio);
                 document.getElementById('divM'+i).innerHTML += '<br style="clear:both" />';
-                document.getElementById('send').setAttribute("onclick", "inviaMessaggio('"+id+"')");
+                
 
                 var e = document.getElementById('divM'+i);
                 e.scrollIntoView(false);
@@ -138,6 +138,7 @@ function inviaMessaggio(id){
             } else if(result == 'ok'){
                 document.getElementById('msg').value = '';
                 document.getElementById('cronologia').innerHTML = '';
+                localStorage.removeItem('idUtente')
                 getMessaggi(id);
             }
         }

@@ -158,7 +158,6 @@ function showRiepilogoAttiva(index){
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
     <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
     <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>
-    <a href="#" class="linkmessaggio-riepilogo" onclick="">Invia messaggio</a>
   </div>`;
   document.getElementById("riepilogoAttive").innerHTML = element;
 
@@ -177,7 +176,6 @@ function showRiepilogoPreventivoAttivo(index){
     <p>Paga: ` + prenotazioni["preventiviAttivi"][index]["prezzo"] + ` euro l'ora</p>
     <p>Note: ` + prenotazioni["preventiviAttivi"][index]["note"] + `</p>
     <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>
-    <a href="#" class="linkmessaggio-riepilogo" onclick="">Invia messaggio</a>
   </div>`;
   document.getElementById("riepilogoAttive").innerHTML = element;
 
@@ -195,7 +193,6 @@ function showRiepilogoSospeso(index){
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
     <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
     <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>
-    <a href="#" class="linkmessaggio-riepilogo" onclick="">Invia messaggio</a>
   </div>
   <button class="accetta" onclick="modificaPrenotazione(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `, 'accettata', ` + prenotazioni["prenotazioni"][index]["idAnziano"] + `, ` + prenotazioni["prenotazioni"][index]["idOfferente"] + `, '` + prenotazioni["prenotazioni"][index]["nomeOfferente"] + ` ` + prenotazioni["prenotazioni"][index]["cognomeOfferente"] + `');">Accetta</button>
   <button class="rifiuta" onclick="modificaPrenotazione(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `, 'rifiutata', ` + prenotazioni["prenotazioni"][index]["idAnziano"] + `, ` + prenotazioni["prenotazioni"][index]["idOfferente"] + `, '` + prenotazioni["prenotazioni"][index]["nomeOfferente"] + ` ` + prenotazioni["prenotazioni"][index]["cognomeOfferente"] + `');">Rifiuta</button>

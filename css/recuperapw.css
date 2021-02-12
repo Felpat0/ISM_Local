@@ -11,10 +11,18 @@ div#form-login
 }
 
 button#back{
-    position: absolute;
-    top:8%;
-    left:8%;
+    width: 100%;
+    height: 100%;
 }
+
+div#back1{
+    position: absolute;
+    left: 5%;
+    top:8%;
+    width: 18%;
+    height: 10%;
+}
+
 
 .button{
     position:absolute;

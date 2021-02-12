@@ -221,7 +221,7 @@ function inviaRichiestaPreventivo(){
         http.send(vars);
     }
 
-    window.location.href = 'homeAnziano.html';
+    setTimeout(function(){window.location.href = 'homeanziano.html';}, 200);
 }
 
 function inviaRichiestaPrenotazione(){
@@ -317,7 +317,7 @@ function inviaRichiestaPrenotazione(){
             http.send(vars);
         }
 
-        window.location.href = 'homeAnziano.html';
+        setTimeout(function(){window.location.href = 'homeanziano.html';}, 200);
     }
 }
 

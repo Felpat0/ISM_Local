@@ -6,21 +6,21 @@ function displayLista(idLista, statoPrenotazione){
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var vars = "id="+ localStorage["id"]; 
+    var vars = "id="+ localStorage["id"];
 
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById(idLista).innerHTML = '';
             var result = JSON.parse(http.responseText);
-            
+
             //Per ciascuna prenotazione viene creato un pulsante che porta alla schermata contenente i dettagli della prenotazione
 
             for(var i=0; i<result.length; i++){
 
                 var check = result[i]['stato'];
-                
+
                 if(result[i]['stato'] == 'completata') {check = 'rifiutata';}
-                
+
                 if(statoPrenotazione == check){
                     //Creazione div che conterrà la prenotazione
                     var newDiv = document.createElement('DIV');
@@ -36,10 +36,10 @@ function displayLista(idLista, statoPrenotazione){
                     } else {
                         newBtn.setAttribute("onclick", "hideDiv('"+idLista+"','"+statoPrenotazione+"'); displayRiepilogoPrenotazione('"+result[i]['idPrenotazione']+"','"+statoPrenotazione+"', '"+idLista+"')");
                     }
-                   
+
                     newBtn.className = 'prenotazioni';
                     newBtn.id = 'btn'+i;
-                    document.getElementById("div"+i).appendChild(newBtn); 
+                    document.getElementById("div"+i).appendChild(newBtn);
 
                     var contentDiv = document.createElement('DIV');
                     contentDiv.id = 'contentDiv'+i;
@@ -70,6 +70,35 @@ function displayLista(idLista, statoPrenotazione){
       http.send(vars);
 }
 
+function setPrenotazioneCompletata(idPrenotazione){
+  const url= ip + '/queryAnziano/updatePrenotazione.php';
+  var http = new XMLHttpRequest();
+  http.open("POST", url, true);
+  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  var vars = "idPrenotazione="+idPrenotazione+"&nuovoStato=completata";
+  http.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(http.responseText);
+      }
+    };
+    http.send(vars);
+}
+
+function setPreventivoCompletato(idPreventivo){
+  const url= ip + '/queryAnziano/updatePreventivo.php';
+  var http = new XMLHttpRequest();
+  http.open("POST", url, true);
+  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  var vars = "idPreventivo="+idPreventivo+"&nuovoStato=completato";
+
+  http.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(http.responseText);
+      }
+    };
+    http.send(vars);
+}
+
 function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idLista){
     document.getElementById("back").setAttribute("onclick", "hideDiv('"+statoPrenotazione+"', '"+idLista+"'); resetBackButton('riepilogo', '"+idLista+"')");
     const url= ip + '/queryAnziano/riepilogoPren.php';
@@ -77,11 +106,11 @@ function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idList
     http.open("POST", url, true);
     http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     var vars = "id="+idPrenotazione;
-    
+
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var result = JSON.parse(http.responseText);
-            
+
             //Inserimento informazioni relative alla prenotazione all'interno dell'html
                 var name = document.createElement('H3');
                 var servizio = document.createElement('P');
@@ -95,7 +124,7 @@ function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idList
                 data.innerHTML = "Data: " + result['0']['data'];
                 ora.innerHTML = "Ora: " + result['0']['ora'];
                 paga.innerHTML = "Paga: " + result['0']['pagaOraria'] + " euro l'ora";
-                
+
                 switch(statoPrenotazione){
                     case 'accettata':
                         stato.innerHTML= "Stato prenotazione: Attiva";
@@ -111,7 +140,7 @@ function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idList
                         statoPrenotazione = 'rifiutata';
                         break;
                 }
-                
+
                 document.getElementById(statoPrenotazione).innerHTML = '';
                 document.getElementById(statoPrenotazione).appendChild(name);
                 document.getElementById(statoPrenotazione).appendChild(servizio);

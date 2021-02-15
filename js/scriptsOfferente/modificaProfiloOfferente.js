@@ -273,7 +273,9 @@ function inviaModifiche(){
 		var temp = {Regione: regione.options[regione.selectedIndex].text,
 		Provincia: provincia.options[provincia.selectedIndex].text,
 		Città: città.options[città.selectedIndex].text};
-		zone.push(temp)
+
+    if(temp["Regione"] != "Regione" && temp["Provincia"] != "Provincia" && temp["Città"] != "Città")
+		  zone.push(temp)
 	}
 
 	//Ottieni dati dei servizi
@@ -289,47 +291,61 @@ function inviaModifiche(){
 
 	//Ottieni dati delle fasce
 	var fasce = [];
+  var errore = false;
 	for(i = 1; i != nFasce + 1; i++){
 		var inizio = document.getElementById("inizio" + i).value;
 		var fine = document.getElementById("fine" + i).value;
 		var temp = {inizio: inizio, fine: fine};
-		fasce.push(temp);
-	}
-
-  const url= ip + '/profiloUtente/modificaProfiloOfferente.php';
-  var http = new XMLHttpRequest();
-  http.open("POST", url, true);
-  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-	//Inserire le variabili della prima schermata
-  var vars = "parte=2&idOfferente=" + localStorage["id"];
-
-	//Inserire le zone
-	vars += "&nZone=" + nZone;
-	for(i = 0; i != nZone; i ++){
-		vars += "&regione" + i + "=" + zone[i]["Regione"];
-		vars += "&provincia" + i + "=" + zone[i]["Provincia"];
-		vars += "&città" + i + "=" + zone[i]["Città"];
-	}
-
-	//Inserire i servizi
-	vars += "&nServizi=" + servizi.length;
-	for(i = 0; i != servizi.length; i++){
-		vars += "&idServizio" + i + "=" + servizi[i]["idServizio"];
-		vars += "&costoOrario" + i + "=" + servizi[i]["costoOrario"];
-	}
-
-	//Inserire fasce orarie
-	vars += "&nFasce=" + nFasce;
-	for(i = 0; i != nFasce; i++){
-		vars += "&inizio" + i + "=" + fasce[i]["inizio"];
-		vars += "&fine" + i + "=" + fasce[i]["fine"];
-	}
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      localStorage.setItem("messaggioHome", "Le modifiche sono state apportate");
-      window.location.href = "homeutente.html";
+    if((fine <= inizio || inizio === parseInt(inizio, 10) || fine === parseInt(fine, 10)) && (inizio != "" || fine != "")){
+      document.getElementById("error").innerHTML = "E' stata inserita una fascia oraria non valida";
+      fasce = [];
+      errore = true;
+    }else if(inizio != "" && fine != ""){
+		  fasce.push(temp);
+    }else if(fine != ""){
+      document.getElementById("error").innerHTML = "E' stata inserita una fascia oraria non valida";
+      fasce = [];
+      errore = true;
     }
-  };
-  http.send(vars);
+	}
+  if(!errore){
+
+    const url= ip + '/profiloUtente/modificaProfiloOfferente.php';
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  	//Inserire le variabili della prima schermata
+    var vars = "parte=2&idOfferente=" + localStorage["id"];
+
+  	//Inserire le zone
+  	vars += "&nZone=" + zone.length;
+  	for(i = 0; i != zone.length; i ++){
+  		vars += "&regione" + i + "=" + zone[i]["Regione"];
+  		vars += "&provincia" + i + "=" + zone[i]["Provincia"];
+  		vars += "&città" + i + "=" + zone[i]["Città"];
+  	}
+
+  	//Inserire i servizi
+  	vars += "&nServizi=" + servizi.length;
+  	for(i = 0; i != servizi.length; i++){
+  		vars += "&idServizio" + i + "=" + servizi[i]["idServizio"];
+  		vars += "&costoOrario" + i + "=" + servizi[i]["costoOrario"];
+  	}
+
+  	//Inserire fasce orarie
+  	vars += "&nFasce=" + fasce.length;
+  	for(i = 0; i != fasce.length; i++){
+  		vars += "&inizio" + i + "=" + fasce[i]["inizio"];
+  		vars += "&fine" + i + "=" + fasce[i]["fine"];
+  	}
+
+    http.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        localStorage.setItem("messaggioHome", "Le modifiche sono state apportate");
+        window.location.href = "homeutente.html";
+      }
+    };
+    http.send(vars);
+  }
 }

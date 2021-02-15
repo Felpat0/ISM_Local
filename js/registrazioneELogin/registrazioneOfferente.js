@@ -252,10 +252,8 @@ function register(){
 		}
 	}else{
 		if(!validateEmail(email)){
-			console.log(1);
       document.getElementById("error").innerHTML = "L'indirizzo email inserito non è valido";
     }else{
-			console
       document.getElementById("error").innerHTML = "E' necessario riempire tutti i campi";
     }
 	}

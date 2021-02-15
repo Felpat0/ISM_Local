@@ -222,6 +222,7 @@ function register(){
         document.getElementById('error').innerHTML = "Errore interno";
       }
       else if(http.responseText == "ok"){
+        localStorage.setItem("messaggioLogin", "La registrazione è stata effettuata con successo");
         window.location.href = "login.html";
       }
     }

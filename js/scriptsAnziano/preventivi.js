@@ -172,7 +172,7 @@ function displayListaPreventivi() {
 
                     document.getElementById("back").setAttribute("onclick", "hideDiv('preventivoRicevuto', 'listaPreventivi'); resetBackButton('lista')");
                 } else if(statoPreventivo == 'preventivo'){
-                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaPreventivi'); resetBackButton('lista'");
+                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaPreventivi'); resetBackButton('lista')");
                     document.getElementById('preventivo').innerHTML='';
                     var name = document.createElement('H2');
                     var servizio = document.createElement('P');
@@ -196,7 +196,7 @@ function displayListaPreventivi() {
                     }else if(result['0']['stato'] == 'preventivoRifiutato'){
                         stato.innerHTML = "Stato richiesta: Rifiutata da te";
                     } else if(result['0']['stato'] == 'finalizzato'){
-                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaAttive'); resetBackButton(''riepilogo', 'listaAttive'')");
+                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaAttive'); resetBackButton('riepilogo', 'listaAttive')");
                         document.getElementById('preventivo').innerHTML='';
                         stato.innerHTML = "Stato richiesta: Prenotazione attiva";
                     }

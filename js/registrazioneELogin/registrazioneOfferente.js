@@ -4,6 +4,24 @@ var fasce = [];
 var nFasce = 1;
 var prezzi = [];
 
+//Riempire lista servizi
+for(i = 0; i != listaServizi.length; i++){
+	document.getElementById("listaServizi").innerHTML += `
+	<input id="check` + i + `" class="form-check-input" type="checkbox" value="">
+	<label id="label` + i + `" class="form-check-label" for="check` + i + `">
+		`+ listaServizi[i] + `
+	</label>
+	<input id="costoOrario` + i + `" class="form-control form-control-lg" type="number" placeholder="Costo orario" disabled>
+	<br/>`;
+}
+
+
+function validateEmail(email) {
+  //Check if the email address is valid
+  const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return res.test(String(email).toLowerCase());
+}
+
 function clearSelect(id){
 	var element = document.getElementById(id);
 	for(i = element.options.length - 1; i != 0; i--){
@@ -107,15 +125,6 @@ function addZona(){
 }
 
 function showServizi(){
-	for(i = 0; i != listaServizi.length; i++){
-		document.getElementById("listaServizi").innerHTML += `
-		<input id="check` + i + `" class="form-check-input" type="checkbox" value="">
-		<label id="label` + i + `" class="form-check-label" for="check` + i + `">
-			`+ listaServizi[i] + `
-		</label>
-		<input id="costoOrario` + i + `" class="form-control form-control-lg" type="number" placeholder="Costo orario" disabled>
-		<br/>`;
-	}
 	  document.getElementById("zone").style.display = "none";
 	  document.getElementById("servizi").style.display = "block";
 }
@@ -144,88 +153,110 @@ function addFascia(){
 }
 
 function register(){
+	var errore = false;
   document.getElementById('error').innerHTML = "";
   var nome = document.getElementById('nome').value;
   var cognome = document.getElementById('cognome').value;
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
   var telefono = document.getElementById('telefono').value;
-
-	//Ottieni dati delle zone
-	var zone = [];
-	for(i = 1; i != nZone + 1; i++){
-		var regione = document.getElementById("regione" + i);
-		var provincia = document.getElementById("provincia" + i);
-		var città = document.getElementById("città" + i);
-		var temp = {Regione: regione.options[regione.selectedIndex].text,
-		Provincia: provincia.options[provincia.selectedIndex].text,
-		Città: città.options[città.selectedIndex].text};
-		zone.push(temp)
-	}
-
-	//Ottieni dati dei servizi
-	var servizi = [];
-	for(i = 0; i != listaServizi.length; i++){
-		if(document.getElementById("check" + i).checked){
-			var idServizio = i;
-			var costoOrario = document.getElementById("costoOrario" + i).value;
-			var temp = {idServizio: idServizio, costoOrario: costoOrario};
-			servizi.push(temp);
+	if(nome && cognome && validateEmail(email) && password && telefono){
+		//Ottieni dati delle zone
+		var zone = [];
+		for(i = 1; i != nZone + 1; i++){
+			var regione = document.getElementById("regione" + i);
+			var provincia = document.getElementById("provincia" + i);
+			var città = document.getElementById("città" + i);
+			var temp = {Regione: regione.options[regione.selectedIndex].text,
+			Provincia: provincia.options[provincia.selectedIndex].text,
+			Città: città.options[città.selectedIndex].text};
+			if(temp["Regione"] != "Regione" && temp["Provincia"] != "Provincia" && temp["Città"] != ["Città"])
+				zone.push(temp)
 		}
-	}
 
-	//Ottieni dati delle fasce
-	var fasce = [];
-	for(i = 1; i != nFasce + 1; i++){
-		var inizio = document.getElementById("inizio" + i).value;
-		var fine = document.getElementById("fine" + i).value;
-		var temp = {inizio: inizio, fine: fine};
-		fasce.push(temp);
-	}
+		//Ottieni dati dei servizi
+		var servizi = [];
+		for(i = 0; i != listaServizi.length; i++){
+			if(document.getElementById("check" + i).checked){
+				var idServizio = i;
+				var costoOrario = document.getElementById("costoOrario" + i).value;
+				var temp = {idServizio: idServizio, costoOrario: costoOrario};
+				servizi.push(temp);
+			}
+		}
 
-  const url= ip + '/registrazioneLogin/registrazioneOfferente.php';
-  var http = new XMLHttpRequest();
-  http.open("POST", url, true);
-  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		//Ottieni dati delle fasce
+		var fasce = [];
+		for(i = 1; i < nFasce + 1; i++){
+			var inizio = document.getElementById("inizio" + i).value;
+			var fine = document.getElementById("fine" + i).value;
+			var temp = {inizio: inizio, fine: fine};
+			if((fine <= inizio || inizio === parseInt(inizio, 10) || fine === parseInt(fine, 10)) && (inizio != "" || fine != "")){
+				document.getElementById("error").innerHTML = "E' stata inserita una fascia oraria non valida";
+				fasce = [];
+				errore = true;
+			}else{
+				if(inizio != "" || fine != "")
+					fasce.push(temp);
+			}
+		}
+		if(!errore){
+		  const url= ip + '/registrazioneLogin/registrazioneOfferente.php';
+		  var http = new XMLHttpRequest();
+		  http.open("POST", url, true);
+		  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-	//Inserire le variabili della prima schermata
-  var vars = "nome=" + nome + "&cognome=" + cognome + "&email=" + email + "&password=" + password + "&telefono=" + telefono;
+			//Inserire le variabili della prima schermata
+		  var vars = "nome=" + nome + "&cognome=" + cognome + "&email=" + email + "&password=" + password + "&telefono=" + telefono;
 
-	//Inserire le zone
-	vars += "&nZone=" + nZone;
-	for(i = 0; i != nZone; i ++){
-		vars += "&regione" + i + "=" + zone[i]["Regione"];
-		vars += "&provincia" + i + "=" + zone[i]["Provincia"];
-		vars += "&città" + i + "=" + zone[i]["Città"];
-	}
+			//Inserire le zone
+			var counter = 0;
+			for(i = 0; i < zone.length; i ++){
+					if(counter == 0){
+						vars += "&nZone=" + zone.length;
+					}
+					counter ++;
+					vars += "&regione" + i + "=" + zone[i]["Regione"];
+					vars += "&provincia" + i + "=" + zone[i]["Provincia"];
+					vars += "&città" + i + "=" + zone[i]["Città"];
+			}
 
-	//Inserire i servizi
-	vars += "&nServizi=" + servizi.length;
-	for(i = 0; i != servizi.length; i++){
-		vars += "&idServizio" + i + "=" + servizi[i]["idServizio"];
-		vars += "&costoOrario" + i + "=" + servizi[i]["costoOrario"];
-	}
+			//Inserire i servizi
+			vars += "&nServizi=" + servizi.length;
+			for(i = 0; i != servizi.length; i++){
+				vars += "&idServizio" + i + "=" + servizi[i]["idServizio"];
+				vars += "&costoOrario" + i + "=" + servizi[i]["costoOrario"];
+			}
 
-	//Inserire fasce orarie
-	vars += "&nFasce=" + nFasce;
-	for(i = 0; i != nFasce; i++){
-		vars += "&inizio" + i + "=" + fasce[i]["inizio"];
-		vars += "&fine" + i + "=" + fasce[i]["fine"];
-	}
-
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-			console.log(http.responseText);
-      if(http.responseText == "existing"){
-        document.getElementById('error').innerHTML = "Utente già esistente";
-      }else if(http.responseText == "queryError"){
-        document.getElementById('error').innerHTML = "Errore interno";
-      }
-      else if(http.responseText == "ok"){
-        localStorage.setItem("messaggioLogin", "La registrazione è stata effettuata con successo");
-        window.location.href = "login.html";
-      }
+			//Inserire fasce orarie
+			vars += "&nFasce=" + fasce.length;
+			for(i = 0; i != fasce.length; i++){
+				vars += "&inizio" + i + "=" + fasce[i]["inizio"];
+				vars += "&fine" + i + "=" + fasce[i]["fine"];
+			}
+		  http.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+					console.log(http.responseText);
+		      if(http.responseText == "existing"){
+		        document.getElementById('error').innerHTML = "Utente già esistente";
+		      }else if(http.responseText == "queryError"){
+		        document.getElementById('error').innerHTML = "Errore interno";
+		      }
+		      else if(http.responseText == "ok"){
+		        localStorage.setItem("messaggioLogin", "La registrazione è stata effettuata con successo");
+		        window.location.href = "login.html";
+		      }
+		    }
+		  };
+		  http.send(vars);
+		}
+	}else{
+		if(!validateEmail(email)){
+			console.log(1);
+      document.getElementById("error").innerHTML = "L'indirizzo email inserito non è valido";
+    }else{
+			console
+      document.getElementById("error").innerHTML = "E' necessario riempire tutti i campi";
     }
-  };
-  http.send(vars);
+	}
 }

@@ -1,3 +1,50 @@
+function creaPulsantePreventivo(result, i){
+    //Creazione div che conterrà il preventivo
+    var newDiv = document.createElement('DIV');
+    newDiv.id = 'div'+i;
+    //Inserimento del nuovo div in quello contenente la lista dei preventivi
+    document.getElementById('listaPreventivi').appendChild(newDiv);
+
+    var contentDiv = document.createElement('DIV');
+    contentDiv.id = 'contentDiv'+i;
+    //Creazione button contenente il nome dell'utente offerente e il servizio offerto
+    var newBtn = document.createElement('BUTTON');
+
+    if(result[i]['stato'] == 'preventivoInviato'){
+        newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivoRicevuto'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivoRicevuto')");
+        newBtn.className = 'preventivoInviato'; //deve essere verde
+        contentDiv.className = 'contenuto-Accettato';
+    } else if(result[i]['stato'] == 'richiestaInviata'){
+        newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
+        newBtn.className = 'richiestaInviata'; //deve essere giallo
+        contentDiv.className = 'contenuto-Inviato';
+    } else if(result[i]['stato'] == 'richiestaRifiutata' || result[i]['stato'] == 'preventivoRifiutato'){
+        newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
+        newBtn.className = 'preventivoRifiutato'; //deve essere rosso
+        contentDiv.className = 'contenuto-Rifiutato';
+    }
+    //aggiungere link al profilo
+    newBtn.id = 'btn'+i;
+    document.getElementById("div"+i).appendChild(contentDiv);
+    document.getElementById("contentDiv"+i).appendChild(newBtn);
+
+    //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
+    var name = document.createElement('H2');
+    var servizio = document.createElement('H3');
+    servizio.innerHTML = listaServizi[result['0']['idServizio']]
+    name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
+    document.getElementById('btn'+i).appendChild(name);
+    document.getElementById('btn'+i).appendChild(servizio);
+
+    //<a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
+    var linkProfilo = document.createElement('A');
+    linkProfilo.className = 'linkprofilo';
+    linkProfilo.innerHTML = 'Visualizza profilo';
+    linkProfilo.setAttribute("href", "#");
+    linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
+    document.getElementById('div'+i).appendChild(linkProfilo);
+}
+
 
 function displayListaPreventivi() {
     const url= ip + '/queryAnziano/listaPreventivi.php';
@@ -14,57 +61,30 @@ function displayListaPreventivi() {
             //Per ciascun preventivo attivo viene creato un pulsante che porta alla schermata contenente i dettagli del preventivo
 
             for(var i=0; i<result.length; i++){
-                if(result[i]['stato'] != 'finalizzato' && fileName != 'prenotazioniAnziano.html'){
-                    //Creazione div che conterrà il preventivo
-                    var newDiv = document.createElement('DIV');
-                    newDiv.id = 'div'+i;
-                    //Inserimento del nuovo div in quello contenente la lista dei preventivi
-                    document.getElementById('listaPreventivi').appendChild(newDiv);
-
-                    var contentDiv = document.createElement('DIV');
-                    contentDiv.id = 'contentDiv'+i;
-                    //Creazione button contenente il nome dell'utente offerente e il servizio offerto
-                    var newBtn = document.createElement('BUTTON');
-
-                    if(result[i]['stato'] == 'preventivoInviato'){
-                        newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivoRicevuto'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivoRicevuto')");
-                        newBtn.className = 'preventivoInviato'; //deve essere verde
-                        contentDiv.className = 'contenuto-Accettato';
-                    } else if(result[i]['stato'] == 'richiestaInviata'){
-                        newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
-                        newBtn.className = 'richiestaInviata'; //deve essere giallo
-                        contentDiv.className = 'contenuto-Inviato';
-                    } else if(result[i]['stato'] == 'richiestaRifiutata' || result[i]['stato'] == 'preventivoRifiutato'){
-                        newBtn.setAttribute("onclick", "hideDiv('listaPreventivi','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
-                        newBtn.className = 'preventivoRifiutato'; //deve essere rosso
-                        contentDiv.className = 'contenuto-Rifiutato';
-                    }
-                    //aggiungere link al profilo
-                    newBtn.id = 'btn'+i;
-                    document.getElementById("div"+i).appendChild(contentDiv);
-                    document.getElementById("contentDiv"+i).appendChild(newBtn);
-
-                    //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
-                    var name = document.createElement('H2');
-                    var servizio = document.createElement('H3');
-                    servizio.innerHTML = listaServizi[result['0']['idServizio']]
-                    name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
-                    document.getElementById('btn'+i).appendChild(name);
-                    document.getElementById('btn'+i).appendChild(servizio);
-
-                    //<a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
-                    var linkProfilo = document.createElement('A');
-                    linkProfilo.className = 'linkprofilo';
-                    linkProfilo.innerHTML = 'Visualizza profilo';
-                    linkProfilo.setAttribute("href", "#");
-                    linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); window.location.href='profiloOfferente.html';");
-                    document.getElementById('div'+i).appendChild(linkProfilo);
-
+                if(result[i]['stato'] != 'finalizzato' && fileName != 'prenotazioniAnziano.html' && result[i]['stato'] == 'preventivoInviato'){
+                    creaPulsantePreventivo(result, i);
                 } else if(result[i]['stato'] == 'finalizzato' && fileName == 'prenotazioniAnziano.html'){
                         var position = listPosition+1
                         displayPreventiviFinalizzati(result, i, position);
                 }
+            }
 
+            for(var i=0; i<result.length; i++){
+                if(result[i]['stato'] != 'finalizzato' && fileName != 'prenotazioniAnziano.html' && result[i]['stato'] == 'richiestaInviata'){
+                    creaPulsantePreventivo(result, i);
+                } else if(result[i]['stato'] == 'finalizzato' && fileName == 'prenotazioniAnziano.html'){
+                        var position = listPosition+1
+                        displayPreventiviFinalizzati(result, i, position);
+                }
+            }
+
+            for(var i=0; i<result.length; i++){
+                if(result[i]['stato'] != 'finalizzato' && fileName != 'prenotazioniAnziano.html' && (result[i]['stato'] == 'richiestaRifiutata' || result[i]['stato'] == 'preventivoRifiutato')){
+                    creaPulsantePreventivo(result, i);
+                } else if(result[i]['stato'] == 'finalizzato' && fileName == 'prenotazioniAnziano.html'){
+                        var position = listPosition+1
+                        displayPreventiviFinalizzati(result, i, position);
+                }
             }
         }
       };

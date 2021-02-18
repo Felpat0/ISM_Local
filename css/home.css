@@ -14,7 +14,7 @@ button#back {
 
 button#back:active, .button#back:focus {
   outline: none;
-  background-color: rgb(0, 167, 255);
+  background-color: #0d3ba5 ;
 }
 
 img#back{
@@ -32,9 +32,11 @@ img#back{
   position: relative;
   width: 48%;
   height: 145%;
-  margin-left: 1%;
-  background: rgba(255, 164, 39, 0.28);
-  border: 2px solid rgba(255, 164, 39, 0.68);
+  margin-left: 1%; 
+  border: 2px solid #ffa427;
+  /*border: 2px solid rgba(255, 39, 39, 0.77); ROSSO*/
+  /* border: 2px solid rgba(255, 255, 0, 0.56); GIALLO */
+  /*border: 2px solid rgba(0, 201, 0, 0.87); VERDE*/
   border-radius: 20px;
   padding: 1%;
   margin-bottom: 3%;
@@ -42,17 +44,26 @@ img#back{
   font-weight: 400;
   text-align: center;
   font-size: 26;
-  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); /*da riportare*/
   display: inline;
-  text-shadow: 0 -0.5px 0.5px #777;
-  background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
+  text-shadow: 0 -0.5px 0.5px #777; /*da riportare*/
+  background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63)); 
+  /* background: linear-gradient(rgba(255, 0, 0, 0.36), rgba(255, 0, 0, 0.47) 18%, rgba(255, 0, 0, 0.56) 52%, rgba(255, 0, 0, 0.71)); ROSSO*/
+  /* background: linear-gradient(rgba(255, 255, 0, 0.33), rgba(255, 255, 0, 0.42) 18%, rgba(255, 255, 0, 0.57) 52%, rgba(216, 216, 0, 0.79));GIALLO*/
+  /*background: linear-gradient(rgba(0, 201, 0, 0.42), rgba(0, 201, 0, 0.53) 18%, rgba(0, 201, 0, 0.62) 52%, rgba(4, 129, 4, 0.86)); VERDE*/
+    
+}
+
+.bhome:active, .bhome:focus {
+  outline: none;
+  background-color:  rgba(255, 164, 39, 0.81);
+  
 }
 
 
 #home1 {
   width: 96%;
   height: 22%;
-  left: 2%;
   position: absolute;
   background-color: white;
   top: 30%;
@@ -61,7 +72,6 @@ img#back{
 #home2 {
   width: 96%;
   height: 22%;
-  left: 2%;
   margin-top: 6%;
   position: absolute;
   background-color: white;

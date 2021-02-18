@@ -62,11 +62,14 @@ h2#titolo{
   height: 30%;
   padding-bottom: 20%;
   border-radius: 15px;
-  background-color:  rgba(247, 255, 39, 0.28);
-  border-color: rgba(247, 255, 39, 0.68);
-  font-size: 26;
+  text-shadow: 0 -0.5px 0.5px #777;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+  border: 2px solid rgba(255, 255, 0, 0.56);
+  background: linear-gradient(rgba(255, 255, 0, 0.33), rgba(255, 255, 0, 0.42) 18%, rgba(255, 255, 0, 0.57) 52%, rgba(216, 216, 0, 0.79));
+  font-size: 24px;
   font-family: 'Helvetica', sans-serif;
   text-align: center; 
+  margin-bottom: 10%;
 }
 
 .preventivoInviato{
@@ -76,12 +79,16 @@ h2#titolo{
   left:-2%;
   padding-bottom: 20%;
   border-radius: 15px;
-  background-color:  rgba(105, 255, 39, 0.28);
-  border-color: rgba(105, 255, 39, 0.68);
-  font-size: 26;
+  text-shadow: 0 -0.5px 0.5px #777;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+  border: 2px solid rgba(0, 201, 0, 0.87);
+  background: linear-gradient(rgba(0, 201, 0, 0.42), rgba(0, 201, 0, 0.53) 18%, rgba(0, 201, 0, 0.62) 52%, rgba(4, 129, 4, 0.86)); 
+  font-size: 24px;
   font-family: 'Helvetica', sans-serif;
   text-align: center; 
   color:black;
+  left: 0.5%;
+  margin-bottom: 5%;
 }
 
 
@@ -91,11 +98,16 @@ h2#titolo{
   height: 30%;
   padding-bottom: 20%;
   border-radius: 15px;
-  background-color:  rgba(255, 72, 39, 0.28);
-  border-color: rgba(255, 72, 39, 0.68);
-  font-size: 26;
+  text-shadow: 0 -0.5px 0.5px #777;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);  
+  background: linear-gradient(rgba(255, 0, 0, 0.36), rgba(255, 0, 0, 0.47) 18%, rgba(255, 0, 0, 0.56) 52%, rgba(255, 0, 0, 0.71)); 
+  border: 2px solid rgba(255, 39, 39, 0.77); 
+  font-size: 24px;
   font-family: 'Helvetica', sans-serif;
   text-align: center;
+  left:-1%;
+  color:black;
+  margin-bottom: 5%;
 }
 
 .contenuto-Inviato{
@@ -105,12 +117,12 @@ h2#titolo{
 
 .contenuto-Accettato{
     justify-content: center;
-    color: white;
+    color: black;
 }
 
 .contenuto-Rifiutato{
     justify-content: center;
-    color: white;
+    color: black;
 }
 
 
@@ -132,4 +144,38 @@ h2#titolo{
     text-align: center;
     font-size: 26;
     color: black;
+}
+.linkprofilo{
+   position:relative;
+   font-size: 24px;
+   left: 25%;
+   bottom: 15px;
+}
+
+button#accetta{
+    position: relative;
+    left: 22%;
+    margin-top: 100%;
+    text-align: center;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color:white;
+}
+
+button#rifiuta{
+    position: relative;
+    left:22%;
+    margin-top: 5%;
+    text-align: center;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color:white;
+}
+
+p{
+    font-family: 'Helvetica', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
 }

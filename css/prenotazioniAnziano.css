@@ -8,12 +8,12 @@ h1{
 p{
     text-align: center;
   font-family: 'Helvetica', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 26;
    
 }
 h2{
-    text-align: center;
+  text-align: center;
   font-family: 'Helvetica', sans-serif;
   font-weight: 400;
   font-size: 26;
@@ -36,8 +36,8 @@ div#titolo{
 .linkprofilo{
    position: relative;
    font-family: Helvetica, Sans-Serif;
-   font-weight: 400;
-   color: rgba(72, 127, 255, 0.9) ;
+   font-weight: 500;
+   color: rgba(0, 76, 255, 0.96) ;
 }
     
 
@@ -90,8 +90,10 @@ div#titolo{
   height: 75%;
   padding-bottom: 20%;
   border-radius: 15px;
-  background-color:  rgba(255, 164, 39, 0.28);
-  border-color: rgba(255, 164, 39, 0.28);
+  border: 2px solid #ffa427;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+  text-shadow: 0 -0.5px 0.5px #777; 
+  background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
   font-size: 26;
   font-family: 'Helvetica', sans-serif;
   text-align: center;
@@ -108,8 +110,10 @@ div#titolo{
     justify-content: center;
     text-align:left;
     border-radius: 15px;
-    background-color:rgba(255, 164, 39, 0.28);
-    border: 2px solid rgba(255, 164, 39, 0.68) ;
+    border: 2px solid #ffa427;
+    box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+    text-shadow: 0 -0.5px 0.5px #777; 
+    background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
     font-family: 'Helvetica', sans-serif;
     font-weight: 400;
     text-align: center;
@@ -123,15 +127,17 @@ div#titolo{
   right: 5%;
   top:37%;
   width: 90%;
-  height: 17%;
+  height: 20%;
   border-radius: 15px;
-  background-color:rgba(255, 164, 39, 0.28);
-  border: 2px solid rgba(255, 164, 39, 0.68) ;
+  border: 2px solid #ffa427;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+  text-shadow: 0 -0.5px 0.5px #777; 
+  background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
   text-align: center;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Helvetica', sans-serif; 
   font-weight: 400;
   text-align: center;
-  font-size: 26;
+  font-size: 30;
   color: black; 
 }
 
@@ -139,17 +145,19 @@ div#titolo{
   position: absolute;
   left:5%;
   right: 5%;
-  top:55%;
+  top: 58%;
   width: 90%;
-  height: 17%;   
+  height: 20%;   
   border-radius: 15px;
-  background-color: rgba(255, 164, 39, 0.28);;
-  border: 2px solid rgba(255, 164, 39, 0.68) ;
+  border: 2px solid #ffa427;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+  text-shadow: 0 -0.5px 0.5px #777; 
+  background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
   text-align: center;
   font-family: 'Helvetica', sans-serif;
   font-weight: 400;
   text-align: center;
-  font-size: 26;
+  font-size: 30;
   color: black; 
 }
 
@@ -157,17 +165,19 @@ div#titolo{
   position: absolute;
   left:5%;
   right: 5%;
-  top:73%;
+  top: 79%;
   width: 90%;
-  height: 17%;
+  height: 20%;
   text-align: center;
   font-family: 'Helvetica', sans-serif;
   font-weight: 400;
   text-align: center;
-  font-size: 26;
+  font-size: 30;
   border-radius: 15px;
-  background-color: rgba(255, 164, 39, 0.28);;
-  border: 2px solid rgba(255, 164, 39, 0.68) ;
+   border: 2px solid #ffa427;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+  text-shadow: 0 -0.5px 0.5px #777; 
+  background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
   color: black;
 }
 

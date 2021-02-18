@@ -52,6 +52,7 @@ img#back{
 #home1 {
   width: 96%;
   height: 22%;
+  left: 2%;
   position: absolute;
   background-color: white;
   top: 30%;
@@ -60,6 +61,7 @@ img#back{
 #home2 {
   width: 96%;
   height: 22%;
+  left: 2%;
   margin-top: 6%;
   position: absolute;
   background-color: white;

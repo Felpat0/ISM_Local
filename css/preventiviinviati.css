@@ -20,13 +20,13 @@
   margin-top: 40px;
   width: 300px;
   height: 140px;
-  background-color: #00ff00;
+  background: linear-gradient(rgba(0, 201, 0, 0.42), rgba(0, 201, 0, 0.53) 18%, rgba(0, 201, 0, 0.62) 52%, rgba(4, 129, 4, 0.86));
   border-radius: 20px;
-  border: none;
+  border: 2px solid rgba(0, 201, 0, 0.87);
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 20px;
-  color: white;
+  color: black;
 }
 
 .preventivoInviato {
@@ -35,13 +35,13 @@
   margin-top: 40px;
   width: 300px;
   height: 140px;
-  background-color: #ffa700;
+  background: linear-gradient(rgba(255, 255, 0, 0.33), rgba(255, 255, 0, 0.42) 18%, rgba(255, 255, 0, 0.57) 52%, rgba(216, 216, 0, 0.79));
   border-radius: 20px;
-  border: none;
+  border: 2px solid rgba(255, 255, 0, 0.56);
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 20px;
-  color: white;
+  color: black;
 }
 
 .preventivoRifiutato {
@@ -50,9 +50,9 @@
   margin-top: 40px;
   width: 300px;
   height: 140px;
-  background-color: #de0000;
+  background: linear-gradient(rgba(255, 0, 0, 0.36), rgba(255, 0, 0, 0.47) 18%, rgba(255, 0, 0, 0.56) 52%, rgba(255, 0, 0, 0.71));
   border-radius: 20px;
-  border: none;
+  border: 2px solid rgba(255, 39, 39, 0.77);
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 20px;
@@ -65,9 +65,9 @@
   margin-top: 40px;
   width: 300px;
   height: 140px;
-  background-color: #de0000;
+  background: linear-gradient(rgba(255, 0, 0, 0.36), rgba(255, 0, 0, 0.47) 18%, rgba(255, 0, 0, 0.56) 52%, rgba(255, 0, 0, 0.71));
   border-radius: 20px;
-  border: none;
+  border: 2px solid rgba(255, 39, 39, 0.77);
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 20px;

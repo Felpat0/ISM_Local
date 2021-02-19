@@ -23,11 +23,11 @@
         <div id="bottoni"  > 
           <div class="group" id="servizi">
           </div>  
-        </div>
-        <div id="conferma">
+          <div id="conferma">
           <button id="submit" type="submit" class="button" onclick="confermaServ();">
-            <span id="label">Conferma</span>
+          <span id="label">Conferma</span>
           </button>
+        </div>
         </div>
       </div>
       <!-- Inizio SELEZIONA DATA e ORA-->    
@@ -40,11 +40,11 @@
              <h2>Seleziona Ora</h2>
              <mdp-time-picker mdp-auto-switch="true" ng-model="currentTime"></mdp-time-picker>
              <input id="time" type="time" ng-model="test" mdp-time-picker />
-        </div>
-        <div id="conferma" >
+            <div id="confermaDataOra" >
           <button id="submit" type="submit" class="button" onclick="confermaDataOra();">
             <span id="label">Conferma</span>
           </button>
+        </div>
         </div>
       </div>
 
@@ -53,12 +53,12 @@
         <div id="bottoni" > 
             <h2>Seleziona uno o più utenti</h2>
             <div class="group" id="listaUtenti">
-            </div>
-        </div>
-        <div id="conferma">
-          <button id="submit" type="submit" class="button" onclick="confermaUtenti()">
+            <div id="conferma">
+           <button id="submit" type="submit" class="button" onclick="confermaUtenti()">
             <span id="label">Conferma</span>
           </button>
+        </div>
+            </div>
         </div>
       </div>
       

@@ -17,14 +17,15 @@
       <script src="js/hideDiv.js"></script>
 
       <link href="css\login.css" rel="stylesheet" type="text/css">
+      <link href="css\ModificaProfiloUtente.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div id="zone" class="form">
     <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
     <div id="back"><button id="back" onclick="window.location.href='profilo.html';" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
     <h2 class="txt-titolo" id="registrazioneA">Modifica zone</h2>
-      <h3>Inserisci zone</h3>
-      <div id="listaZone">
+      <!--<h3>Inserisci zone</h3>-->
+      <div id="listaZone" class="listaZone">
 
       </div>
       <div id="btn-aggzona"><button id="submit" onclick="addZona()" type="submit" class="button-plus">+</button></div>
@@ -38,7 +39,7 @@
     <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
     <div id="back"><button id="back" onclick="hideDiv('servizi', 'zone');" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
     <h2 class="txt-titolo" id="registrazioneA">Modifica servizi</h2>
-      <div id="listaServizi">
+      <div id="listaServizi" class="listaServizi">
       </div>
         <div id="avanti3"><button id="submit" onclick="showFasce()" type="submit" class="button">Avanti</button></div>
       <p>&nbsp;</p>
@@ -52,7 +53,7 @@
     <div id="logo"><img id="logo" src="../www/img/logoGG.png"></div>
     <div id="back"><button id="back" onclick="hideDiv('fasce', 'servizi');" type="submit" class="button"><img id="back" src="img/back.png"></button></div>
     <h2 class="txt-titolo" id="registrazioneA">Modifica fasce orarie</h2>
-      <div id="listaFasce">
+      <div id="listaFasce" class="listaFasce">
         <div id="fascia1">
           <label for="inizio1">Ora Inizio</label>
           <input id="inizio1" class="form-control form-control-lg" type="time" placeholder="Ora inizio">

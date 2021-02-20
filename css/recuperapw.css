@@ -48,3 +48,7 @@ div#btn-verifica button#submit{
     height: 10%;
     left:25%;
 }
+
+div#btn-richiedi button#submit{
+    height: 30%;
+}

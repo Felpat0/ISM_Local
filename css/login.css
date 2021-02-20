@@ -21,13 +21,15 @@ img#back{
 }
 
 .button {
-  font-family: Helvetica, Sans-Serif;
+  font-family: 'Helvetica', Sans-Serif;
   position: absolute;  
   width: 100%;
   height: 100%;
-  background-color: #004dff;
+  text-shadow: 0 -0.5px 0.5px #777;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);  
+  background: linear-gradient(rgba(0, 77, 255, 0.37), rgba(0, 77, 255, 0.52) 18%, rgba(0, 77, 255, 0.74) 52%, rgba(0, 77, 255, 0.9)); 
+  border: 2px solid #003cc7;
   border-radius: 40px;
-  border: none;
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 30px;
@@ -39,7 +41,7 @@ img#back{
 
 .button:active, .button:focus {
   outline: none;
-  background-color: rgb(0, 167, 255);
+  background-color: #003cc7;
 }
 
 
@@ -67,16 +69,20 @@ div .txt-titolo{
 /*---- Login -------*/
 
 .button#btn-registrati {
-  background-color: #ffa427;
+    color:black;
+    text-shadow: 0 -0.5px 0.5px #777;
+    box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);  
+    background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63)); 
+    border: 2px solid #ffa427;
 }
 
 .button#btn-registrati:active, .button#btn-registrati:focus {
   outline: none;
-  background-color: #ffb857;
+  background-color: #ffa427;
 }
 
 a#link-pw{
-    font-family: Helvetica, Sans-Serif;
+    font-family: 'Helvetica', Sans-Serif;
     font-size: 20px;
     font-weight: 400;
 }
@@ -165,13 +171,17 @@ div#btn-ricevere{
     font-size: 26px;
 }
 
-.button#btn-offrire{
-   background-color: #ffa427; 
+.button#btn-ricevere{
+    color:black;
+   text-shadow: 0 -0.5px 0.5px #777;
+    box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);  
+    background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63)); 
+    border: 2px solid #ffa427; 
 }
 
-.button#btn-offrire:active, .button#btn-offrire:focus {
+.button#btn-ricevere:active, .button#btn-ricevere:focus {
   outline: none;
-  background-color: #ffb857;
+  background-color: #ffa427;
 }
 
 /*---- Registrazione Anziano ----- */
@@ -192,20 +202,24 @@ div#form-registrazione{
 
 div#reg-anz{
     position: relative;
-    top: 10%;
+    top:-10%;
     width: 50%;
     height: 10%;
     left: 24%;
 }
 
 div#reg-anz .button{
-   background-color: #ffa427; 
-   margin-bottom: -2%;
+   
+   color:black;
+   text-shadow: 0 -0.5px 0.5px #777;
+    box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);  
+    background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63)); 
+    border: 2px solid #ffa427; 
 }
 
 div#reg-anz .button:active, div#reg-anz .button:focus {
   outline: none;
-  background-color: #ffb857;
+  background-color: #ffa427;
 }
 
 /*---- Pagina1 - Registrazione Utente ----- */
@@ -237,32 +251,31 @@ div#avanti1{
     height: 10%;
     width: 50%;
     left: 25%;
-    top: 2%;
+    top: 10%;
 }
 /*---- Pagina2 - Registrazione Utente ----- */
 
 .button-plus {
   width: 100%;
   height: 100%;
-  background-color: #08b443;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);
+  text-shadow: 0 -0.5px 0.5px #777; 
+  border: 2px solid rgba(0, 201, 0, 0.87);
+  background: linear-gradient(rgba(0, 201, 0, 0.42), rgba(0, 201, 0, 0.53) 18%, rgba(0, 201, 0, 0.62) 52%, rgba(4, 129, 4, 0.86));
   border-radius: 40px;
-  border: none;
   text-align: center;
-  font-family: "Arial", sans-serif;
-  font-size: 120%;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 40px;
+  vertical-align: middle;
   color: white;
   transition: all 0.25s ease;
 }
 
 .button-plus:active, .button-plus:focus {
   outline: none;
-  background-color: rgb(63, 227, 82);
+  background: rgba(0, 201, 0, 0.87);
 }
 
-.button-plus::after{
-  outline: none;
-  background-color: #08b443;
-}
 
 div#zone{
     position: absolute;
@@ -389,6 +402,7 @@ input[type=checkbox]:checked + .form-check-label,
 input[type=radio]:checked + .form-check-label {
   padding-left: 1em;
   color:black;
+  text-shadow: 0 -0.5px 0.5px #777;
 }
 
 input[type=checkbox]:checked + .form-check-label:before,
@@ -396,7 +410,10 @@ input[type=radio]:checked + .form-check-label:before {
   top: 0;
   width: 100%;
   height: 2em;
-  background: #ffa427;
+  border: 2px solid #ffa427;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+  text-shadow: 0 -0.5px 0.5px #777; 
+  background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
 }
 
 /* Transition */
@@ -436,6 +453,19 @@ div#completa{
     height: 15%;
     top: 5%;
     font-size: 26px;
+}
+
+div#completa .button#submit{
+    color:black;
+   text-shadow: 0 -0.5px 0.5px #777;
+    box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);  
+    background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63)); 
+    border: 2px solid #ffa427; 
+}
+
+div#completa .button#submit:active,div#completa .button#submit:focus{
+    outline: none;
+    background:#ffa427;
 }
 
 div#label2 label#error{

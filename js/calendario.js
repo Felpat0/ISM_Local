@@ -102,7 +102,8 @@ function loadJSONPrenotazioni(){
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       prenotazioni = JSON.parse(http.responseText);
-      loadPrenotazioniAttive();
+      if(prenotazioni["prenotazioni"])
+        loadPrenotazioniAttive();
       createCalendar(currentDate);
     }
   };

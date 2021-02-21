@@ -34,7 +34,7 @@ div#barra img#icona{
   position: relative;
   width: 16.3%;
   height: 380%;
-  margin-top: -10;
+  margin-top: -4%;
   padding: 0.8%;
   border: solid 4px;
   border-color: rgba(72, 127, 255, 0.9);
@@ -42,7 +42,7 @@ div#barra img#icona{
   border-right: none;
   border-left: none;
   left: -5.5%;
-  margin-left: -0.5%;
+  margin-left: -0.8%;
 }
 
 ul#menu li{

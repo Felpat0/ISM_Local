@@ -1,6 +1,344 @@
-#calendario{
+/*------------ Calendario -----------------*/
+
+
+h3,h4,h5 {
+   font-weight: 300 !important;
+}
+
+.calendar-wrapper {
+   width: 900px;
+   margin-left: -100px; 
+}
+
+.calendar-header {
+   height: 100%;
+   padding: 5px;
+   margin-top: -30px;
+   color: black;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   position: relative;
+}
+
+.header-title {
+   padding-left: 15%;
+}
+
+.header-background {
+   background-color: #e67e22;
+   height: 140px;
+}
+
+.calendar-content {
+   background-color: rgba(255, 228, 217, 0.73);
+   padding: 20px;
+   padding-left: 200px;
+   padding-right: 200px;
+   overflow: hidden;
+}
+
+.event-mark {
+   width: 5px;
+   height: 5px;
+   background-color: #3498db;
+   border-radius: 100px;
+   position: relative;
+   left: 46%;
+   top: 70%;
+}
+
+.calendar-footer {
+   height: 35%;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   text-align: center;
+   background-color: #e67e22 !important;
+   position: relative;
+   overflow: hidden;
+}
+
+.addForm {
+   position: absolute;
+   top: 100%;
+   width: 100%;
+   height: 100%;
+   background-color: #e67e22 !important;
+   transition: top 0.5s cubic-bezier(1, 0, 0, 1);
+   padding: 0 5px 0 5px;
+}
+
+.addForm input {
+   color: black;
+}
+
+.addForm .row {
+   padding-left: 0.75rem;
+   padding-right: 0.75rem;
+   margin-bottom: 0;
+}
+
+.addForm h4 {
+   color: black;
+   margin-bottom: 1rem;
+}
+
+.addEventButtons {
+   text-align: right;
+   padding: 0 0.75rem 0 0.75rem;
+}
+
+.addEventButtons a {
+   color: black;
+   font-weight: 300;
+}
+
+.emptyForm {
+   padding: 20px;
+   padding-left: 15%;
+   padding-right: 15%;
+}
+
+.emptyForm h4 {
+   color: black;
+   margin-bottom: 2rem;
+}
+
+.main-wrapper{
     position: absolute;
-    width: 95%;
-    top:15%;
-    height: 80%;
+    height: 70%;
+    width:98%;
+    top:30%;
+    
+}
+.sidebar-wrapper {
+   width: 90%;
+   height: 20%;
+   color: black;
+   background-color: rgb(93, 179, 237) !important;
+   padding-top: 0;
+   padding-bottom: 20px;
+   font-family: 'Helvetica', sans-serif;
+   font-weight: 300;
+   
+}
+
+
+
+.empty-message {
+   
+   font-size: 1.2rem;
+   padding-top: -10%;
+}
+
+.eventCard {
+   background-color: white;
+   color: black;
+   padding: 12px 24px 12px 24px;
+   border-bottom: 1px solid #E5E5E5;
+   white-space: nowrap;
+   position: relative;
+   animation: slideInDown 0.5s;
+}
+
+.eventCard-header {
+   font-weight: bold;
+}
+
+.eventCard-description {
+   color: black;
+}
+
+.eventCard-clock {
+   color: black;
+}
+
+.eventCard-mark-wrapper {
+   position: absolute;
+   right: 0;
+   top: 0;
+   height: 100%;
+   width: 60px;
+}
+
+.eventCard-mark {
+   width: 8px;
+   height: 8px;
+   background-color: #16a085;
+   border-radius: 100px;
+   position: absolute;
+   left: 50%;
+   top: 45%;
+}
+
+.day-mark {
+   width: 7px;
+   height: 7px;
+   background-color: #16a085;
+   border-radius: 100px;
+   position:static;
+   margin-left: 10px;
+}
+
+.content-wrapper {
+   padding-top: 50px;
+   padding-bottom: 50px;
+   margin-left: 300px;
+}
+
+#table-header{
+    width: 900px;
+}
+
+.empty-day:hover {
+   cursor: default !important;
+   background-color: #fff !important;
+}
+
+#table-body .col:hover {
+   cursor: pointer;
+   /*border: 1px solid grey;*/
+   background-color: #ffb574;
+}
+#table-body .row .col {
+   padding-left: 40px;
+}
+
+#table-body .col {
+   border: 1px solid transparent;
+}
+
+#table-body {
+    width: 900px;
+}
+
+#table-body .row {
+   margin-bottom: 15px;
+   display: grid;
+   grid-template-columns: repeat(12, 1fr);
+}
+
+
+#calendar-table {
+   text-align: center;
+}
+
+.prev-button {
+   position: absolute;
+   cursor: pointer;
+   left: 0%;
+   top: 35%;
+   color: grey !important;
+}
+
+.prev-button i {
+   font-size: 4em;
+    color: black !important;
+}
+
+.next-button {
+   position: absolute;
+   cursor: pointer;
+   right: 0%;
+   top: 35%;
+   color: black !important;
+}
+
+.next-button i {
+   font-size: 4em;
+}
+
+.addEvent {
+   box-shadow: 0 5px 15px rgba(99, 101, 84, 0.31);
+   background-color: #0c9d70;
+   padding: 10px;
+   padding-left: 3em;
+   padding-right: 3em;
+   cursor: pointer;
+   border-radius: 25px;
+   color: white;
+}
+
+.addEvent:hover {
+   transition: box-shadow 0.5s;
+   box-shadow: 0 4px 25px rgba(99, 101, 84, 0.31);
+   background-color: #26d476;
+   color: black;
+}
+
+.mobile-header {
+   padding: 0;
+   display: none;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   position: fixed;
+   width: 100%;
+   background-color: rgb(93, 179, 237) !important;
+}
+
+.mobile-header a i {
+   color: black;
+   font-size: 38px;
+}
+
+.mobile-header h4 {
+   color: black;
+}
+
+.mobile-header .row {
+   margin-bottom: 0;
+}
+
+.mobile-header h4 {
+   margin: 0;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+}
+
+label#descrizione{
+    color:black;
+}
+
+@media (max-width:992px) {
+   .content-wrapper {
+      margin-left: 0;
+   }
+   .mobile-header {
+      display: block;
+   }
+   .calendar-wrapper {
+      margin-top: 80px;
+   }
+   .sidebar-wrapper {
+      background-color: #EEEEEE !important;
+   }
+   .sidebar-title {
+      background-color: rgb(93, 179, 237); !important;
+   }
+   .empty-message {
+      color: black;
+   }
+}
+
+@media (max-width:767px) {
+   .content-wrapper .container {
+      width: auto;
+   }
+   .calendar-content {
+      padding-left: 5%;
+      padding-right: 5%;
+   }
+   body .row {
+      margin-bottom: 0;
+   }
+}
+
+@media (max-width:450px) {
+   .content-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+   }
+   .content-wrapper .container {
+      padding-left: 0;
+      padding-right: 0;
+   }
 }

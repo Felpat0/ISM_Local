@@ -1,13 +1,13 @@
 <html>
   <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="css\richiediservizioanziano.css" rel="stylesheet" type="text/css">
      <link href="css/home.css" rel="stylesheet" type="text/css">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
      <script src="js/ip.js"></script>
      <script src="js/listaServizi.js"></script>
      <script src="js/hideDiv.js"></script>
      <link href="css\homebootstrap.css" rel="stylesheet" type="text/css">
+     <link href="css\richiediservizioanziano.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div id="testa" ></div>
@@ -53,12 +53,12 @@
         <div id="bottoni" > 
             <h2>Seleziona uno o più utenti</h2>
             <div class="group" id="listaUtenti">
-            <div id="conferma">
+            </div>
+            <div id="confermaUtente">
            <button id="submit" type="submit" class="button" onclick="confermaUtenti()">
             <span id="label">Conferma</span>
           </button>
         </div>
-            </div>
         </div>
       </div>
       
@@ -75,7 +75,7 @@
         </div>
         
         <div id="richiedipreventivo">
-          <button id="submit" type="submit" class="button" onclick="getNote(); inviaRichiestaPreventivo();">
+          <button id="preventivo" type="submit" class="button" onclick="getNote(); inviaRichiestaPreventivo();">
             <span id="label">Richiedi Preventivo</span>
           </button>
         </div>

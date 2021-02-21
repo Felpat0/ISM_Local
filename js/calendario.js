@@ -144,16 +144,6 @@ function loadPrenotazioniAttive(){
     var titolo = listaServizi[prenotazioni["preventiviAttivi"][i]["idServizio"]];
     var descrizione = "Servizio per " + prenotazioni["preventiviAttivi"][i]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][i]["cognomeAnziano"] + " alle " + prenotazioni["preventiviAttivi"][i]["ora"];
     addEvent(data, titolo, descrizione);
-    /*
-        element = "";
-        element += '<div>';
-        element += '<button onclick="showRiepilogoPreventivoAttivo(' + i + ')" class="prenotazione">';
-        element += '<h2>' + prenotazioni["preventiviAttivi"][i]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][i]["cognomeAnziano"] + '</h2>'
-        element += '<h3>' + listaServizi[prenotazioni["preventiviAttivi"][i]["idServizio"]] + '</h3>';
-        element += '</button>';
-        element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni["preventiviAttivi"][i]["idAnziano"] + ')">Visualizza profilo</a>';
-        element += '</div>';
-        document.getElementById("prenotazioniAttive").innerHTML += element;*/
     }
   }
 }

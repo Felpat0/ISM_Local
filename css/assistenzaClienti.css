@@ -17,16 +17,18 @@
   margin-top: 140px;
   width: 200px;
   height: 50px;
-  background-color: #004dff;
-  border-radius: 40px;
-  border: none;
+  text-shadow: 0 -0.5px 0.5px #777;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);
+  background: linear-gradient(rgba(0, 77, 255, 0.37), rgba(0, 77, 255, 0.52) 18%, rgba(0, 77, 255, 0.74) 52%, rgba(0, 77, 255, 0.9));
+  border: 2px solid #003cc7;
+  border-radius: 30px;
+  color: white;
+  transition: all 0.25s ease;
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 20px;
-  color: white;
   transition: all 0.25s ease;
 }
-
 .opzioni {
   position: absolute;
   width: 92%;

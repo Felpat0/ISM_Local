@@ -6,7 +6,7 @@ h1{
 }
 
 p{
-    text-align: center;
+  text-align: center;
   font-family: 'Helvetica', sans-serif;
   font-weight: 400;
   font-size: 26;
@@ -35,7 +35,7 @@ div#titolo{
 
 .linkprofilo{
    position: relative;
-   font-family: Helvetica, Sans-Serif;
+   font-family: 'Helvetica', Sans-Serif;
    font-weight: 500;
    color: rgba(0, 76, 255, 0.96) ;
 }
@@ -84,6 +84,7 @@ div#titolo{
   font-size: 26;
 }
 
+
 .prenotazioni{
   position: relative;
   width: 100%;
@@ -99,6 +100,12 @@ div#titolo{
   text-align: center;
 }
 
+.prenotazioni:active, .prenotazioni:focus {
+  outline: none;
+  background-color:  rgba(255, 164, 39, 0.81);
+  
+}
+
 .riepilogoPrenotazione{
     position: absolute;
     top:35%;
@@ -110,10 +117,9 @@ div#titolo{
     justify-content: center;
     text-align:left;
     border-radius: 15px;
-    border: 2px solid #ffa427;
-    box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+    background-color:rgba(255, 164, 39, 0.28);
+    border: 2px solid rgba(255, 164, 39, 0.68) ;
     text-shadow: 0 -0.5px 0.5px #777; 
-    background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
     font-family: 'Helvetica', sans-serif;
     font-weight: 400;
     text-align: center;
@@ -141,6 +147,12 @@ div#titolo{
   color: black; 
 }
 
+.prenotazioneInviata:active, .prenotazioneInviata:focus {
+  outline: none;
+  background-color:  rgba(255, 164, 39, 0.81);
+  
+}
+
 .prenotazioneAccettata{
   position: absolute;
   left:5%;
@@ -159,6 +171,11 @@ div#titolo{
   text-align: center;
   font-size: 30;
   color: black; 
+}
+
+.prenotazioneAccettata:active, .prenotazioneAccettata:focus {
+  outline: none;
+  background-color:  rgba(255, 164, 39, 0.81);
 }
 
 .prenotazioneNonAttiva{
@@ -180,6 +197,13 @@ div#titolo{
   background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
   color: black;
 }
+
+.prenotazioneNonAttiva:active, .prenotazioneNonAttiva:focus {
+  outline: none;
+  background-color:  rgba(255, 164, 39, 0.81);
+  
+}
+
 
 .contenuto-prenotazioni{
     justify-content: center;

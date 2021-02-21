@@ -4,36 +4,63 @@
      <script src="js/ip.js"></script>
      <script src="js/listaServizi.js"></script>
      <script src="js/hideDiv.js"></script>
-     <link href="css\calendario.css" rel="stylesheet" type="text/css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <link href="css/homebootstrapCal.css" rel="stylesheet" type="text/css">
+     <link href="css\calendario.css" rel="stylesheet" type="text/css">
   </head>
+  <html>
   <body>
     <div id="testa" ></div>
     <script src="js/header.js"></script>
     <script>
       document.getElementById("back").setAttribute( "onclick", "window.location.href='homeutente.html'" );
     </script>
-      <div class="mobile-header z-depth-1">
+    <p>Calendario</p>
+    <div class="main-wrapper">
+      <div class="content-wrapper">
+        <div class="container">
+          <div class="calendar-wrapper">
+            <div class="header-background">
+              <div class="calendar-header">
+                <a class="prev-button" id="prev">
+                  <i class="material-icons">←</i>
+                </a>
+                <a class="next-button" id="next">
+                  <i class="material-icons">→</i>
+                </a>
+                <div class="row header-title">
+                  <div class="header-text">
+                    <h3 id="month-name"></h3>
+                    <h5 id="todayDayName"></h5>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      <div class="row">
-        <div class="col-2">
-          <a href="#" data-activates="sidebar" class="button-collapse" style="">
-            <i class="material-icons">menu</i>
-          </a>
-        </div>
-        <div class="col">
-          <h4>Events</h4>
+            <div class="calendar-content">
+              <div id="calendar-table" class="calendar-cells">
+                <div id="table-header">
+                  <div class="row">
+                    <div class="col">Lun</div>
+                    <div class="col">Mar</div>
+                    <div class="col">Mer</div>
+                    <div class="col">Gio</div>
+                    <div class="col">Ven</div>
+                    <div class="col">Sab</div>
+                    <div class="col">Dom</div>
+                  </div>
+                </div>
+                <div id="table-body" class="">
+                </div>
+              </div>
+            </div>
+      </div>
+            
         </div>
       </div>
-
-    </div>
-
-    <div class="main-wrapper">
-
-      <div class="sidebar-wrapper z-depth-2 top-nav fixed" id="sidebar">
-
+      
+        <div class="sidebar-wrapper z-depth-2 top-nav fixed" id="sidebar">
         <div class="sidebar-title">
           <h4>Eventi</h4>
           <h5 id="eventDayName">Data</h5>
@@ -41,62 +68,7 @@
         <div class="sidebar-events" id="sidebarEvents">
           <div class="empty-message">Non ci sono eventi nella data selezionata</div>
         </div>
-
       </div>
-
-      <div class="content-wrapper">
-        <div class="container">
-
-          <div class="calendar-wrapper">
-
-            <div class="header-background">
-              <div class="calendar-header">
-
-                <a class="prev-button" id="prev">
-                  <i class="material-icons">keyboard_arrow_left</i>
-                </a>
-                <a class="next-button" id="next">
-                  <i class="material-icons">keyboard_arrow_right</i>
-                </a>
-
-                <div class="row header-title">
-
-                  <div class="header-text">
-                    <h3 id="month-name"></h3>
-                    <h5 id="todayDayName"></h5>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="calendar-content">
-              <div id="calendar-table" class="calendar-cells">
-
-                <div id="table-header">
-                  <div class="row">
-                    <div class="col">Lunedì</div>
-                    <div class="col">Martedì</div>
-                    <div class="col">Mercoledì</div>
-                    <div class="col">Giovedì</div>
-                    <div class="col">Venerdì</div>
-                    <div class="col">Sabato</div>
-                    <div class="col">Domenica</div>
-                  </div>
-                </div>
-
-                <div id="table-body" class="">
-
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"

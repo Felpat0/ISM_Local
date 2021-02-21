@@ -2,39 +2,55 @@
 
 
 h3,h4,h5 {
-   font-weight: 300 !important;
+   font-weight: 300;
+}
+
+p{
+    position: relative;
+    top:25%;
+    font-size: 26px;
+    font-weight: 300;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.main-wrapper{
+    position: absolute;
+    height: 63%;
+    width:95%;
+    top:33%;
+    left:2%;
 }
 
 .calendar-wrapper {
-   width: 900px;
-   margin-left: -100px; 
+   position: relative;
+   width: 100%;
+   height: 80%;
 }
 
 .calendar-header {
-   height: 100%;
-   padding: 5px;
-   margin-top: -30px;
-   color: black;
-   font-family: 'Roboto', sans-serif;
-   font-weight: 300;
    position: relative;
+   height: 100%;
+   color: black;
+   margin-top: -18%;
+   font-family: 'Helvetica', sans-serif;
+   font-weight: 300;
 }
 
-.header-title {
-   padding-left: 15%;
-}
 
 .header-background {
+   position: relative;
+   top:-15%;
    background-color: #e67e22;
-   height: 140px;
+   height: 25%;
+   text-align: center;
 }
 
 .calendar-content {
+   position: relative;
    background-color: rgba(255, 228, 217, 0.73);
-   padding: 20px;
-   padding-left: 200px;
-   padding-right: 200px;
    overflow: hidden;
+   width:100%;
+   top:-15%;
 }
 
 .event-mark {
@@ -49,7 +65,7 @@ h3,h4,h5 {
 
 .calendar-footer {
    height: 35%;
-   font-family: 'Roboto', sans-serif;
+   font-family: 'Helvetica', sans-serif;
    font-weight: 300;
    text-align: center;
    background-color: #e67e22 !important;
@@ -103,26 +119,16 @@ h3,h4,h5 {
    margin-bottom: 2rem;
 }
 
-.main-wrapper{
-    position: absolute;
-    height: 70%;
-    width:98%;
-    top:30%;
-    
-}
 .sidebar-wrapper {
-   width: 90%;
-   height: 20%;
+   position: absolute;
+   top:70%;
+   width: 100%;
+   height: 28%;
    color: black;
    background-color: rgb(93, 179, 237) !important;
-   padding-top: 0;
-   padding-bottom: 20px;
    font-family: 'Helvetica', sans-serif;
    font-weight: 300;
-   
 }
-
-
 
 .empty-message {
    
@@ -131,9 +137,10 @@ h3,h4,h5 {
 }
 
 .eventCard {
+   position: relative;
+   margin-top:-3%;
    background-color: white;
    color: black;
-   padding: 12px 24px 12px 24px;
    border-bottom: 1px solid #E5E5E5;
    white-space: nowrap;
    position: relative;
@@ -186,7 +193,12 @@ h3,h4,h5 {
 }
 
 #table-header{
-    width: 900px;
+    position: relative;
+    left: 2%;
+    width: 103%;
+    font-size: 17px;
+    font-weight: 300;
+    text-shadow: 0 -0.5px 0.5px #777;
 }
 
 .empty-day:hover {
@@ -199,40 +211,40 @@ h3,h4,h5 {
    /*border: 1px solid grey;*/
    background-color: #ffb574;
 }
-#table-body .row .col {
-   padding-left: 40px;
-}
+
 
 #table-body .col {
    border: 1px solid transparent;
 }
 
 #table-body {
-    width: 900px;
+    width: 100%;
 }
 
 #table-body .row {
    margin-bottom: 15px;
    display: grid;
-   grid-template-columns: repeat(12, 1fr);
+   grid-template-columns: repeat(7, 1fr);
 }
 
 
 #calendar-table {
-   text-align: center;
+   position: relative;
+   text-align: left;
+   width: 100%;
 }
 
 .prev-button {
    position: absolute;
-   cursor: pointer;
+   cursor:pointer;
    left: 0%;
    top: 35%;
-   color: grey !important;
+   color: grey;
 }
 
 .prev-button i {
-   font-size: 4em;
-    color: black !important;
+   font-size: 100%;
+   color: black ;
 }
 
 .next-button {
@@ -240,29 +252,11 @@ h3,h4,h5 {
    cursor: pointer;
    right: 0%;
    top: 35%;
-   color: black !important;
+   color: black ;
 }
 
 .next-button i {
-   font-size: 4em;
-}
-
-.addEvent {
-   box-shadow: 0 5px 15px rgba(99, 101, 84, 0.31);
-   background-color: #0c9d70;
-   padding: 10px;
-   padding-left: 3em;
-   padding-right: 3em;
-   cursor: pointer;
-   border-radius: 25px;
-   color: white;
-}
-
-.addEvent:hover {
-   transition: box-shadow 0.5s;
-   box-shadow: 0 4px 25px rgba(99, 101, 84, 0.31);
-   background-color: #26d476;
-   color: black;
+   font-size: 100%;
 }
 
 .mobile-header {
@@ -290,7 +284,7 @@ h3,h4,h5 {
 
 .mobile-header h4 {
    margin: 0;
-   font-family: 'Roboto', sans-serif;
+   font-family: 'Helvetica', sans-serif;
    font-weight: 300;
 }
 
@@ -324,8 +318,7 @@ label#descrizione{
       width: auto;
    }
    .calendar-content {
-      padding-left: 5%;
-      padding-right: 5%;
+     padding-top: 2%;
    }
    body .row {
       margin-bottom: 0;

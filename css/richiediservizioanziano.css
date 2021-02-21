@@ -49,6 +49,7 @@ p{
     left: 15%;
     right: 15%;
     height: 15%;
+    margin-bottom: 3%;
     
 }
 
@@ -57,7 +58,18 @@ p{
     top:55%;
     width:101%;
     right: 5%;
-    height: 35%;
+    height: 35%;  
+}
+
+#confermaUtente{
+    position: relative;
+    top:50%;
+    width:70%;
+    right: 10%;
+    left: 15%;
+    height: 15%;
+    margin-bottom: 3%;
+    
     
 }
 /* Radio button e check button */
@@ -65,24 +77,34 @@ p{
 #bottoni {
   position:relative;
   top:33%;
-  left: 2%;
-  right: 2%;
-  width: 100%;
+  left: 1%;
+  right: 1%;
+  width: 98%;
   height: 67%;
   color: black;
   font-size: 24;
 }
 
 
-
-.group {
+.group#serivizi {
   position: relative;
-  height: 87%;
-  width: 100%;
+  height: 90%;
+  width: 99%;
   display:grid;
   align-items: center;
   margin-bottom: 2em;
-  
+  text-align: center;  
+}
+
+.group#listaUtenti {
+  position: relative;
+  height: 90%;
+  width: 90%;
+  display:grid;
+  left: 5%;
+  align-items: center;
+  margin-bottom: 2em;
+  text-align: center;  
 }
 
 input[type=checkbox],
@@ -126,14 +148,31 @@ input[type=radio] + label::before {
 }
 
 /* Checked */
-input[type=checkbox]:checked + label,
+input[type=checkbox]:checked + label{
+  padding-left: 1em;
+  text-align: center;
+  color:black;
+    text-shadow: 0 -0.5px 0.5px #777;
+}
+
 input[type=radio]:checked + label {
   padding-left: 1em;
   color:black;
     text-shadow: 0 -0.5px 0.5px #777;
 }
 
-input[type=checkbox]:checked + label:before,
+input[type=checkbox]:checked + label:before
+{
+  top: 0;
+  width: 100%;
+  height: 5em;
+  text-align: center;
+  border: 2px solid #ffa427;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5); 
+  text-shadow: 0 -0.5px 0.5px #777; 
+  background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63));
+}
+
 input[type=radio]:checked + label:before {
   top: 0;
   width: 100%;
@@ -171,11 +210,14 @@ div#richiediprenotazione{
   position:relative;
   margin-right: 10%;
   margin-left: 10%;
-  width: 80%;
+  margin-top: 5%;
+  width: 85%;
   height: 83%;
-  background-color: #004dff;
+  text-shadow: 0 -0.5px 0.5px #777;
+  box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);  
+  background: linear-gradient(rgba(0, 77, 255, 0.37), rgba(0, 77, 255, 0.52) 18%, rgba(0, 77, 255, 0.74) 52%, rgba(0, 77, 255, 0.9)); 
+  border: 2px solid #003cc7;
   border-radius: 40px;
-  border: none;
   text-align: center;
   font-family: 'Helvetica', sans-serif;
   font-weight: 600;
@@ -185,11 +227,37 @@ div#richiediprenotazione{
   transition: all 0.25s ease;
 }
 
-.button:active, button:focus {
+.button:active, .button:focus {
   outline: none;
-  background-color: #0d3ba5 ;
+  background-color: #003cc7;
 }
 
+.button#preventivo{
+  position:relative;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  width: 85%;
+  height: 83%;
+  text-shadow: 0 -0.5px 0.5px #777;
+    box-shadow: 0px 5px 10px -1px rgba(123, 123, 123, 0.5);  
+    background: linear-gradient(rgba(255, 164, 39, 0.33), rgba(255, 164, 39, 0.32) 18%, rgba(255, 164, 39, 0.42) 52%, rgba(255, 164, 39, 0.63)); 
+    border: 2px solid #ffa427;
+  border-radius: 40px;
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  font-size: 26;
+  color: black;
+  transition: all 0.25s ease;
+}
+
+.button#preventivo:active, .button#preventivo:focus {
+  outline: none;
+  background-color: #ffa427;
+}
 /* Data e ora */
 #data { 
  position: absolute;
@@ -251,11 +319,13 @@ div#richiediprenotazione{
     vertical-align: text-top;
     height: 30%;
     width: 90%;
+    left:5%;
+    right: 5%;
     border-radius: 15px;
      background-color: rgba(255, 164, 39, 0.28);
     border: 2px solid rgba(255, 164, 39, 0.68) ;
     font-family: 'Helvetica', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     text-align: center;
     font-size: 26;
     overflow-x: hidden;
@@ -269,6 +339,8 @@ div#richiediprenotazione{
     word-break: normal;
     height: 20%;
     width: 90%;
+    left:5%;
+    right: 5%;
     text-align: left;
     vertical-align: text-top;
     overflow: visible;
@@ -280,34 +352,40 @@ div#richiediprenotazione{
     font-size: 26;
 }
 
-.profilo{
+a.profilo{
     font-family: 'Helvetica', sans-serif;
+    margin-top:4%;
     font-weight: 400;
     text-align: center;
     font-size: 26;
-    text-decoration: none;
     color: #004dff;
 }
+
 .valutazione{
-    position: relative;
-    width: 70%;
-   
+  position: absolute;
+  margin-top: -5%;
+  width: 80%;
+  height: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
 
 }
+
 .prezzo{
     position: relative;
-    top:-20%;
+    top:-6%;
+    margin-top: -1%;
     font-family: 'Helvetica', sans-serif;
     font-weight: 400;
-    text-align: center;
     font-size: 26;
     text-decoration: none;
     color: black;
 }
 
 
-.stella{
+img.stella{
   position: relative;
-  width: 20%;
-  height: 10%;
+  width: 12%;
+  height: 100%; 
 }

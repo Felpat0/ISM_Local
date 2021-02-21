@@ -92,6 +92,39 @@
               </div>
             </div>
 
+            <div class="calendar-footer">
+              <div class="emptyForm" id="emptyForm">
+                <h4 id="emptyFormTitle">Non ci sono eventi</h4>
+                <a class="addEvent" id="changeFormButton">Aggiungi un evento</a>
+              </div>
+              <div class="addForm" id="addForm">
+                <h4>Aggiungi un evento</h4>
+
+                <div class="row">
+                <table>
+                  <td><div class="input-field col s6">
+                    <input id="eventTitleInput" type="text" class="validate">
+                    <label id="descrizione" for="eventTitleInput">Titolo</label>
+                  </div></td>
+                  <td><div class="input-field col s6">
+                    <input id="eventDescInput" type="text" class="validate">
+                    <label id="descrizione" for="eventDescInput">Descrizione</label>
+                  </div></td>
+                  <td><div class="input-field col s6">
+                    <label id="clock" for="eventClockInput"></label>
+                    <input type="time" id="eventClockInput"  class="validate">
+                  </div></td>
+                </table>
+                </div>
+
+                <div class="addEventButtons">
+                  <a class="btn orange lighten-2" id="addEventButton">Aggiungi</a>
+                  <a class="btn orange lighten-5" id="cancelAdd">Chiudi</a>
+                </div>
+
+              </div>
+            </div>
+
           </div>
 
         </div>

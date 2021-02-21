@@ -1,9 +1,10 @@
 var calendar = document.getElementById("calendar-table");
 var gridTable = document.getElementById("table-body");
-var currentDate = new Date(); 
+var currentDate = new Date();
 var selectedDate = currentDate;
 var selectedDayBlock = null;
 var globalEventObj = {};
+
 
 var sidebar = document.getElementById("sidebar");
 
@@ -91,7 +92,77 @@ function createCalendar(date, side) {
    }, !side ? 0 : 270);
 }
 
-createCalendar(currentDate);
+//-----------------------------------------------------------------------------------------------------
+function loadJSONPrenotazioni(){
+  const url= ip + '/queryOfferente/getPrenotazioni.php';
+  var http = new XMLHttpRequest();
+  http.open("POST", url, true);
+  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  var vars = "idOfferente=" + localStorage["id"];
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      prenotazioni = JSON.parse(http.responseText);
+      loadPrenotazioniAttive();
+      createCalendar(currentDate);
+    }
+  };
+  http.send(vars);
+}
+
+loadJSONPrenotazioni();
+
+function addEvent(title, desc) {
+   if (!globalEventObj[selectedDate.toDateString()]) {
+      globalEventObj[selectedDate.toDateString()] = {};
+   }
+   globalEventObj[selectedDate.toDateString()][title] = desc;
+}
+
+function addEvent(date, title, desc) {
+   if (!globalEventObj[date]) {
+      globalEventObj[date] = {};
+   }
+   globalEventObj[date][title] = desc;
+}
+
+function loadPrenotazioniAttive(){
+  //Scrivere la lista delle prenotazioni attive
+  for(i = 0; i != prenotazioni["prenotazioni"].length; i++){
+    if(prenotazioni["prenotazioni"][i]["stato"] == "accettata"){
+      var data = new Date(prenotazioni["prenotazioni"][i]["data"]);
+      data = data.toDateString();
+      var titolo = listaServizi[prenotazioni["prenotazioni"][i]["idServizio"]];
+      var descrizione = "Servizio per " + prenotazioni["prenotazioni"][i]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][i]["cognomeAnziano"] + " alle " + prenotazioni["prenotazioni"][i]["ora"];
+      addEvent(data, titolo, descrizione);
+    }
+  }
+  //Scrivere la lista delle prenotazioni attive derivanti da preventivo
+  if(prenotazioni["preventiviAttivi"]){
+    for(i = 0; i != prenotazioni["preventiviAttivi"].length; i++){
+    var data = new Date(prenotazioni["preventiviAttivi"][i]["data"]);
+    data = data.toDateString();
+    var titolo = listaServizi[prenotazioni["preventiviAttivi"][i]["idServizio"]];
+    var descrizione = "Servizio per " + prenotazioni["preventiviAttivi"][i]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][i]["cognomeAnziano"] + " alle " + prenotazioni["preventiviAttivi"][i]["ora"];
+    addEvent(data, titolo, descrizione);
+    /*
+        element = "";
+        element += '<div>';
+        element += '<button onclick="showRiepilogoPreventivoAttivo(' + i + ')" class="prenotazione">';
+        element += '<h2>' + prenotazioni["preventiviAttivi"][i]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][i]["cognomeAnziano"] + '</h2>'
+        element += '<h3>' + listaServizi[prenotazioni["preventiviAttivi"][i]["idServizio"]] + '</h3>';
+        element += '</button>';
+        element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni["preventiviAttivi"][i]["idAnziano"] + ')">Visualizza profilo</a>';
+        element += '</div>';
+        document.getElementById("prenotazioniAttive").innerHTML += element;*/
+    }
+  }
+}
+
+
+//-----------------------------------------------------------------------------------------------------
+
+
+
 
 var todayDayName = document.getElementById("todayDayName");
 todayDayName.innerHTML = "Oggi è " + currentDate.toLocaleString("it-IT", {
@@ -112,12 +183,6 @@ nextButton.onclick = function changeMonthNext() {
    createCalendar(currentDate, "right");
 }
 
-function addEvent(title, desc) {
-   if (!globalEventObj[selectedDate.toDateString()]) {
-      globalEventObj[selectedDate.toDateString()] = {};
-   }
-   globalEventObj[selectedDate.toDateString()][title] = desc;
-}
 
 function showEvents() {
    let sidebarEvents = document.getElementById("sidebarEvents");
@@ -136,7 +201,7 @@ function showEvents() {
 
          let eventDescription = document.createElement("div");
          eventDescription.className = "eventCard-description";
-          
+
          let eventClock = document.createElement("div");
          eventClock.className = "eventCard-clock";
 
@@ -144,7 +209,7 @@ function showEvents() {
          eventContainer.appendChild(eventHeader);
 
          eventDescription.appendChild(document.createTextNode(objWithDate[key]));
-         eventContainer.appendChild(eventDescription);  
+         eventContainer.appendChild(eventDescription);
 
          let markWrapper = document.createElement("div");
          markWrapper.className = "eventCard-mark-wrapper";

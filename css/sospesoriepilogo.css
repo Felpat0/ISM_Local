@@ -4,9 +4,9 @@
   height: 10%;
   top: 72%;
   left: 5%;
-  background-color: #b9d8ff;
-  border-radius: 40px;
-  border: 2px solid #004dff;
+  background: linear-gradient(rgba(0, 201, 0, 0.42), rgba(0, 201, 0, 0.53) 18%, rgba(0, 201, 0, 0.62) 52%, rgba(4, 129, 4, 0.86));
+  border-radius: 20px;
+  border: 2px solid rgba(0, 201, 0, 0.87);
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 20px;
@@ -20,9 +20,9 @@
   height: 10%;
   top: 72%;
   left: 55%;
-  background-color: #b9d8ff;
-  border-radius: 40px;
-  border: 2px solid #004dff;
+  background: linear-gradient(rgba(255, 0, 0, 0.36), rgba(255, 0, 0, 0.47) 18%, rgba(255, 0, 0, 0.56) 52%, rgba(255, 0, 0, 0.71));
+  border-radius: 20px;
+  border: 2px solid rgba(255, 39, 39, 0.77);
   text-align: center;
   font-family: "Arial", sans-serif;
   font-size: 20px;
@@ -43,10 +43,10 @@
 
 .linkprofilo-riepilogo {
   position: relative;
-  left: 15%;
+  left: 34%;
 }
 
 .linkmessaggio-riepilogo {
   position: relative;
-  left: 15%;
+  left: 34%;
 }

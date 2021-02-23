@@ -52,3 +52,7 @@
 .row {
   float: left;
 }
+
+.star {
+  padding: inherit;
+}

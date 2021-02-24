@@ -158,6 +158,7 @@ function showRiepilogoAttiva(index){
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
     <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
     <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>
+    <button onclick="" class="conferma">Richiesta compiuta</button>
   </div>`;
   document.getElementById("riepilogoAttive").innerHTML = element;
 

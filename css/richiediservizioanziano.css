@@ -73,8 +73,8 @@ p{
 }
 
 #confermaUtente{
-    position: relative;
-    top:50%;
+    position: fixed;
+    top:85%;
     width:70%;
     right: 10%;
     left: 15%;

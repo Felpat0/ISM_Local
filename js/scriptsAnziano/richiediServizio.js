@@ -345,6 +345,7 @@ function confermaServ(){
 function confermaDataOra(){
     getDateTime();
     if(data != 0 && ora !=0){
+        document.getElementById("listaUtenti").innerHTML = '';
         hideDiv('dataOra', 'selezionaUtente');
         displayListaUtenti();
         document.getElementById("back").setAttribute("onclick", "hideDiv('selezionaUtente', 'dataOra'); resetBackButton('selezionaUtente');");
@@ -352,6 +353,7 @@ function confermaDataOra(){
 }
 
 function confermaUtenti(){
+    document.getElementById("utentiSelezionati").innerHTML = '';
     hideDiv('selezionaUtente', 'riepilogo');
     displayRiepilogoRichiesta();
     document.getElementById("back").setAttribute("onclick", "hideDiv('riepilogo', 'selezionaUtente'); resetBackButton('riepilogo');");

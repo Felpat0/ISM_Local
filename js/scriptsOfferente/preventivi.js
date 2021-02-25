@@ -78,7 +78,7 @@ function loadRichiestePreventivo(){
   for(i = 0; i != preventivi.length; i++){
     if(preventivi[i]["stato"] == "richiestaInviata"){
       var element = `
-      <div>
+      <div class="prenotazioneContainer">
         <button onclick="showRiepilogoRichiesta(` + i + `)" class="prenotazione">
           <h2>` + preventivi[i]["nomeAnziano"] + ` ` + preventivi[i]["cognomeAnziano"] + `</h2>
           <h3>` + listaServizi[preventivi[i]["idServizio"]] + `</h3>
@@ -145,7 +145,7 @@ function loadPreventiviInviati(){
   for(i = 0; i != preventivi.length; i++){
     if(preventivi[i]["stato"] != "richiestaInviata" && preventivi[i]["stato"] != "finalizzato"){
       var element = `
-      <div>
+      <div class="prenotazioneContainer">
         <button onclick="showRiepilogoPreventivoInviato(` + i + `)" class="` + preventivi[i]["stato"] + `">
           <h2>` + preventivi[i]["nomeAnziano"] + ` ` + preventivi[i]["cognomeAnziano"] + `</h2>
           <h3>` + listaServizi[preventivi[i]["idServizio"]] + `</h3>

@@ -89,7 +89,7 @@ function loadPrenotazioniAttive(){
   for(i = 0; i != prenotazioni["prenotazioni"].length; i++){
     if(prenotazioni["prenotazioni"][i]["stato"] == "accettata"){
       element = "";
-      element += '<div>';
+      element += '<div class="prenotazioneContainer">';
       element += '<button onclick="showRiepilogoAttiva(' + i + ')" class="prenotazione">';
       element += '<h2>' + prenotazioni["prenotazioni"][i]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][i]["cognomeAnziano"] + '</h2>'
       element += '<h3>' + listaServizi[prenotazioni["prenotazioni"][i]["idServizio"]] + '</h3>';
@@ -103,7 +103,7 @@ function loadPrenotazioniAttive(){
   if(prenotazioni["preventiviAttivi"]){
     for(i = 0; i != prenotazioni["preventiviAttivi"].length; i++){
         element = "";
-        element += '<div>';
+        element += '<div class="prenotazioneContainer">';
         element += '<button onclick="showRiepilogoPreventivoAttivo(' + i + ')" class="prenotazione">';
         element += '<h2>' + prenotazioni["preventiviAttivi"][i]["nomeAnziano"] + " " + prenotazioni["preventiviAttivi"][i]["cognomeAnziano"] + '</h2>'
         element += '<h3>' + listaServizi[prenotazioni["preventiviAttivi"][i]["idServizio"]] + '</h3>';
@@ -121,7 +121,7 @@ function loadPrenotazioniInSospeso(){
   for(i = 0; i != prenotazioni["prenotazioni"].length; i++){
     if(prenotazioni["prenotazioni"][i]["stato"] == "inviata"){
       element = "";
-      element += '<div>';
+      element += '<div class="prenotazioneContainer">';
       element += '<button onclick="showRiepilogoSospeso(' + i + ')" class="prenotazione">';
       element += '<h2>' + prenotazioni["prenotazioni"][i]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][i]["cognomeAnziano"] + '</h2>'
       element += '<h3>' + listaServizi[prenotazioni["prenotazioni"][i]["idServizio"]] + '</h3>';
@@ -210,7 +210,7 @@ function loadPrenotazioniArchiviate(){
   for(i = 0; i != prenotazioni["prenotazioni"].length; i++){
     if(prenotazioni["prenotazioni"][i]["stato"] == "completata" || prenotazioni["prenotazioni"][i]["stato"] == "rifiutata"){
       element = "";
-      element += '<div>';
+      element += '<div class="prenotazioneContainer">';
       element += '<button onclick="showRiepilogoArchiviate(' + i + ')" class="prenotazione">';
       element += '<h2>' + prenotazioni["prenotazioni"][i]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][i]["cognomeAnziano"] + '</h2>'
       element += '<h3>' + listaServizi[prenotazioni["prenotazioni"][i]["idServizio"]] + '</h3>';

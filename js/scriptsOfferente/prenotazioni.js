@@ -156,8 +156,10 @@ function setPrenotazioneCompletata(idPrenotazione){
   var vars = "idPrenotazione="+idPrenotazione+"&nuovoStato=completata";
   http.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(http.responseText);
-        window.location.href = "prenotazioniOfferente.html";
+        if(http.responseText == "ok"){
+          localStorage.setItem("messaggioPrenotazioni", "Il servizio è stato segnalato come completato");
+          window.location.href = "prenotazioniOfferente.html";
+        }
       }
     };
     http.send(vars);
@@ -172,8 +174,10 @@ function setPreventivoCompletato(idPreventivo){
 
   http.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(http.responseText);
-        window.location.href = "prenotazioniOfferente.html";
+        if(http.responseText == "ok"){
+          localStorage.setItem("messaggioPrenotazioni", "Il servizio è stato segnalato come completato");
+          window.location.href = "prenotazioniOfferente.html";
+        }
       }
     };
     http.send(vars);

@@ -73,6 +73,7 @@ function loadJSONNotifiche(){
 loadJSONNotifiche();
 
 function loadNotifiche(){
+  document.getElementById("lista_notifiche").innerHTML = "";
   for(i = 0; i != notificheDaLeggere.length; i++){
     document.getElementById("lista_notifiche").innerHTML += `
     <div id="notifica` + i + `">

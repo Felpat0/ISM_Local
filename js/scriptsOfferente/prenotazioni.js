@@ -148,6 +148,37 @@ function showRichiesteArchiviate(){
   hideDiv("schermata1", "richiesteArchiviate");
 }
 
+function setPrenotazioneCompletata(idPrenotazione){
+  const url= ip + '/queryAnziano/updatePrenotazione.php';
+  var http = new XMLHttpRequest();
+  http.open("POST", url, true);
+  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  var vars = "idPrenotazione="+idPrenotazione+"&nuovoStato=completata";
+  http.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(http.responseText);
+        window.location.href = "prenotazioniOfferente.html";
+      }
+    };
+    http.send(vars);
+}
+
+function setPreventivoCompletato(idPreventivo){
+  const url= ip + '/queryAnziano/updatePreventivo.php';
+  var http = new XMLHttpRequest();
+  http.open("POST", url, true);
+  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  var vars = "idPreventivo="+idPreventivo+"&nuovoStato=completato";
+
+  http.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(http.responseText);
+        window.location.href = "prenotazioniOfferente.html";
+      }
+    };
+    http.send(vars);
+}
+
 function showRiepilogoAttiva(index){
   element = `
   <div id="prenotazione">
@@ -158,7 +189,7 @@ function showRiepilogoAttiva(index){
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
     <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
     <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>
-    <button onclick="" class="conferma">Richiesta compiuta</button>
+    <button onclick="setPrenotazioneCompletata(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `)" class="conferma">Richiesta compiuta</button>
   </div>`;
   document.getElementById("riepilogoAttive").innerHTML = element;
 
@@ -177,6 +208,7 @@ function showRiepilogoPreventivoAttivo(index){
     <p>Paga: ` + prenotazioni["preventiviAttivi"][index]["prezzo"] + ` euro l'ora</p>
     <p>Note: ` + prenotazioni["preventiviAttivi"][index]["note"] + `</p>
     <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>
+    <button onclick="setPreventivoCompletato(` + prenotazioni["preventiviAttivi"][index]["idPreventivo"] + `)" class="conferma">Richiesta compiuta</button>
   </div>`;
   document.getElementById("riepilogoAttive").innerHTML = element;
 

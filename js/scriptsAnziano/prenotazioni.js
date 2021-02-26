@@ -70,34 +70,6 @@ function displayLista(idLista, statoPrenotazione){
       http.send(vars);
 }
 
-function setPrenotazioneCompletata(idPrenotazione){
-  const url= ip + '/queryAnziano/updatePrenotazione.php';
-  var http = new XMLHttpRequest();
-  http.open("POST", url, true);
-  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  var vars = "idPrenotazione="+idPrenotazione+"&nuovoStato=completata";
-  http.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(http.responseText);
-      }
-    };
-    http.send(vars);
-}
-
-function setPreventivoCompletato(idPreventivo){
-  const url= ip + '/queryAnziano/updatePreventivo.php';
-  var http = new XMLHttpRequest();
-  http.open("POST", url, true);
-  http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  var vars = "idPreventivo="+idPreventivo+"&nuovoStato=completato";
-
-  http.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(http.responseText);
-      }
-    };
-    http.send(vars);
-}
 
 function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idLista){
     document.getElementById("back").setAttribute("onclick", "hideDiv('"+statoPrenotazione+"', '"+idLista+"'); resetBackButton('riepilogo', '"+idLista+"')");

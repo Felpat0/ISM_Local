@@ -22,10 +22,9 @@ setTimeout(function(){
             if(localStorage.getItem('tipoUtente') == 'offerente') {tipo = 'Anziano';}
             else {tipo = 'Offerente';}
     
-            
-
             if(fileName == 'chat.html'){
                 document.getElementById('nomeCognome').innerHTML = result['0']['nome'+tipo] + ' ' + result['0']['cognome'+tipo];
+                localStorage.removeItem('idUtente');
             } else {
                 document.getElementById('nome').innerHTML = result['0']['nome'+tipo];
                 document.getElementById('cognome').innerHTML = result['0']['cognome'+tipo];
@@ -36,9 +35,8 @@ setTimeout(function(){
                 document.getElementById('email').innerHTML = result['0']['email'+tipo];
             }
         }
-        };
+    };
     
-        http.send(vars);
-     
+    http.send(vars);
         
 }, 200);

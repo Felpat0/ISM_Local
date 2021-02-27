@@ -60,6 +60,7 @@ function getListaChat(){
 }
 
 function getMessaggi(id){
+    
     const url= ip + '/chat/getMessaggi.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
@@ -138,7 +139,7 @@ function inviaMessaggio(id){
             } else if(result == 'ok'){
                 document.getElementById('msg').value = '';
                 document.getElementById('cronologia').innerHTML = '';
-                localStorage.removeItem('idUtente')
+                localStorage.removeItem('idUtente');
                 getMessaggi(id);
             }
         }

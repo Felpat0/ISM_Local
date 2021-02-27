@@ -41,7 +41,6 @@
       if(localStorage.getItem('idUtente') != null){
         hideDiv('listaChat', 'chat');
         getMessaggi(localStorage['idUtente']);
-        //localStorage.removeItem('idUtente');
       } else {
         getListaChat()
       }

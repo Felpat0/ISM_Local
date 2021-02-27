@@ -1,9 +1,3 @@
-var button = document.querySelector("#submit");
-button.addEventListener("click", function () {
-  button.classList.add("loading");
-  document.getElementById("label").style.visibility = "hidden";
-});
-
 var messaggio = localStorage["messaggioLogin"];
 if(messaggio){
   document.getElementById("modalLogin").innerHTML += `

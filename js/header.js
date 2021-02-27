@@ -135,6 +135,7 @@ function messaggiNonLetti(){
 }
 
 messaggiNonLetti();
+
 function logout(){
   localStorage["id"] = "";
   localStorage["tipoUtente"] = "";

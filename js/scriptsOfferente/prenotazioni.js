@@ -229,7 +229,7 @@ function showRiepilogoSospeso(index){
     <p>Ora: ` + prenotazioni["prenotazioni"][index]["ora"] + `</p>
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
     <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
-    <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>
+    <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(` + prenotazioni["prenotazioni"][index]["idAnziano"] + `)">Visualizza profilo</a>
   </div>
   <button class="accetta" onclick="modificaPrenotazione(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `, 'accettata', ` + prenotazioni["prenotazioni"][index]["idAnziano"] + `, ` + prenotazioni["prenotazioni"][index]["idOfferente"] + `, '` + prenotazioni["prenotazioni"][index]["nomeOfferente"] + ` ` + prenotazioni["prenotazioni"][index]["cognomeOfferente"] + `');">Accetta</button>
   <button class="rifiuta" onclick="modificaPrenotazione(` + prenotazioni["prenotazioni"][index]["idPrenotazione"] + `, 'rifiutata', ` + prenotazioni["prenotazioni"][index]["idAnziano"] + `, ` + prenotazioni["prenotazioni"][index]["idOfferente"] + `, '` + prenotazioni["prenotazioni"][index]["nomeOfferente"] + ` ` + prenotazioni["prenotazioni"][index]["cognomeOfferente"] + `');">Rifiuta</button>
@@ -251,7 +251,7 @@ function loadPrenotazioniArchiviate(){
       element += '<h2>' + prenotazioni["prenotazioni"][i]["nomeAnziano"] + " " + prenotazioni["prenotazioni"][i]["cognomeAnziano"] + '</h2>'
       element += '<h3>' + listaServizi[prenotazioni["prenotazioni"][i]["idServizio"]] + '</h3>';
       element += '</button>';
-      element += '<a href="#" class="linkprofilo" onclick="">Visualizza profilo</a>';
+      element += '<a href="#" class="linkprofilo" onclick="apriProfiloAnziano(' + prenotazioni["prenotazioni"][i]["idAnziano"] + ')">Visualizza profilo</a>';
       element += '</div>';
       document.getElementById("richiesteArchiviate").innerHTML += element;
     }
@@ -268,6 +268,7 @@ function showRiepilogoArchiviate(index){
     <p>Indirizzo: ` + prenotazioni["prenotazioni"][index]["indirizzo"] + `</p>
     <p>Paga: ` + prenotazioni["pagaOraria"][prenotazioni["prenotazioni"][index]["idServizio"]]["pagaOraria"] + ` euro l'ora</p>
     <p>Stato: ` + prenotazioni["prenotazioni"][index]["stato"] + `</p>
+    <a href="#" class="linkprofilo-riepilogo" onclick="apriProfiloAnziano(` + prenotazioni["prenotazioni"][index]["idAnziano"] + `)">Visualizza profilo</a>
   </div>
   `;
 

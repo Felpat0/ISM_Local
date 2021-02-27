@@ -39,18 +39,18 @@
 .chat {
   position: absolute;
   width: 98%;
-  height: 70%;
-  top: 28%;
+  height: 65%;
+  top: 33%;
   left: 1%;
 }
 
 .nome-chat {
-  position: fixed;
+  position: absolute;
   width: auto;
   margin: auto;
   background: white;
   font-size: 30px;
-  top: 22%;
+  top: -10%;
   left: 3%;
   z-index: 99;
 }
@@ -70,7 +70,7 @@
   position: relative;
   width: 98%;
   height: 15%;
-  top: 5%;
+  top: 2%;
   left: 1%;
 }
 
@@ -106,7 +106,7 @@
 .bubble-ricevuto {
   position: relative;
   display: inline-block;
-  top: 5%;
+  margin-top: 2%;
   left: 2%;
   margin-bottom: 8%;
   margin-right: 5%;
@@ -125,7 +125,7 @@
 .bubble-inviato {
   position: relative;
   display: inline-block;
-  top: 5%;
+  margin-top: 2%;
   left: 2%;
   margin-bottom: 8%;
   margin-right: 5%;

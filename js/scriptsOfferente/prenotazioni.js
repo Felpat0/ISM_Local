@@ -78,8 +78,9 @@ function loadJSONPrenotazioni(){
 
 loadJSONPrenotazioni();
 
-function apriProfiloAnziano(idAnziano){
+function apriProfiloAnziano(idAnziano, tipoLista){
   localStorage.setItem('idUtente', idAnziano);
+  localStorage.setItem('idListaOfferente', 'prenotazioni');
   window.location.href = 'profiloAnziano.html';
 }
 

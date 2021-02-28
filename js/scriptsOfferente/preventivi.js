@@ -70,6 +70,7 @@ loadJSONPreventivi();
 
 function apriProfiloAnziano(idAnziano){
   localStorage.setItem('idUtente', idAnziano);
+  localStorage.setItem('idListaOfferente', 'preventivi');
   window.location.href = 'profiloAnziano.html';
 }
 

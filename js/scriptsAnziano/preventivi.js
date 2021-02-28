@@ -72,19 +72,13 @@ function displayListaPreventivi() {
             for(var i=0; i<result.length; i++){
                 if(result[i]['stato'] != 'finalizzato' && fileName != 'prenotazioniAnziano.html' && result[i]['stato'] == 'richiestaInviata'){
                     creaPulsantePreventivo(result, i);
-                } else if(result[i]['stato'] == 'finalizzato' && fileName == 'prenotazioniAnziano.html'){
-                        var position = listPosition+1
-                        displayPreventiviFinalizzati(result, i, position);
-                }
+                } 
             }
 
             for(var i=0; i<result.length; i++){
                 if(result[i]['stato'] != 'finalizzato' && fileName != 'prenotazioniAnziano.html' && (result[i]['stato'] == 'richiestaRifiutata' || result[i]['stato'] == 'preventivoRifiutato')){
                     creaPulsantePreventivo(result, i);
-                } else if(result[i]['stato'] == 'finalizzato' && fileName == 'prenotazioniAnziano.html'){
-                        var position = listPosition+1
-                        displayPreventiviFinalizzati(result, i, position);
-                }
+                } 
             }
         }
       };
@@ -93,43 +87,45 @@ function displayListaPreventivi() {
     }
 
     function displayPreventiviFinalizzati(result, i, position){
-        //Creazione div che conterrà il preventivo
-        var newDiv = document.createElement('DIV');
-        newDiv.className = 'p';
-        newDiv.id = 'div'+position;
-        //Inserimento del nuovo div in quello contenente la lista dei preventivi
-        document.getElementById('listaAttive').appendChild(newDiv);
+        setTimeout(() => {
+            //Creazione div che conterrà il preventivo
+            var newDiv = document.createElement('DIV');
+            newDiv.className = 'p';
+            newDiv.id = 'div'+position;
+            //Inserimento del nuovo div in quello contenente la lista dei preventivi
+            document.getElementById('listaAttive').appendChild(newDiv);
 
-        //Creazione button contenente il nome dell'utente offerente e il servizio offerto
-        var newBtn = document.createElement('BUTTON');
+            //Creazione button contenente il nome dell'utente offerente e il servizio offerto
+            var newBtn = document.createElement('BUTTON');
 
-        newBtn.setAttribute("onclick", "hideDiv('listaAttive','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
-        newBtn.className = 'prenotazioni';
+            newBtn.setAttribute("onclick", "hideDiv('listaAttive','preventivo'); displayRiepilogo('"+result[i]['idPreventivo']+"', 'preventivo')");
+            newBtn.className = 'prenotazioni';
 
-        //aggiungere link al profilo
-        newBtn.id = 'btn'+position;
-        document.getElementById("div"+position).appendChild(newBtn);
+            //aggiungere link al profilo
+            newBtn.id = 'btn'+position;
+            document.getElementById("div"+position).appendChild(newBtn);
 
-        var contentDiv = document.createElement('DIV');
-        contentDiv.id = 'contentDiv'+position;
-        contentDiv.className = 'contenuto-prenotazioni';
-        document.getElementById('btn'+position).appendChild(contentDiv);
+            var contentDiv = document.createElement('DIV');
+            contentDiv.id = 'contentDiv'+position;
+            contentDiv.className = 'contenuto-prenotazioni';
+            document.getElementById('btn'+position).appendChild(contentDiv);
 
-        //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
-        var name = document.createElement('H2');
-        var servizio = document.createElement('H3');
-        servizio.innerHTML = listaServizi[result['0']['idServizio']]
-        name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
-        document.getElementById('contentDiv'+position).appendChild(name);
-        document.getElementById('contentDiv'+position).appendChild(servizio);
+            //Inserimento del nome dell'utente offerente e del servizio offerto nel pulsante
+            var name = document.createElement('H2');
+            var servizio = document.createElement('H3');
+            servizio.innerHTML = listaServizi[result['0']['idServizio']]
+            name.innerHTML = result[i]['nomeOfferente'] + " " + result[i]['cognomeOfferente'];
+            document.getElementById('contentDiv'+position).appendChild(name);
+            document.getElementById('contentDiv'+position).appendChild(servizio);
 
-        //<a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
-        var linkProfilo = document.createElement('A');
-        linkProfilo.className = 'linkprofilo';
-        linkProfilo.innerHTML = 'Visualizza profilo';
-        linkProfilo.setAttribute("href", "#");
-        linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('idLista', 'listaAttive'); localStorage.setItem('statoPrenotazione', 'accettata'); window.location.href='profiloOfferente.html';");
-        document.getElementById('div'+position).appendChild(linkProfilo);
+            //<a href="#" class="linkprofilo" onclick="window.location.href='profiloanziano.html';">Visualizza profilo</a>
+            var linkProfilo = document.createElement('A');
+            linkProfilo.className = 'linkprofilo';
+            linkProfilo.innerHTML = 'Visualizza profilo';
+            linkProfilo.setAttribute("href", "#");
+            linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result[i]['idOfferente']+"'); localStorage.setItem('idLista', 'listaAttive'); localStorage.setItem('statoPrenotazione', 'accettata'); window.location.href='profiloOfferente.html';");
+            document.getElementById('div'+position).appendChild(linkProfilo);
+        }, 50);
     }
 
     function displayRiepilogo(idPreventivo, statoPreventivo){
@@ -172,7 +168,6 @@ function displayListaPreventivi() {
 
                     document.getElementById("back").setAttribute("onclick", "hideDiv('preventivoRicevuto', 'listaPreventivi'); resetBackButton('lista')");
                 } else if(statoPreventivo == 'preventivo'){
-                    document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaPreventivi'); resetBackButton('lista')");
                     document.getElementById('preventivo').innerHTML='';
                     var name = document.createElement('H2');
                     var servizio = document.createElement('P');
@@ -196,11 +191,12 @@ function displayListaPreventivi() {
                     }else if(result['0']['stato'] == 'preventivoRifiutato'){
                         stato.innerHTML = "Stato richiesta: Rifiutata da te";
                     } else if(result['0']['stato'] == 'finalizzato'){
-                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaAttive'); resetBackButton('riepilogo', 'listaAttive')");
+                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaAttive'); resetBackButton('riepilogoPrenotazioni', 'listaAttive')");
                         document.getElementById('preventivo').innerHTML='';
                         stato.innerHTML = "Stato richiesta: Prenotazione attiva";
                     }
 
+                   
                     document.getElementById(statoPreventivo).appendChild(name);
                     document.getElementById(statoPreventivo).appendChild(servizio);
                     document.getElementById(statoPreventivo).appendChild(data);
@@ -209,6 +205,11 @@ function displayListaPreventivi() {
                     document.getElementById(statoPreventivo).appendChild(note);
                     document.getElementById(statoPreventivo).appendChild(stato);
 
+                    if(fileName == 'prenotazioniAnziano.html'){
+                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaAttive'); resetBackButton('riepilogoPrenotazioni', 'listaAttive')");
+                    } else {
+                        document.getElementById("back").setAttribute("onclick", "hideDiv('preventivo', 'listaPreventivi'); resetBackButton('lista')");
+                    }
                 }
 
             }
@@ -239,9 +240,8 @@ function displayListaPreventivi() {
             case 'lista':
                 document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
                 break;
-            case 'riepilogo':
-                document.getElementById("back").setAttribute( "onclick", "hideDiv('"+tipoRiepilogo+"', 'listaPreventivi'); " );
-                if(tipoRiepilogo == 'preventivoRicevuto') {document.getElementById('riepilogoPreventivo').innerHTML = '';}
+            case 'riepilogoPrenotazioni':
+                document.getElementById("back").setAttribute( "onclick", "hideDiv('"+tipoRiepilogo+"', 'firstpage'), resetBackButton('lista')" );
                 break;
         }
     }

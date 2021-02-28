@@ -3,7 +3,11 @@ setTimeout(function(){
         document.getElementById("back").setAttribute("onclick", "window.location.href='prenotazioniAnziano.html'");
     } else if(localStorage.getItem('statoPrenotazione') == 'listaUtenti') {
         document.getElementById("back").setAttribute("onclick", "window.location.href='richiediservizioanziano.html'");
-    } else {
+    } else if(localStorage.getItem('idListaOfferente') == 'prenotazioni'){
+        document.getElementById("back").setAttribute("onclick", "window.location.href='prenotazioniOfferente.html'");
+    } else if(localStorage.getItem('idListaOfferente') == 'preventivi'){
+        document.getElementById("back").setAttribute("onclick", "window.location.href='preventiviOfferente.html'");
+    }else {
         document.getElementById("back").setAttribute("onclick", "window.location.href='preventiviAnziano.html'");
     }
 

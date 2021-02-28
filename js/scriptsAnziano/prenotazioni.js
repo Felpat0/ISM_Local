@@ -12,7 +12,6 @@ function displayLista(idLista, statoPrenotazione){
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById(idLista).innerHTML = '';
             var result = JSON.parse(http.responseText);
-
             //Per ciascuna prenotazione viene creato un pulsante che porta alla schermata contenente i dettagli della prenotazione
 
             for(var i=0; i<result.length; i++){
@@ -72,7 +71,6 @@ function displayLista(idLista, statoPrenotazione){
 
 
 function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idLista){
-    document.getElementById("back").setAttribute("onclick", "hideDiv('"+statoPrenotazione+"', '"+idLista+"'); resetBackButton('riepilogo', '"+idLista+"')");
     const url= ip + '/queryAnziano/riepilogoPren.php';
     var http = new XMLHttpRequest();
     http.open("POST", url, true);
@@ -113,6 +111,12 @@ function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idList
                         break;
                 }
 
+                var linkProfilo = document.createElement('A');
+                linkProfilo.className = 'linkprofilo';
+                linkProfilo.innerHTML = 'Visualizza profilo';
+                linkProfilo.setAttribute("href", "#");
+                linkProfilo.setAttribute("onclick", "localStorage.setItem('idUtente', '"+result['0']['idOfferente']+"'); localStorage.setItem('idLista', '"+idLista+"'); localStorage.setItem('statoPrenotazione', '"+statoPrenotazione+"'); window.location.href='profiloOfferente.html';");
+
                 document.getElementById(statoPrenotazione).innerHTML = '';
                 document.getElementById(statoPrenotazione).appendChild(name);
                 document.getElementById(statoPrenotazione).appendChild(servizio);
@@ -120,19 +124,21 @@ function displayRiepilogoPrenotazione( idPrenotazione, statoPrenotazione, idList
                 document.getElementById(statoPrenotazione).appendChild(ora);
                 document.getElementById(statoPrenotazione).appendChild(paga);
                 document.getElementById(statoPrenotazione).appendChild(stato);
+                document.getElementById(statoPrenotazione).appendChild(linkProfilo);
+                document.getElementById("back").setAttribute("onclick", "hideDiv('"+statoPrenotazione+"', '"+idLista+"'); resetBackButtonp('riepilogo', '"+idLista+"')");
         }
       };
 
       http.send(vars);
 }
 
-function resetBackButton(div, idLista){
+function resetBackButtonp(div, idLista){
     switch (div){
         case 'lista':
             document.getElementById("back").setAttribute( "onclick", "window.location.href='homeanziano.html'" );
             break;
         case 'riepilogo':
-            document.getElementById("back").setAttribute( "onclick", "hideDiv('"+idLista+"', 'firstpage')" );
+            document.getElementById("back").setAttribute( "onclick", "hideDiv('"+idLista+"', 'firstpage'); resetBackButtonp('lista');" );
             break;
     }
 }
